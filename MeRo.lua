@@ -884,7 +884,7 @@ local keyboard = {
 {'الاشتراك الاجباري ⋄','وضع قناة الاشتراك ⋄'},
 {'تفعيل البوت الخدمي ⋄','تعطيل البوت الخدمي ⋄'},
 {'تنظيف الكروبات ⋄','تنظيف المشتركين ⋄'},
-{'جلب نسخه الاحتياطيه ⋄'},
+{'جلب نسخه البوت ⋄'},
 {'تحديث السورس ⋄','الاصدار ⋄'},
 {'معلومات السيرفر ⋄'},
 {'الغاء ⋄'},
@@ -1208,7 +1208,7 @@ database:setex(bot_id.."Send:Fwd:Pv" .. msg.chat_id_ .. ":" .. msg.sender_user_i
 send(msg.chat_id_, msg.id_,"⋄︙ارسل لي التوجيه الان")
 return false
 end 
-if text == 'جلب نسخه الاحتياطيه ⋄' and DevoMr(msg) then 
+if text == 'جلب نسخه البوت ⋄' and DevoMr(msg) then 
 GetFile_Bot(msg)
 end
 if text == "تنظيف المشتركين ⋄" and DevoMr(msg) then 
@@ -2663,7 +2663,7 @@ return false
 end
 --------------------------------------------------------------------------------------------------------------
 if Chat_Type == 'GroupBot' and ChekAdd(msg.chat_id_) == true then
-if text == 'رفع نسخه الاحتياطيه' and DevoMr(msg) then   
+if text == 'رفع نسخه البوت' and DevoMr(msg) then   
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -2684,7 +2684,7 @@ end
 tdcli_function ({ ID = "GetMessage", chat_id_ = msg.chat_id_, message_id_ = tonumber(msg.reply_to_message_id_) }, by_reply, nil)
 end
 end
-if text == 'جلب نسخه الاحتياطيه' and DevoMr(msg) then 
+if text == 'جلب نسخه البوت' and DevoMr(msg) then 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -11302,6 +11302,7 @@ local Teext =[[
 *⋄ اطردني*
 *⋄ صيح*
 *⋄ ضافني*
+*⋄ كول*
 *⋄ الرابط *
 *⋄ الحظر*
 *⋄ الرفع*
@@ -11756,8 +11757,8 @@ local Teext =[[
 *⋄ الغاء العام*
 *⋄ قائمه العام*
 *⋄ مسح قائمه العام*
-*⋄ جلب نسخه الاحتياطيه*
-*⋄ رفع نسخه الاحتياطيه*
+*⋄ جلب نسخه البوت*
+*⋄ رفع نسخه البوت*
 ٴ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ٴ
 *⋄ اذاعه خاص*
 *⋄ اذاعه*
@@ -11765,8 +11766,6 @@ local Teext =[[
 *⋄ اذاعه بالتوجيه خاص*
 *⋄ اذاعه بالتثبيت*
 ٴ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ٴ
-*⋄ جلب نسخه البوت*
-*⋄ رفع نسخه البوت*
 *⋄ ضع عدد الاعضاء + العدد*
 *⋄ ضع كليشه المطور*
 *⋄ تفعيل/تعطيل الاذاعه*
