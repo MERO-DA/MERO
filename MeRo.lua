@@ -32,7 +32,7 @@ io.write('\27[0;31m تم حفظ التوكن بنجاح \na⊶─────≺
 database:set(id_server..":token",token)
 end 
 else
-print('\27[0;35m⊶─────≺⋆≻─────⊷ ┉\n لم يتم حفظ التوكن ارسل لي التوكن الان')
+print('\27[0;35m⊶─────≺⋆≻─────⊷\n لم يتم حفظ التوكن ارسل لي التوكن الان')
 end 
 os.execute('lua MeRo.lua')
 end
@@ -79,15 +79,15 @@ token="]]..database:get(id_server..":token")..[["
 while(true) do
 rm -fr ../.telegram-cli
 if [ ! -f ./tg ]; then
-echo "⊶─────≺⋆≻─────⊷ ┉ ┉ ┉ ┉ ┉ ┉┉ ┉ ┉ ┉ ┉ ┉ ┉"
+echo "ٴ — — — — — — — — — "
 echo "TG IS NOT FIND IN FILES BOT"
-echo "⊶─────≺⋆≻─────⊷ ⊶─────≺⋆≻─────⊷ ┉"
+echo "ٴ — — — — — — — — — "
 exit 1
 fi
 if [ ! $token ]; then
-echo "⊶─────≺⋆≻─────⊷ ⊶─────≺⋆≻─────⊷ ┉ ┉"
+echo "ٴ — — — — — — — — — "
 echo -e "\e[1;36mTOKEN IS NOT FIND IN FILE INFO.LUA \e[0m"
-echo "⊶─────≺⋆≻─────⊷ ┉ ┉ ┉ ┉┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉┉ ┉"
+echo "ٴ — — — — — — — — — "
 exit 1
 fi
 echo -e "\033[38;5;208m"
@@ -154,7 +154,7 @@ io.popen("cd File_Bot && rm -rf commands.lua.1")
 io.popen("cd File_Bot && rm -rf commands.lua.2") 
 io.popen("cd File_Bot && rm -rf commands.lua.3") 
 io.popen("cd File_Bot && wget https://raw.githubusercontent.com/SRC-MeRo/Files_MeRo/main/File_Bot/commands.lua") 
-t = "\27[35m".."\nAll Files Started : \n____________________\n"..'\27[m'
+t = "\27[35m".."\n: جاري تنظيف المجموعات الوهمية يرجى الانتظار - \n⎯ ⎯ ⎯ ⎯  ⎯ ⎯ ⎯ ⎯ ⎯ ⎯ ⎯\n"..'\27[m'
 i = 0
 for v in io.popen('ls File_Bot'):lines() do
 if v:match(".lua$") then
@@ -2174,25 +2174,33 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,'⋄︙لا تستطيع استخدام البوت \n ⋄︙يرجى الاشتراك بالقناه اولا \n ⋄︙اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'⋄︙لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n⋄︙اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 if msg.can_be_deleted_ == false then 
-send(msg.chat_id_, msg.id_,'⋄︙عذرا يرجى ترقيه البوت مشرف !')
+send(msg.chat_id_, msg.id_,'*⋄︙عذرا يرجى ترقيه البوت مشرف !*')
 return false  
 end
 tdcli_function ({ ID = "GetChannelFull", channel_id_ = getChatId(msg.chat_id_).ID }, function(arg,data)  
-if tonumber(data.member_count_) < tonumber(database:get(bot_id..'Num:Add:Bot') or 0) and not DevoMr(msg) then
-send(msg.chat_id_, msg.id_,'⋄︙عدد اعضاء الكروب قليله يرجى جمع >> {'..(database:get(bot_id..'Num:Add:Bot') or 0)..'} عضو')
+if tonumber(data.member_count_) < tonumber(database:get(bot_id..'Num:Add:Bot') or 0) and not DevHaDr(msg) then
+send(msg.chat_id_, msg.id_,'*⋄︙عذراً عدد اعضاء المجموعة قليله العدد المطلوب لتفعيل البوت هـو -› {'..(database:get(bot_id..'Num:Add:Bot') or 0)..'} عضو *')
 return false
 end
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)
 tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,chat)  
 if database:sismember(bot_id..'Chek:Groups',msg.chat_id_) then
-send(msg.chat_id_, msg.id_,'*⋄︙بواسطه ↫* ['..Rutba(msg.sender_user_id_,msg.chat_id_)..'](T.ME/'..(data.username_ or 'YYYDR')..') \n*⋄︙البوت تم تفعيله مسبقا*')
+send(msg.chat_id_, msg.id_,'*⋄︙بالتأكيد تم تفعيل المجموعة*')
 else
-sendText(msg.chat_id_,'\n*⋄︙بواسطه ↫* ['..string.sub(result.first_name_,0, 70)..'](tg://user?id='..result.id_..')\n*⋄︙تم تفعيل البوت في المجموعه* '..chat.title_..' ',msg.id_/2097152/0.5,'md')
+local Text = '*⋄︙تم تفعيل المجموعة {'..chat.title_..'}*'
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = '⋄ معرفة المزيد ؟',url="https://t.me/YYYDR"},
+},
+}
+local msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 database:sadd(bot_id..'Chek:Groups',msg.chat_id_)
 local Name = '['..result.first_name_..'](tg://user?id='..result.id_..')'
 local NameChat = chat.title_
@@ -2224,16 +2232,24 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,'⋄︙لا تستطيع استخدام البوت \n ⋄︙يرجى الاشتراك بالقناه اولا \n ⋄︙اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'⋄︙لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n⋄︙اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)
 tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,chat)  
 if not database:sismember(bot_id..'Chek:Groups',msg.chat_id_) then
-send(msg.chat_id_, msg.id_,'*⋄︙بواسطه ↫* ['..Rutba(msg.sender_user_id_,msg.chat_id_)..'](T.ME/'..(data.username_ or 'YYYDR')..') \n*⋄︙البوت تم تعطيله مسبقا*')
+send(msg.chat_id_, msg.id_,'*⋄︙بالتأكيد تم تعطيل المجموعة*')
 else
-sendText(msg.chat_id_,'\n*⋄︙بواسطه ↫* ['..string.sub(result.first_name_,0, 70)..'](tg://user?id='..result.id_..')\n*⋄︙تم تعطيل البوت في المجموعه* '..chat.title_..' ',msg.id_/2097152/0.5,'md')
+local Text = '*⋄︙تم تعطيل المجموعة {'..chat.title_..'}*'
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = '⋄ معرفة المزيد ؟ ',url="https://t.me/YYYDR"},
+},
+}
+local msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 database:srem(bot_id..'Chek:Groups',msg.chat_id_)  
 local Name = '['..result.first_name_..'](tg://user?id='..result.id_..')'
 local NameChat = chat.title_
@@ -2263,7 +2279,7 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,'⋄︙لا تستطيع استخدام البوت \n ⋄︙يرجى الاشتراك بالقناه اولا \n ⋄︙اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'⋄︙لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n⋄︙اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
@@ -2272,8 +2288,8 @@ send(msg.chat_id_, msg.id_,'*⋄︙عذرا يرجى ترقيه البوت مش�
 return false  
 end
 tdcli_function ({ ID = "GetChannelFull", channel_id_ = getChatId(msg.chat_id_).ID }, function(arg,data)  
-if tonumber(data.member_count_) < tonumber(database:get(bot_id..'Num:Add:Bot') or 0) and not DevoMr(msg) then
-send(msg.chat_id_, msg.id_,'⋄︙عدد اعضاء الكروب قليله يرجى جمع >> {'..(database:get(bot_id..'Num:Add:Bot') or 0)..'} عضو')
+if tonumber(data.member_count_) < tonumber(database:get(bot_id..'Num:Add:Bot') or 0) and not DevHaDr(msg) then
+send(msg.chat_id_, msg.id_,'*⋄︙عذراً عدد اعضاء المجموعة قليله العدد المطلوب لتفعيل البوت هـو -› {'..(database:get(bot_id..'Num:Add:Bot') or 0)..'} عضو*')
 return false
 end
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)
@@ -2287,9 +2303,17 @@ elseif da.status_.ID == "ChatMemberStatusEditor" then
 var = 'مشرف'
 end
 if database:sismember(bot_id..'Chek:Groups',msg.chat_id_) then
-send(msg.chat_id_, msg.id_,'*⋄︙بواسطه ↫* ['..Rutba(msg.sender_user_id_,msg.chat_id_)..'](T.ME/'..(data.username_ or 'YYYDR')..') \n*⋄︙البوت تم تفعيله مسبقا*')
+send(msg.chat_id_, msg.id_,'*⋄︙بالتأكيد تم تفعيل المجموعة*')
 else
-sendText(msg.chat_id_,'\n*⋄︙بواسطه ↫* ['..string.sub(result.first_name_,0, 70)..'](tg://user?id='..result.id_..')\n*⋄︙تم تفعيل البوت في المجموعه* '..chat.title_..' ',msg.id_/2097152/0.5,'md')
+local Text = '*⋄︙تم تفعيل المجموعة {'..chat.title_..'}*'
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = '⋄ معرفة المزيد ؟ ',url="https://t.me/YYYDR"},
+},
+}
+local msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 database:sadd(bot_id..'Chek:Groups',msg.chat_id_)  
 database:sadd(bot_id..'CoSu'..msg.chat_id_, msg.sender_user_id_)
 local Name = '['..result.first_name_..'](tg://user?id='..result.id_..')'
