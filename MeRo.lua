@@ -2192,7 +2192,7 @@ tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,chat)
 if database:sismember(bot_id..'Chek:Groups',msg.chat_id_) then
 send(msg.chat_id_, msg.id_,'*⋄︙بالتأكيد تم تفعيل المجموعة*')
 else
-sendText(msg.chat_id_,'\n*⋄︙بواسطه ↫* ['..string.sub(result.first_name_,0, 70)..'](tg://user?id='..result.id_..')\n*⋄︙تم تفعيل البوت في المجموعه* '..chat.title_..' ',msg.id_/2097152/0.5,'md')
+local Text(msg.chat_id_,'\n*⋄︙بواسطه ↫* ['..string.sub(result.first_name_,0, 70)..'](tg://user?id='..result.id_..')\n*⋄︙تم تفعيل البوت في المجموعه* '..chat.title_..' ',msg.id_/2097152/0.5,'md')
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
