@@ -872,6 +872,7 @@ local bl = '⋄︙اهلا عزيزي آلمـطـور\n⋄︙آنت آلمـط�
 local keyboard = {
 {'الاحصائيات ⋄'},
 {'تفعيل النسخه التلقائيه ⋄','تعطيل النسخه التلقائيه ⋄'},
+{'تغيير المطور الاساسي ⋄'},
 {'تعطيل التواصل ⋄','تفعيل التواصل ⋄'},
 {'ضع اسم للبوت ⋄','قائمه العام ⋄','قائمه الكتم العام ⋄'},
 {'المطورين ⋄','الثانويين ⋄'},
@@ -8665,6 +8666,31 @@ else
 Text = '\n*⋄︙بالتاكيد تم تعطيل التواصل*'
 end
 send(msg.chat_id_, msg.id_,Text) 
+end
+if text =='تغيير المطور الاساسي ⋄' and SudoBot(msg) then
+send(msg.chat_id_, msg.id_,'⋄︙ارسل ايدي المطور الاساسي الجديد')
+database:set(bot_id..'Ed:DevoMr',true) 
+end
+if text =='تغيير المطور الاساسي ⋄' and not SudoBot(msg) then
+send(msg.chat_id_, msg.id_,'⋄︙تسرسح')
+end
+if database:get(bot_id.."Ed:DevoMr") then
+if text and text:match("^(%d+)$") then
+local IdDe = text:match("^(%d+)$")
+send(msg.chat_id_,msg.id_, "⋄︙تم حفظ المعلومات اضغط ( تحديث ⋄ ) للتنفيذ")
+local A = io.open("sudo.lua", 'w')
+A:write([[
+s = "FEEEM"
+
+q = "YYYDR"
+
+token = "]]..token..[["
+
+Sudo = ]]..IdDe..[[  
+]])
+A:close()
+database:del(bot_id.."Ed:DevoMr")
+end
 end
 if text == 'تفعيل البوت الخدمي' and DevoMr(msg) then  
 if AddChannel(msg.sender_user_id_) == false then
