@@ -2179,28 +2179,20 @@ end
 return false
 end
 if msg.can_be_deleted_ == false then 
-send(msg.chat_id_, msg.id_,'*⋄︙عذرا يرجى ترقيه البوت مشرف !*')
+send(msg.chat_id_, msg.id_,'⋄︙عذرا يرجى ترقيه البوت مشرف !')
 return false  
 end
 tdcli_function ({ ID = "GetChannelFull", channel_id_ = getChatId(msg.chat_id_).ID }, function(arg,data)  
-if tonumber(data.member_count_) < tonumber(database:get(bot_id..'Num:Add:Bot') or 0) and not DevHaDr(msg) then
-send(msg.chat_id_, msg.id_,'*⋄︙عذراً عدد اعضاء المجموعة قليله العدد المطلوب لتفعيل البوت هـو -› {'..(database:get(bot_id..'Num:Add:Bot') or 0)..'} عضو *')
+if tonumber(data.member_count_) < tonumber(database:get(bot_id..'Num:Add:Bot') or 0) and not DevoMr(msg) then
+send(msg.chat_id_, msg.id_,'⋄︙عدد اعضاء الكروب قليله يرجى جمع >> {'..(database:get(bot_id..'Num:Add:Bot') or 0)..'} عضو')
 return false
 end
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)
 tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,chat)  
 if database:sismember(bot_id..'Chek:Groups',msg.chat_id_) then
-send(msg.chat_id_, msg.id_,'*⋄︙بالتأكيد تم تفعيل المجموعة*')
+send(msg.chat_id_, msg.id_,'*⋄︙بواسطه ↫* ['..Rutba(msg.sender_user_id_,msg.chat_id_)..'](T.ME/'..(data.username_ or 'YYYDR')..') \n*⋄︙البوت تم تفعيله مسبقا*')
 else
-local Text = '*⋄︙تم تفعيل المجموعة {'..chat.title_..'}*'
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = '⋄ معرفة المزيد ؟',url="https://t.me/YYYDR"},
-},
-}
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+sendText(msg.chat_id_,'\n*⋄︙بواسطه ↫* ['..string.sub(result.first_name_,0, 70)..'](tg://user?id='..result.id_..')\n*⋄︙تم تفعيل البوت في المجموعه* '..chat.title_..' ',msg.id_/2097152/0.5,'md')
 database:sadd(bot_id..'Chek:Groups',msg.chat_id_)
 local Name = '['..result.first_name_..'](tg://user?id='..result.id_..')'
 local NameChat = chat.title_
@@ -2239,17 +2231,9 @@ end
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)
 tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,chat)  
 if not database:sismember(bot_id..'Chek:Groups',msg.chat_id_) then
-send(msg.chat_id_, msg.id_,'*⋄︙بالتأكيد تم تعطيل المجموعة* ')
+send(msg.chat_id_, msg.id_,'*⋄︙بواسطه ↫* ['..Rutba(msg.sender_user_id_,msg.chat_id_)..'](T.ME/'..(data.username_ or 'YYYDR')..') \n*⋄︙البوت تم تعطيله مسبقا*')
 else
-local Text = '*⋄︙تم تعطيل المجموعة {'..chat.title_..'}*'
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = '⋄ معرفة المزيد ؟',url="https://t.me/YYYDR"},
-},
-}
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+sendText(msg.chat_id_,'\n*⋄︙بواسطه ↫* ['..string.sub(result.first_name_,0, 70)..'](tg://user?id='..result.id_..')\n*⋄︙تم تعطيل البوت في المجموعه* '..chat.title_..' ',msg.id_/2097152/0.5,'md')
 database:srem(bot_id..'Chek:Groups',msg.chat_id_)  
 local Name = '['..result.first_name_..'](tg://user?id='..result.id_..')'
 local NameChat = chat.title_
@@ -2288,8 +2272,8 @@ send(msg.chat_id_, msg.id_,'*⋄︙عذرا يرجى ترقيه البوت مش�
 return false  
 end
 tdcli_function ({ ID = "GetChannelFull", channel_id_ = getChatId(msg.chat_id_).ID }, function(arg,data)  
-if tonumber(data.member_count_) < tonumber(database:get(bot_id..'Num:Add:Bot') or 0) and not DevHaDr(msg) then
-send(msg.chat_id_, msg.id_,'*⋄︙عذراً عدد اعضاء المجموعة قليله العدد المطلوب لتفعيل البوت هـو -› {'..(database:get(bot_id..'Num:Add:Bot') or 0)..'} عضو *')
+if tonumber(data.member_count_) < tonumber(database:get(bot_id..'Num:Add:Bot') or 0) and not DevoMr(msg) then
+send(msg.chat_id_, msg.id_,'⋄︙عدد اعضاء الكروب قليله يرجى جمع >> {'..(database:get(bot_id..'Num:Add:Bot') or 0)..'} عضو')
 return false
 end
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)
@@ -2303,17 +2287,9 @@ elseif da.status_.ID == "ChatMemberStatusEditor" then
 var = 'مشرف'
 end
 if database:sismember(bot_id..'Chek:Groups',msg.chat_id_) then
-send(msg.chat_id_, msg.id_,'*⋄︙بالتأكيد تم تفعيل المجموعة*')
+send(msg.chat_id_, msg.id_,'*⋄︙بواسطه ↫* ['..Rutba(msg.sender_user_id_,msg.chat_id_)..'](T.ME/'..(data.username_ or 'YYYDR')..') \n*⋄︙البوت تم تفعيله مسبقا*')
 else
-local Text = '*⋄︙تم تفعيل المجموعة {'..chat.title_..'}*'
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = '⋄ معرفة المزيد ؟',url="https://t.me/YYYDR"},
-},
-}
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+sendText(msg.chat_id_,'\n*⋄︙بواسطه ↫* ['..string.sub(result.first_name_,0, 70)..'](tg://user?id='..result.id_..')\n*⋄︙تم تفعيل البوت في المجموعه* '..chat.title_..' ',msg.id_/2097152/0.5,'md')
 database:sadd(bot_id..'Chek:Groups',msg.chat_id_)  
 database:sadd(bot_id..'CoSu'..msg.chat_id_, msg.sender_user_id_)
 local Name = '['..result.first_name_..'](tg://user?id='..result.id_..')'
@@ -11232,7 +11208,12 @@ end
 end -- Chat_Type = 'GroupBot' 
 end -- end msg 
 --------------------------------------------------------------------------------------------------------------
-function tdcli_update_callback(data)
+function tdcli_update_callback(data)  -- clback
+if data.ID == "UpdateChannel" then 
+if data.channel_.status_.ID == "ChatMemberStatusKicked" then 
+database:srem(bot_id..'Chek:Groups','-100'..data.channel_.id_)  
+end
+end
 if data.ID == "UpdateNewCallbackQuery" then
 local Chat_id = data.chat_id_
 local Msg_id = data.message_id_
@@ -12129,11 +12110,6 @@ end
 if data.ID == "UpdateNewMessage" then  -- new msg
 msg = data.message_
 text = msg.content_.text_
-if data.ID == "UpdateChannel" then 
-if data.channel_.status_.ID == "ChatMemberStatusKicked" then 
-database:srem(bot_id..'Chek:Groups','-100'..data.channel_.id_)  
-end
-end
 --------------------------------------------------------------------------------------------------------------
 if text and not database:sismember(bot_id..'Spam:Texting'..msg.sender_user_id_,text) then
 database:del(bot_id..'Spam:Texting'..msg.sender_user_id_) 
@@ -13236,18 +13212,18 @@ end
 end,nil)
 ------------------------------------------------------------------------
 
-if (data.ID == "UpdateOption" and data.value_.value_ == "Ready") then
-print('\27[30;32m»» يرجى الاننتضار لحين تنظيف المجموعات الوهميه ««\n\27[1;37m')
-local list = database:smembers(bot_id..'UsersBot')  
+elseif (data.ID == "UpdateOption" and data.name_ == "my_id") then 
+local list = database:smembers(bot_id.."User_Bot") 
 for k,v in pairs(list) do 
 tdcli_function({ID='GetChat',chat_id_ = v},function(arg,data) end,nil) 
-end 
+end         
 local list = database:smembers(bot_id..'Chek:Groups') 
 for k,v in pairs(list) do 
-tdcli_function({ID='GetChat',chat_id_ = v},function(arg,data)
+tdcli_function({ID='GetChat',chat_id_ = v
+},function(arg,data)
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.status_ and data.type_.channel_.status_.ID == "ChatMemberStatusMember" then
-tdcli_function ({ID = "ChangeChatMemberStatus",chat_id_=v,user_id_=bot_id,status_={ID = "ChatMemberStatusLeft"},},function(e,g) end, nil) 
 database:srem(bot_id..'Chek:Groups',v)  
+tdcli_function ({ID = "ChangeChatMemberStatus",chat_id_=v,user_id_=bot_id,status_={ID = "ChatMemberStatusLeft"},},function(e,g) end, nil) 
 end
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.status_ and data.type_.channel_.status_.ID == "ChatMemberStatusLeft" then
 database:srem(bot_id..'Chek:Groups',v)  
@@ -13256,11 +13232,11 @@ if data and data.type_ and data.type_.channel_ and data.type_.channel_.status_ a
 database:srem(bot_id..'Chek:Groups',v)  
 end
 if data and data.code_ and data.code_ == 400 then
-database:srem(bot_id..'Chek:Groups',v)   
+database:srem(bot_id..'Chek:Groups',v)  
 end
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.status_ and data.type_.channel_.status_.ID == "ChatMemberStatusEditor" then
 database:sadd(bot_id..'Chek:Groups',v)  
-end
+end 
 end,nil)
 end
 
