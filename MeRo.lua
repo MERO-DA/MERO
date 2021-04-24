@@ -98,7 +98,7 @@ echo -e "\e[36m"
 done
 ]])  
 file:close()  
-file = io.open("MR", "w")  
+file = io.open("DRG", "w")  
 file:write([[
 #!/usr/bin/env bash
 cd $HOME/MeRo
@@ -9143,7 +9143,7 @@ send(msg.chat_id_, msg.id_,"*⋄︙تم مسح ردود المطور*")
 end
 if text == ("ردود المطور") and DevoMr(msg) then 
 local list = database:smembers(bot_id.."List:Rd:Sudo")
-text = "\n⋄︙قائمة ردود المطور\n⊶─────≺⋆≻─────⊷\n"
+text = "\n⋄︙قائمة ردود المطور \n⊶─────≺⋆≻─────⊷\n"
 for k,v in pairs(list) do
 if database:get(bot_id.."Add:Rd:Sudo:Gif"..v) then
 db = "متحركه 🎭"
@@ -10301,6 +10301,24 @@ database:set(bot_id..'Lock:Games'..msg.chat_id_,true)
 Text = '\n*⋄︙تم تفعيل الالعاب*' 
 else
 Text = '\n*⋄︙بالتاكيد تم تفعيل الالعاب*'
+end
+send(msg.chat_id_, msg.id_,Text) 
+end
+if text == 'تفعيل الردود' and Manager(msg) then  
+if database:get(bot_id..'lock:add'..msg.chat_id_) then
+Text = '*⋄︙تم تفعيل الردود* '
+database:del(bot_id..'lock:add'..msg.chat_id_)  
+else
+Text = '*⋄︙بالتاكيد تم تفعيل ردود البوت*'
+end
+send(msg.chat_id_, msg.id_,Text) 
+end
+if text == 'تعطيل الردود' and Manager(msg) then  
+if not database:get(bot_id..'lock:add'..msg.chat_id_) then
+database:set(bot_id..'lock:add'..msg.chat_id_,true)  
+Text = '\n*⋄︙تم تعطيل الردود*'
+else
+Text = '\n*⋄︙بالتاكيد تم تعطيل ردود البوت*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
@@ -12096,7 +12114,7 @@ local Teext =[[
 *يمكنك تصفح الاضافات من خلال*
 *الكيبورد الموجود في الأسفل*
 ٴ≪┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉≫ٴٴ
-➫ .[??┇𝘴𝘰𝘳𝘶𝘤𝘦 𝘔𝘦𝘙𝘰. ](t.me/YYYDR)➤
+➫ .[🖨┇𝘴𝘰𝘳𝘶𝘤𝘦 𝘔𝘦𝘙𝘰. ](t.me/YYYDR)➤
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
@@ -12711,26 +12729,7 @@ Text_Games = [[
 ]]
 send(msg.chat_id_, msg.id_,Text_Games) 
 end
-if SudoBot(msg) then 
---- ردود المطور 
 
-if text == "نجب" then
-send(msg.chat_id_, msg.id_, 'علا راسي مطوري')
-end
-if text == "هلو" then
-send(msg.chat_id_, msg.id_, 'هلا بمطوري')
-end
-
-end --- نهايه ردود المطور
-if text == 'تفعيل الردود' and Manager(msg) then  
-send(msg.chat_id_, msg.id_, '*⋄︙تم تفعيل الردود*')
-database:del(bot_id..'lock:add'..msg.chat_id_)
-end
-if text == 'تعطيل الردود' and Manager(msg) then  
-send(msg.chat_id_, msg.id_, '*⋄︙تم تعطيل الردود*')
-database:set(bot_id..'lock:add'..msg.chat_id_, true)
-end
-if not SudoBot(msg) then 
 if text == "السلام عليكم" or text == "سلام عليكم" or text == "سلامن عليكم" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
 local texting = {"ياهلا وعليڪم السلام عمغي 💘","وعليڪم سلام ياڪمر 💕" }
