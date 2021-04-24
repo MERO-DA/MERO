@@ -12729,17 +12729,7 @@ Text_Games = [[
 ]]
 send(msg.chat_id_, msg.id_,Text_Games) 
 end
-if SudoBot(msg) then 
---- ردود المطور 
 
-if text == "هلو" or text == "هيلو" or text == "هلاو" then
-if not database:get(bot_id..'lock:add'..msg.chat_id_) then
-local texting = {"هلا مطوري" }
-send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
-end
-
-end --- نهايه ردود المطور
-if not SudoBot(msg) then 
 if text == "السلام عليكم" or text == "سلام عليكم" or text == "سلامن عليكم" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
 local texting = {"ياهلا وعليڪم السلام عمغي 💘","وعليڪم سلام ياڪمر 💕" }
