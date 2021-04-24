@@ -10304,24 +10304,6 @@ Text = '\n*⋄︙بالتاكيد تم تفعيل الالعاب*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تفعيل الردود' and Manager(msg) then  
-if database:get(bot_id..'lock:add'..msg.chat_id_) then
-Text = '*⋄︙تم تفعيل الردود* '
-database:del(bot_id..'lock:add'..msg.chat_id_)  
-else
-Text = '*⋄︙بالتاكيد تم تفعيل ردود البوت*'
-end
-send(msg.chat_id_, msg.id_,Text) 
-end
-if text == 'تعطيل الردود' and Manager(msg) then  
-if not database:get(bot_id..'lock:add'..msg.chat_id_) then
-database:set(bot_id..'lock:add'..msg.chat_id_,true)  
-Text = '\n*⋄︙تم تعطيل الردود*'
-else
-Text = '\n*⋄︙بالتاكيد تم تعطيل ردود البوت*'
-end
-send(msg.chat_id_, msg.id_,Text) 
-end
 if text == 'تفعيل صيح' and Manager(msg) then   
 if database:get(bot_id..'Seh:User'..msg.chat_id_) then
 Text = '*⋄︙تم تفعيل امر صيح*'
@@ -12114,7 +12096,7 @@ local Teext =[[
 *يمكنك تصفح الاضافات من خلال*
 *الكيبورد الموجود في الأسفل*
 ٴ≪┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉≫ٴٴ
-➫ .[🖨┇𝘴𝘰𝘳𝘶𝘤𝘦 𝘔𝘦𝘙𝘰. ](t.me/YYYDR)➤
+➫ .[??┇𝘴𝘰𝘳𝘶𝘤𝘦 𝘔𝘦𝘙𝘰. ](t.me/YYYDR)➤
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
@@ -12729,7 +12711,26 @@ Text_Games = [[
 ]]
 send(msg.chat_id_, msg.id_,Text_Games) 
 end
+if SudoBot(msg) then 
+--- ردود المطور 
 
+if text == "نجب" then
+send(msg.chat_id_, msg.id_, 'علا راسي مطوري')
+end
+if text == "هلو" then
+send(msg.chat_id_, msg.id_, 'هلا بمطوري')
+end
+
+end --- نهايه ردود المطور
+if text == 'تفعيل الردود' and Manager(msg) then  
+send(msg.chat_id_, msg.id_, '*⋄︙تم تفعيل الردود*')
+database:del(bot_id..'lock:add'..msg.chat_id_)
+end
+if text == 'تعطيل الردود' and Manager(msg) then  
+send(msg.chat_id_, msg.id_, '*⋄︙تم تعطيل الردود*')
+database:set(bot_id..'lock:add'..msg.chat_id_, true)
+end
+if not SudoBot(msg) then 
 if text == "السلام عليكم" or text == "سلام عليكم" or text == "سلامن عليكم" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
 local texting = {"ياهلا وعليڪم السلام عمغي 💘","وعليڪم سلام ياڪمر 💕" }
