@@ -9143,7 +9143,7 @@ send(msg.chat_id_, msg.id_,"*⋄︙تم مسح ردود المطور*")
 end
 if text == ("ردود المطور") and DevoMr(msg) then 
 local list = database:smembers(bot_id.."List:Rd:Sudo")
-text = "\n⋄︙قائمة ردود المطور \n⊶─────≺⋆≻─────⊷\n"
+text = "\n⋄︙قائمة ردود المطور\n⊶─────≺⋆≻─────⊷\n"
 for k,v in pairs(list) do
 if database:get(bot_id.."Add:Rd:Sudo:Gif"..v) then
 db = "متحركه 🎭"
@@ -12730,18 +12730,6 @@ Text_Games = [[
 send(msg.chat_id_, msg.id_,Text_Games) 
 end
 
-if SudoBot(msg) then 
---- ردود المطور 
-
-if text == "نجب" then
-send(msg.chat_id_, msg.id_, 'علا راسي مطوري')
-end
-if text == "هلو" then
-send(msg.chat_id_, msg.id_, 'هلا بمطوري')
-end
-
-end --- نهايه ردود المطور
-if not SudoBot(msg) then 
 if text == "السلام عليكم" or text == "سلام عليكم" or text == "سلامن عليكم" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
 local texting = {"ياهلا وعليڪم السلام عمغي 💘","وعليڪم سلام ياڪمر 💕" }
