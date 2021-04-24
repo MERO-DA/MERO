@@ -10304,6 +10304,24 @@ Text = '\n*⋄︙بالتاكيد تم تفعيل الالعاب*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
+if text == 'تفعيل الردود' and Manager(msg) then  
+if database:get(bot_id..'lock:add'..msg.chat_id_) then
+Text = '*⋄︙تم تفعيل الردود* '
+database:del(bot_id..'lock:add'..msg.chat_id_)  
+else
+Text = '*⋄︙بالتاكيد تم تفعيل ردود البوت*'
+end
+send(msg.chat_id_, msg.id_,Text) 
+end
+if text == 'تعطيل الردود' and Manager(msg) then  
+if not database:get(bot_id..'lock:add'..msg.chat_id_) then
+database:set(bot_id..'lock:add'..msg.chat_id_,true)  
+Text = '\n*⋄︙تم تعطيل الردود*'
+else
+Text = '\n*⋄︙بالتاكيد تم تعطيل ردود البوت*'
+end
+send(msg.chat_id_, msg.id_,Text) 
+end
 if text == 'تفعيل صيح' and Manager(msg) then   
 if database:get(bot_id..'Seh:User'..msg.chat_id_) then
 Text = '*⋄︙تم تفعيل امر صيح*'
@@ -11147,7 +11165,17 @@ local texting = {"دور حلوين 🤕😹","جكمه وصخه عوفها ☹�
 send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
 end
 end
-
+if text == "هينه" or text == "رزله" or text == "هيني" or text == "رزلي" then
+if not database:get(bot_id..'lock:add'..msg.chat_id_) then
+local texting = {"ولك هيو لتندك بسيادك لو بهاي 👞👈","ميستاهل اتعبي روحي ويا لانه عار","عوفه يروحي هاذا طيز يضل يمضرط🤣"}
+send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
+end
+end
+if text == "مصه" or text == "بوسه" or text == "بوسي" or text == "مصي" then
+if not database:get(bot_id..'lock:add'..msg.chat_id_) then
+local texting = {"مووووووووواححح💋","مابوس ولي😌😹","خدك/ج نضيف 😂","البوسه بالف حمبي 🌝💋","خلي يزحفلي وابوسه 🙊😻","كل شويه ابوسه كافي 😏","ماابوسه والله هذا زاحف🦎","محح هاي لحاته صاكه💋"}send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
+end
+end
 if text == 'رابط الحذف' or text == 'رابط حذف' then
 t =[[
 *رابط الحذف في جميع مواقع التواصل ⋄*
@@ -11288,7 +11316,7 @@ https.request("https://api.telegram.org/bot"..token.."/answerCallbackQuery?callb
 return false
 end
 local Teext =[[
-- ??𝐎𝐔𝐑𝐂𝐄 𝐌𝐄𝐑𝐎 .
+- 𝐒𝐎𝐔𝐑𝐂𝐄 𝐌𝐄𝐑𝐎 .
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ 
 *⋄︙اهلا بك عزيزي  .*
 *⋄︙اوامر تفعيل وتعطيل  .*
@@ -12701,50 +12729,7 @@ Text_Games = [[
 ]]
 send(msg.chat_id_, msg.id_,Text_Games) 
 end
---- ردود المطور 
 
-if text == "نجب" then
-send(msg.chat_id_, msg.id_, 'علا راسي مطوري')
-end
-if text == "هلو" then
-send(msg.chat_id_, msg.id_, 'هلا بمطوري')
-end
-
-end --- نهايه ردود المطور
-if text == "شنو رأيك بهذا" or text == "شنو رأيك بهذ" then
-if not database:get(bot_id..'lock:add'..msg.chat_id_) then
-local texting = {"زربا هذا قسم 🙂","هذا عمري ڪلةة وڪلبي 💕","وربي هذا ڪيڪ 💘","ممرتاحلة وعيونڪ 😼"}
-send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
-end
-end
-if text == "شنو رأيك بهاذي" or text == "شنو رأيك بهاي" then
-if not database:get(bot_id..'lock:add'..msg.chat_id_) then
-local texting = {" هاي حياتي 💃🤭","وحده حقيره☹️😂"," بقرة الكروب 😂☹️","هاذي زاحفه أمس دخلتلي خاص😂🥺 "}
-send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
-end
-end
-if text == "هينه" or text == "رزله" then
-if not database:get(bot_id..'lock:add'..msg.chat_id_) then
-local texting = {"ولك هيو لتندك بسيادك لا اموتك😡","ميستاهل اتعب روحي ويا لانه عار","عوفه يروحي هاذا تعبان يضل يمسلت","واني ماعندي شغل بس ارزل واهين كافي لتلح 😒","تعال هيوو  😒 شو طالعه عينك ولسانك طويل سربوت  اشو تعال بله شنو هاذ ويهك هاذ 😳 كول بلعباس , 😅 لك #دي وتفو بعد لتندك بتاج راسك خوش حمبقلبي  👍🏿" }
-send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
-end
-end
-if text == "مصه" or text == "بوسه" then
-if not database:get(bot_id..'lock:add'..msg.chat_id_) then
-local texting = {"مووووووووواححح💋😘","مابوس ولي😌😹","خدك نضيف؟ 😂","البوسه بالف حب 🌝💋","خلي يكول ميععع وابوسه 🙊😻","كل شويه ابوسه جب 😏","ماابوسه والله هذا وصخ/ه","محح هاي لخدك 💋","اف شهل جماله امح عشفه","حبي اسف ما ابوس صار البوس بلفين 😏","خلي يزحفلي خاص وابوسه 🙊😻","مابوس ولي بيك/ج جرب??😹","افس ابوس بس بنات ☹️😂💞"}
-send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
-end
-end
-
-if text == 'تفعيل الردود' and Manager(msg) then  
-send(msg.chat_id_, msg.id_, '*⋄︙تم تفعيل الردود*')
-database:del(bot_id..'lock:add'..msg.chat_id_)
-end
-if text == 'تعطيل الردود' and Manager(msg) then  
-send(msg.chat_id_, msg.id_, '*⋄︙تم تعطيل الردود*')
-database:set(bot_id..'lock:add'..msg.chat_id_, true)
-end
-if not SudoBot(msg) then 
 if text == "السلام عليكم" or text == "سلام عليكم" or text == "سلامن عليكم" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
 local texting = {"ياهلا وعليڪم السلام عمغي 💘","وعليڪم سلام ياڪمر 💕" }
@@ -12913,6 +12898,13 @@ send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
 end
 end
 
+if text == "@FEEEM" then
+if not database:get(bot_id..'lock:add'..msg.chat_id_) then
+local texting = {"مطوري القميل 💕","مطور السورس هاذ حبي 🙁" }
+send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
+end
+end
+
 if text == "دي" or text == "تسرسح" or text == "ديييي" or text == "دييي" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
 local texting = {"مشيڪ بيها لڪ 🐎","ڪولها تعرف الـ منو 🦦🙂"," دروح لڪ زمالنا","لازم مشتهي تنهان اشوية 🤸🏿‍♀🌚"," ع لساني الحجي واستغفر الله 🦦🤍","امر تامر هاي مشيت 🐎"," زين شايف التسرسح مالتي والـ دي تجرب ...!","دير بالڪ لاشحتڪ من لڪروب 💘🌈"}
@@ -12924,7 +12916,6 @@ if text == "انجب" or text == "نجب" or text == "أنجب" or text == "نج
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
 local texting = {"صار عمغي 💘"," تدلل استاذي 🤸🏿‍♀🤍"," تره ادفرڪ 🦦","انجب انت لڪ لو ادفرڪ 🙂"," تعرف وين ميحتاج احجي 🦦💘"," خادم اني ♡","حبيبيوالله 🦦💘"} 
 send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
-end
 end
 end
 if (text and text == "تعطيل اوامر التحشيش") then 
