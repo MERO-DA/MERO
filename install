@@ -21,8 +21,8 @@ sudo apt-get install libnotify-dev -y
 sudo chmod +x tg
 lua MeRo.lua
 sudo chmod +x MeRo
-sudo chmod +x ./DRG
-./DRG
+sudo chmod +x ./MR
+./MR
 }
 if [ "$1" = "install" ]; then
 install
@@ -34,6 +34,6 @@ fi
 sudo chmod +x tg
 lua MeRo.lua
 sudo chmod +x MeRo
-sudo chmod +x ./DRG
-./DRG
+sudo chmod +x ./MR
+./MR
 fi
