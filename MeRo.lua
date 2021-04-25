@@ -1422,13 +1422,13 @@ end
 end
 if database:get(bot_id..'Set:Name:Bot'..msg.sender_user_id_) then 
 if text == 'الغاء' or text == 'الغاء ⋄' then   
-send(msg.chat_id_, msg.id_,"⋄︙تم الغاء حفظ اسم البوت")
+send(msg.chat_id_, msg.id_,"*⋄︙تم الغاء حفظ اسم البوت*")
 database:del(bot_id..'Set:Name:Bot'..msg.sender_user_id_) 
 return false  
 end 
 database:del(bot_id..'Set:Name:Bot'..msg.sender_user_id_) 
 database:set(bot_id..'Name:Bot',text) 
-send(msg.chat_id_, msg.id_, "⋄︙تم حفظ الاسم")
+send(msg.chat_id_, msg.id_, "*⋄︙تم حفظ الاسم*")
 return false
 end 
 if database:get(bot_id.."Send:Bc:Pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) then 
@@ -9883,7 +9883,7 @@ end
 if text == ""..(database:get(bot_id..'Name:Bot') or 'ميرو').." غادر" or text == 'غادر' then  
 if Sudo(msg) and not database:get(bot_id..'Left:Bot'..msg.chat_id_)  then 
 tdcli_function ({ID = "ChangeChatMemberStatus",chat_id_=msg.chat_id_,user_id_=bot_id,status_={ID = "ChatMemberStatusLeft"},},function(e,g) end, nil) 
-send(msg.chat_id_, msg.id_,'⋄︙تم مغادرة الكروب') 
+send(msg.chat_id_, msg.id_,'*⋄︙تم مغادرة الكروب*') 
 database:srem(bot_id..'Chek:Groups',msg.chat_id_)  
 end
 return false  
