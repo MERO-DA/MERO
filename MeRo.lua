@@ -12730,6 +12730,17 @@ Text_Games = [[
 send(msg.chat_id_, msg.id_,Text_Games) 
 end
 
+if text == "هلو" or text == "هلاو" or text == "هاي" and SudoBot(msg)  then
+heen = {
+"هـࢦو بيڪہ ؏ـمࢪي ، 💞"
+,"هـࢦـﯠات ؏ـمري ، 💘"
+,"اطـࢦق هـࢦـﯠ يحࢦـﯠ ، 💞"
+,"؏ـمـࢪيہ يهلاا ، 🤍"
+}
+sendheen = heen[math.random(#heen)]
+send(msg.chat_id_, msg.id_,sendheen) 
+return false 
+end
 if text == "السلام عليكم" or text == "سلام عليكم" or text == "سلامن عليكم" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
 local texting = {"ياهلا وعليڪم السلام عمغي 💘","وعليڪم سلام ياڪمر 💕" }
