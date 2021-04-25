@@ -12730,7 +12730,6 @@ Text_Games = [[
 send(msg.chat_id_, msg.id_,Text_Games) 
 end
 
-if SudoBot(msg) then 
 if text == "هلو" or text == "هلاو" or text == "هاي" and SudoBot(msg)  then
 heen = {
 "اشـࢪقت وانـوࢪت هلا بمطـوࢪي🌈🖤"
@@ -12763,8 +12762,7 @@ sendheen = heen[math.random(#heen)]
 send(msg.chat_id_, msg.id_,sendheen) 
 return false 
 end
-if not SudoBot(msg) then 
-if text == "السلام عليكم" or text == "سلام عليكم" or text == "سلامن عليكم" then
+if text == "السلام عليكم" or text == "سلام عليكم" or text == "سلامن عليكم" and Memp(msg) then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
 local texting = {"ياهلا وعليڪم السلام عمغي 💘","وعليڪم سلام ياڪمر 💕" }
 send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
@@ -12792,7 +12790,7 @@ send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
 end
 end
 
-if text == "هلو" or text == "هيلو" or text == "هلاو" then
+if text == "هلو" or text == "هيلو" or text == "هلاو" and Memp(msg) then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
 local texting = {"لڪ ها ڪلب 🦦💕","هلا بيڪ 💘","هلاو عمغي مسيوو وايد قسم 💘🤸‍♀ "}
 send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
