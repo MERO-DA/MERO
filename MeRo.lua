@@ -4373,7 +4373,12 @@ send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 return false
 end
-
+------------------------------------------------------------------------
+if text == 'مسح المنشئين' and BasicConstructor(msg) then
+database:del(bot_id..'Constructor'..msg.chat_id_)
+texts = '*⋄︙تم مسح المنشئين* '
+send(msg.chat_id_, msg.id_, texts)
+end
 if text == ("المنشئين") and BasicConstructor(msg) then
 local list = database:smembers(bot_id..'Constructor'..msg.chat_id_)
 t = "\n*⋄︙قائمة المنشئين* \n*⊶─────≺⋆≻─────⊷*\n"
@@ -7951,13 +7956,13 @@ database:del(bot_id.."Private:Group:Link"..msg.chat_id_)
 return false      
 end
 end
-if text and text:match("^ضع صوره") and Mod(msg) and msg.reply_to_message_id_ == 0 then  
+if text and text:match("^ضع صوره") and BasicConstructor(msg) and msg.reply_to_message_id_ == 0 then  
 database:set(bot_id..'Change:Chat:Photo'..msg.chat_id_..':'..msg.sender_user_id_,true) 
 send(msg.chat_id_, msg.id_,'*⋄︙ارسل لي الصوره*') 
 return false
 end
 if text == "حذف الصوره" or text == "مسح الصوره" then 
-if Mod(msg) then
+if BasicConstructor(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -7973,14 +7978,14 @@ end
 return false  
 end
 if text == 'ضع وصف' or text == 'وضع وصف' then  
-if Mod(msg) then
+if BasicConstructor(msg) then
 database:setex(bot_id.."Set:Description" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 120, true)  
 send(msg.chat_id_, msg.id_,'*⋄︙ارسل الان الوصف*')
 end
 return false  
 end
 if text == 'ضع ترحيب' or text == 'وضع ترحيب' then  
-if Mod(msg) then
+if BasicConstructor(msg) then
 database:setex(bot_id.."Welcome:Group" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 120, true)  
 t  = '*⋄︙ارسل لي الترحيب الان*'
 tt = '\n*⋄︙تستطيع اضافة مايلي !*\n*⋄︙دالة عرض الاسم ~{`name`}*\n*⋄︙دالة عرض المعرف ~{`user`}*'
