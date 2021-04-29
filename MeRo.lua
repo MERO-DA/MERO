@@ -232,7 +232,7 @@ return false
 end 
 end
 function cleaner(msg)
-local hash = database:sismember(bot_id.."S00F4:MN:TF"..msg.chat_id_,msg.sender_user_id_)    
+local hash = database:sismember(bot_id.."FEEEM:MN:TF"..msg.chat_id_,msg.sender_user_id_)    
 if hash or SudoBot(msg) or DevoMr(msg) or Sudo(msg) or BasicConstructor(msg) or CoSu(msg) or Bot(msg)  then       
 return true    
 else    
@@ -280,7 +280,7 @@ elseif database:sismember(bot_id..'Constructor'..chat_id, user_id) then
 var = true  
 elseif database:sismember(bot_id..'Manager'..chat_id, user_id) then
 var = true  
-elseif database:sismember(bot_id..'S00F4:MN:TF'..chat_id, user_id) then
+elseif database:sismember(bot_id..'FEEEM:MN:TF'..chat_id, user_id) then
 var = true 
 elseif database:sismember(bot_id..'Mod:User'..chat_id, user_id) then
 var = true  
@@ -312,7 +312,7 @@ elseif database:sismember(bot_id..'Constructor'..chat_id, user_id) then
 var = database:get(bot_id.."Constructor:Rd"..msg.chat_id_) or 'المنشئ'  
 elseif database:sismember(bot_id..'Manager'..chat_id, user_id) then
 var = database:get(bot_id.."Manager:Rd"..msg.chat_id_) or 'المدير'  
-elseif database:sismember(bot_id..'S00F4:MN:TF'..chat_id, user_id) then
+elseif database:sismember(bot_id..'FEEEM:MN:TF'..chat_id, user_id) then
 var = 'منظف' 
 elseif database:sismember(bot_id..'Mod:User'..chat_id, user_id) then
 var = database:get(bot_id.."Mod:Rd"..msg.chat_id_) or 'الادمن'  
@@ -2478,7 +2478,7 @@ send(msg.chat_id_, msg.id_, '*⋄︙تم تعطيل الاسماء المكتو�
 database:set(bot_id.."block:name:stats"..msg.chat_id_,"close")
 end
 if not Manager(msg) and database:get(bot_id.."block:name:stats"..msg.chat_id_) == "open" then
-function S00F4_name(t1,t2)
+function FEEEM_name(t1,t2)
 if t2.id_ then 
 name_MRoMr = ((t2.first_name_ or "") .. (t2.last_name_ or ""))
 if name_MRoMr then 
@@ -2493,7 +2493,7 @@ end
 end
 end
 end
-bnnaGet(msg.sender_user_id_, S00F4_name)
+bnnaGet(msg.sender_user_id_, FEEEM_name)
 end
 if database:get(bot_id.."kt:twh:stats"..msg.chat_id_) == "open" then
 if text and text:match("^وضع توحيد (.*)$") and Manager(msg) and database:get(bot_id.."kt:twh:stats"..msg.chat_id_) == "open" then
@@ -3720,11 +3720,11 @@ end
 
 if text == "all" or text == "@all" and CoSu(msg) then
 if not database:get(bot_id..'Cick:all'..msg.chat_id_) then
-if database:get(bot_id.."S00F4:all:Time"..msg.chat_id_..':'..msg.sender_user_id_) then  
+if database:get(bot_id.."FEEEM:all:Time"..msg.chat_id_..':'..msg.sender_user_id_) then  
 return 
 send(msg.chat_id_, msg.id_,"*انتظر دقيقه من فضلك*")
 end
-database:setex(bot_id..'S00F4:all:Time'..msg.chat_id_..':'..msg.sender_user_id_,300,true)
+database:setex(bot_id..'FEEEM:all:Time'..msg.chat_id_..':'..msg.sender_user_id_,300,true)
 tdcli_function({ID="GetChannelFull",channel_id_ = msg.chat_id_:gsub('-100','')},function(argg,dataa) 
 tdcli_function({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub('-100',''), offset_ = 0,limit_ = dataa.member_count_},function(ta,oMr)
 x = 0
@@ -5064,11 +5064,11 @@ end;end,nil)
 return false
 end
 if text == 'مسح المنظفين' and CoSu(msg) then
-database:del(bot_id..'S00F4:MN:TF'..msg.chat_id_)
+database:del(bot_id..'FEEEM:MN:TF'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, '*⋄︙تم مسح المنظفين*')
 end
 if text == ("المنظفين") and CoSu(msg) then
-local list = database:smembers(bot_id..'S00F4:MN:TF'..msg.chat_id_)
+local list = database:smembers(bot_id..'FEEEM:MN:TF'..msg.chat_id_)
 t = "\n*⋄︙قائمة المنظفين*\n*⊶─────≺⋆≻─────⊷*\n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
@@ -5084,7 +5084,7 @@ end
 send(msg.chat_id_, msg.id_, t)
 end
 if text == ("تاك للمنظفين") or text == ("صيح المنظفين") then
-local list = database:smembers(bot_id..'S00F4:MN:TF'..msg.chat_id_)
+local list = database:smembers(bot_id..'FEEEM:MN:TF'..msg.chat_id_)
 t = "\n*⋄︙وينكم تعالو يريدوكم بالكروب*\n*⊶─────≺⋆≻─────⊷*\n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
@@ -5114,7 +5114,7 @@ if database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_) and not BasicConstructor(m
 send(msg.chat_id_, msg.id_,'*⋄︙تم تعطيل الرفع من قبل المنشئين*') 
 return false
 end
-database:sadd(bot_id..'S00F4:MN:TF'..msg.chat_id_, result.sender_user_id_)
+database:sadd(bot_id..'FEEEM:MN:TF'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
 status  = '\n*⋄︙تم ترقيته منظف*'
@@ -5145,7 +5145,7 @@ if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
 send(msg.chat_id_,msg.id_,"⋄︙عذرا عزيزي المستخدم هاذا معرف قناة يرجى استخدام الامر بصوره صحيحه !")   
 return false 
 end      
-database:sadd(bot_id..'S00F4:MN:TF'..msg.chat_id_, result.id_)
+database:sadd(bot_id..'FEEEM:MN:TF'..msg.chat_id_, result.id_)
 usertext = '\n*⋄︙المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
 status  = '\n*⋄︙تم ترقيته منظف*'
 texts = usertext..status
@@ -5172,7 +5172,7 @@ if database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_) and not BasicConstructor(m
 send(msg.chat_id_, msg.id_,'*⋄︙تم تعطيل الرفع من قبل المنشئين*') 
 return false
 end
-database:sadd(bot_id..'S00F4:MN:TF'..msg.chat_id_, userid)
+database:sadd(bot_id..'FEEEM:MN:TF'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
 usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
@@ -5196,7 +5196,7 @@ end
 return false
 end
 function start_function(extra, result, success)
-database:srem(bot_id..'S00F4:MN:TF'..msg.chat_id_, result.sender_user_id_)
+database:srem(bot_id..'FEEEM:MN:TF'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
 status  = '\n*⋄︙تم تنزيله من المنظفين*'
@@ -5219,7 +5219,7 @@ return false
 end
 function start_function(extra, result, success)
 if result.id_ then
-database:srem(bot_id..'S00F4:MN:TF'..msg.chat_id_, result.id_)
+database:srem(bot_id..'FEEEM:MN:TF'..msg.chat_id_, result.id_)
 usertext = '\n*⋄︙المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
 status  = '\n*⋄︙تم تنزيله من المنظفين*'
 texts = usertext..status
@@ -5242,7 +5242,7 @@ send(msg.chat_id_, msg.id_,'⋄︙لا تستطيع استخدام البوت \n
 end
 return false
 end
-database:srem(bot_id..'S00F4:MN:TF'..msg.chat_id_, userid)
+database:srem(bot_id..'FEEEM:MN:TF'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
 usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
@@ -8708,7 +8708,7 @@ end
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text and text:match('^تنظيف (%d+)$') and Manager(msg) then
-if not database:get(bot_id..'S00F4:Delete:Time'..msg.chat_id_..':'..msg.sender_user_id_) then           
+if not database:get(bot_id..'FEEEM:Delete:Time'..msg.chat_id_..':'..msg.sender_user_id_) then           
 local num = tonumber(text:match('^تنظيف (%d+)$')) 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
@@ -8729,7 +8729,7 @@ DeleteMessage(msg.chat_id_, {[0] = msgm})
 msgm = msgm - 1048576
 end
 send(msg.chat_id_,msg.id_,'*⋄︙تم حذف {'..num..'}*')  
-database:setex(bot_id..'S00F4:Delete:Time'..msg.chat_id_..':'..msg.sender_user_id_,300,true)
+database:setex(bot_id..'FEEEM:Delete:Time'..msg.chat_id_..':'..msg.sender_user_id_,300,true)
 end
 end
 if text == "تنظيف الميديا" and CoSu(msg) then
@@ -8753,16 +8753,31 @@ end,nil)
 send(msg.chat_id_, msg.id_,"*⋄︙تم تنظيف جميع الميديا*")
 end
 if (msg.content_.animation_) or (msg.content_.photo_) or (msg.content_.video_) or (msg.content_.document) or (msg.content_.sticker_) and msg.reply_to_message_id_ == 0 then
-database:sadd(bot_id.."S00F4:allM"..msg.chat_id_, msg.id_)
+database:sadd(bot_id.."FEEEM:allM"..msg.chat_id_, msg.id_)
+end
+if (msg.content_.animation_) or (msg.content_.photo_) or (msg.content_.video_) or (msg.content_.document) or (msg.content_.sticker_) or (msg.content_.voice_) or (msg.content_.audio_) then      
+database:sadd(bot_id.."FEEEM:allM"..msg.chat_id_, msg.id_)
+end
+if text and not database:get(bot_id.."y:FEEEM:allM"..msg.chat_id_) then    
+local list = database:smembers(bot_id.."FEEEM:allM"..msg.chat_id_)
+for k,v in pairs(list) do
+local Message = v
+if k == 200 then
+t = "*⋄︙تم مسح "..k.." من الوسائط الموجوده*"
+DeleteMessage(msg.chat_id_,{[0]=Message})
+database:del(bot_id.."FEEEM:allM"..msg.chat_id_)
+end
+end
+send(msg.chat_id_, msg.id_, t)
 end
 if text == ("امسح") and cleaner(msg) then  
-local list = database:smembers(bot_id.."S00F4:allM"..msg.chat_id_)
+local list = database:smembers(bot_id.."FEEEM:allM"..msg.chat_id_)
 for k,v in pairs(list) do
 local Message = v
 if Message then
 t = "*⋄︙تم مسح "..k.." من الوسائط الموجوده*"
 DeleteMessage(msg.chat_id_,{[0]=Message})
-database:del(bot_id.."S00F4:allM"..msg.chat_id_)
+database:del(bot_id.."FEEEM:allM"..msg.chat_id_)
 end
 end
 if #list == 0 then
@@ -8771,7 +8786,7 @@ end
 send(msg.chat_id_, msg.id_, t)
 end
 if text == ("الميديا") and cleaner(msg) then  
-local num = database:smembers(bot_id.."S00F4:allM"..msg.chat_id_)
+local num = database:smembers(bot_id.."FEEEM:allM"..msg.chat_id_)
 for k,v in pairs(num) do
 local numl = v
 if numl then
@@ -8986,7 +9001,7 @@ if database:sismember(bot_id..'Constructor'..msg.chat_id_, result.id_) then
 cr = "منشئ ،" else cr = "" end
 if database:sismember(bot_id..'Manager'..msg.chat_id_, result.id_) then
 own = "مدير ،" else own = "" end
-if database:sismember(bot_id..'S00F4:MN:TF'..msg.chat_id_, result.id_) then
+if database:sismember(bot_id..'FEEEM:MN:TF'..msg.chat_id_, result.id_) then
 mn = 'منظف ،' else mn = '' end
 if database:sismember(bot_id..'Mod:User'..msg.chat_id_, result.id_) then
 mod = "ادمن ،" else mod = "" end
@@ -9005,35 +9020,35 @@ database:srem(bot_id.."Basic:Constructor"..msg.chat_id_,result.id_)
 database:srem(bot_id..'Constructor'..msg.chat_id_, result.id_)
 database:srem(bot_id..'Manager'..msg.chat_id_, result.id_)
 database:srem(bot_id..'Mod:User'..msg.chat_id_, result.id_)
-database:srem(bot_id..'S00F4:MN:TF'..msg.chat_id_, result.id_)
+database:srem(bot_id..'FEEEM:MN:TF'..msg.chat_id_, result.id_)
 database:srem(bot_id..'Special:User'..msg.chat_id_, result.id_)
 elseif database:sismember(bot_id.."Sudo:User",msg.sender_user_id_) then
-database:srem(bot_id..'S00F4:MN:TF'..msg.chat_id_, result.id_)
+database:srem(bot_id..'FEEEM:MN:TF'..msg.chat_id_, result.id_)
 database:srem(bot_id..'Mod:User'..msg.chat_id_, result.id_)
 database:srem(bot_id..'Special:User'..msg.chat_id_, result.id_)
 database:srem(bot_id..'Manager'..msg.chat_id_, result.id_)
 database:srem(bot_id..'Constructor'..msg.chat_id_, result.id_)
 database:srem(bot_id.."Basic:Constructor"..msg.chat_id_,result.id_)
 elseif database:sismember(bot_id.."CoSu",msg.sender_user_id_) then
-database:srem(bot_id..'S00F4:MN:TF'..msg.chat_id_, result.id_)
+database:srem(bot_id..'FEEEM:MN:TF'..msg.chat_id_, result.id_)
 database:srem(bot_id..'Mod:User'..msg.chat_id_, result.id_)
 database:srem(bot_id..'Special:User'..msg.chat_id_, result.id_)
 database:srem(bot_id..'Manager'..msg.chat_id_, result.id_)
 database:srem(bot_id..'Constructor'..msg.chat_id_, result.id_)
 database:srem(bot_id.."Basic:Constructor"..msg.chat_id_,result.id_)
 elseif database:sismember(bot_id.."Basic:Constructor"..msg.chat_id_, msg.sender_user_id_) then
-database:srem(bot_id..'S00F4:MN:TF'..msg.chat_id_, result.id_)
+database:srem(bot_id..'FEEEM:MN:TF'..msg.chat_id_, result.id_)
 database:srem(bot_id..'Mod:User'..msg.chat_id_, result.id_)
 database:srem(bot_id..'Special:User'..msg.chat_id_, result.id_)
 database:srem(bot_id..'Manager'..msg.chat_id_, result.id_)
 database:srem(bot_id..'Constructor'..msg.chat_id_, result.id_)
 elseif database:sismember(bot_id..'Constructor'..msg.chat_id_, msg.sender_user_id_) then
-database:srem(bot_id..'S00F4:MN:TF'..msg.chat_id_, result.id_)
+database:srem(bot_id..'FEEEM:MN:TF'..msg.chat_id_, result.id_)
 database:srem(bot_id..'Mod:User'..msg.chat_id_, result.id_)
 database:srem(bot_id..'Special:User'..msg.chat_id_, result.id_)
 database:srem(bot_id..'Manager'..msg.chat_id_, result.id_)
 elseif database:sismember(bot_id..'Manager'..msg.chat_id_, msg.sender_user_id_) then
-database:srem(bot_id..'S00F4:MN:TF'..msg.chat_id_, result.id_)
+database:srem(bot_id..'FEEEM:MN:TF'..msg.chat_id_, result.id_)
 database:srem(bot_id..'Mod:User'..msg.chat_id_, result.id_)
 database:srem(bot_id..'Special:User'..msg.chat_id_, result.id_)
 end
@@ -9067,7 +9082,7 @@ if database:sismember(bot_id..'Constructor'..msg.chat_id_, result.sender_user_id
 cr = 'منشئ ،' else cr = '' end
 if database:sismember(bot_id..'Manager'..msg.chat_id_, result.sender_user_id_) then
 own = 'مدير ،' else own = '' end
-if database:sismember(bot_id..'S00F4:MN:TF'..msg.chat_id_, result.sender_user_id_) then
+if database:sismember(bot_id..'FEEEM:MN:TF'..msg.chat_id_, result.sender_user_id_) then
 mn = 'منظف ،' else mn = '' end
 if database:sismember(bot_id..'Mod:User'..msg.chat_id_, result.sender_user_id_) then
 mod = 'ادمن ،' else mod = '' end
@@ -9086,10 +9101,10 @@ database:srem(bot_id..'Basic:Constructor'..msg.chat_id_,result.sender_user_id_)
 database:srem(bot_id..'Constructor'..msg.chat_id_, result.sender_user_id_)
 database:srem(bot_id..'Manager'..msg.chat_id_, result.sender_user_id_)
 database:srem(bot_id..'Mod:User'..msg.chat_id_, result.sender_user_id_)
-database:srem(bot_id..'S00F4:MN:TF'..msg.chat_id_, result.sender_user_id_)
+database:srem(bot_id..'FEEEM:MN:TF'..msg.chat_id_, result.sender_user_id_)
 database:srem(bot_id..'Special:User'..msg.chat_id_, result.sender_user_id_)
 elseif database:sismember(bot_id..'Dev:oMr:2',msg.sender_user_id_) then
-database:srem(bot_id..'S00F4:MN:TF'..msg.chat_id_, result.sender_user_id_)
+database:srem(bot_id..'FEEEM:MN:TF'..msg.chat_id_, result.sender_user_id_)
 database:srem(bot_id..'Mod:User'..msg.chat_id_, result.sender_user_id_)
 database:srem(bot_id..'Special:User'..msg.chat_id_, result.sender_user_id_)
 database:srem(bot_id..'Manager'..msg.chat_id_, result.sender_user_id_)
@@ -9097,7 +9112,7 @@ database:srem(bot_id..'Constructor'..msg.chat_id_, result.sender_user_id_)
 database:srem(bot_id..'Basic:Constructor'..msg.chat_id_,result.sender_user_id_)
 database:srem(bot_id..'CoSu'..msg.chat_id_, result.sender_user_id_)
 elseif database:sismember(bot_id..'Sudo:User',msg.sender_user_id_) then
-database:srem(bot_id..'S00F4:MN:TF'..msg.chat_id_, result.sender_user_id_)
+database:srem(bot_id..'FEEEM:MN:TF'..msg.chat_id_, result.sender_user_id_)
 database:srem(bot_id..'Mod:User'..msg.chat_id_, result.sender_user_id_)
 database:srem(bot_id..'Special:User'..msg.chat_id_, result.sender_user_id_)
 database:srem(bot_id..'Manager'..msg.chat_id_, result.sender_user_id_)
@@ -9105,25 +9120,25 @@ database:srem(bot_id..'Constructor'..msg.chat_id_, result.sender_user_id_)
 database:srem(bot_id..'Basic:Constructor'..msg.chat_id_,result.sender_user_id_)
 database:srem(bot_id..'CoSu'..msg.chat_id_, result.sender_user_id_)
 elseif database:sismember(bot_id..'CoSu'..msg.chat_id_, msg.sender_user_id_) then
-database:srem(bot_id..'S00F4:MN:TF'..msg.chat_id_, result.sender_user_id_)
+database:srem(bot_id..'FEEEM:MN:TF'..msg.chat_id_, result.sender_user_id_)
 database:srem(bot_id..'Mod:User'..msg.chat_id_, result.sender_user_id_)
 database:srem(bot_id..'Special:User'..msg.chat_id_, result.sender_user_id_)
 database:srem(bot_id..'Manager'..msg.chat_id_, result.sender_user_id_)
 database:srem(bot_id..'Constructor'..msg.chat_id_, result.sender_user_id_)
 database:srem(bot_id..'Basic:Constructor'..msg.chat_id_,result.sender_user_id_)
 elseif database:sismember(bot_id..'Basic:Constructor'..msg.chat_id_, msg.sender_user_id_) then
-database:srem(bot_id..'S00F4:MN:TF'..msg.chat_id_, result.sender_user_id_)
+database:srem(bot_id..'FEEEM:MN:TF'..msg.chat_id_, result.sender_user_id_)
 database:srem(bot_id..'Mod:User'..msg.chat_id_, result.sender_user_id_)
 database:srem(bot_id..'Special:User'..msg.chat_id_, result.sender_user_id_)
 database:srem(bot_id..'Manager'..msg.chat_id_, result.sender_user_id_)
 database:srem(bot_id..'Constructor'..msg.chat_id_, result.sender_user_id_)
 elseif database:sismember(bot_id..'Constructor'..msg.chat_id_, msg.sender_user_id_) then
-database:srem(bot_id..'S00F4:MN:TF'..msg.chat_id_, result.sender_user_id_)
+database:srem(bot_id..'FEEEM:MN:TF'..msg.chat_id_, result.sender_user_id_)
 database:srem(bot_id..'Mod:User'..msg.chat_id_, result.sender_user_id_)
 database:srem(bot_id..'Special:User'..msg.chat_id_, result.sender_user_id_)
 database:srem(bot_id..'Manager'..msg.chat_id_, result.sender_user_id_)
 elseif database:sismember(bot_id..'Manager'..msg.chat_id_, msg.sender_user_id_) then
-database:srem(bot_id..'S00F4:MN:TF'..msg.chat_id_, result.sender_user_id_)
+database:srem(bot_id..'FEEEM:MN:TF'..msg.chat_id_, result.sender_user_id_)
 database:srem(bot_id..'Mod:User'..msg.chat_id_, result.sender_user_id_)
 database:srem(bot_id..'Special:User'..msg.chat_id_, result.sender_user_id_)
 end
@@ -11045,6 +11060,16 @@ ge = https.request('https://black-source.tk/BlackTeAM/Calculateage.php?age='..UR
 ag = JSON.decode(ge)
 send(msg.chat_id_, msg.id_, ag.ok.hso)
 end
+if text == "تعطيل المسح التلقائي" and CoSu(msg) then        
+database:set(bot_id.."FEEEM:MN:TF"..msg.chat_id_)
+Reply_Status(msg,msg.sender_user_id_,"lock",'*⋄︙تم تعطيل المسح التلقائي للميديا*')
+return false
+end 
+if text == "تفعيل المسح التلقائي" and CoSu(msg) then        
+database:set(bot_id.."FEEEM:MN:TF"..msg.chat_id_,true)
+Reply_Status(msg,msg.sender_user_id_,"lock",'*⋄︙تم تفعيل المسح التلقائي للميديا*')
+return false
+end 
 if text == "تعطيل الافلام" and Mod(msg) then
 send(msg.chat_id_, msg.id_, '*⋄︙تم تعطيل الافلام*')
 database:set(bot_id.."oMr:movie_bot"..msg.chat_id_,"close")
