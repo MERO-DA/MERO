@@ -71,10 +71,10 @@ token = database:get(id_server..":token")
 SUDO = database:get(id_server..":SUDO:ID")
 install = io.popen("whoami"):read('*a'):gsub('[\n\r]+', '') 
 print('\n\27[1;34m doneeeeeeee senddddddddddddd :')
-file = io.open("MeRo", "w")  
+file = io.open("MERO", "w")  
 file:write([[
 #!/usr/bin/env bash
-cd $HOME/MeRo
+cd $HOME/MERO
 token="]]..database:get(id_server..":token")..[["
 while(true) do
 rm -fr ../.telegram-cli
@@ -101,11 +101,11 @@ file:close()
 file = io.open("MR", "w")  
 file:write([[
 #!/usr/bin/env bash
-cd $HOME/MeRo
+cd $HOME/MERO
 while(true) do
 rm -fr ../.telegram-cli
 screen -S MeRo -X kill
-screen -S MeRo ./MeRo
+screen -S MeRo ./MERO
 done
 ]])  
 file:close() 
