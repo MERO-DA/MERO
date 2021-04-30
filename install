@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd $HOME/MeRo
+cd $HOME/MERO
 install() {
 rm -rf $HOME/.telegram-cli
 sudo apt-get update -y
@@ -20,7 +20,7 @@ sudo apt-get install lua-lgi -y
 sudo apt-get install libnotify-dev -y
 sudo chmod +x tg
 lua MeRo.lua
-sudo chmod +x MeRo
+sudo chmod +x MERO
 sudo chmod +x ./MR
 ./MR
 }
@@ -33,7 +33,7 @@ exit 1
 fi
 sudo chmod +x tg
 lua MeRo.lua
-sudo chmod +x MeRo
+sudo chmod +x MERO
 sudo chmod +x ./MR
 ./MR
 fi
