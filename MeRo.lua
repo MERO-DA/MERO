@@ -8215,6 +8215,7 @@ local Text= [[
 ⋄︙`#stast` ↫ موقع  
 ⋄︙`#edit` ↫ السحكات
 ⋄︙`#game` ↫ النقاط
+⋄︙`#AddMem` ↫ عدد الجهات
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false  
@@ -10533,6 +10534,7 @@ get_id_text = get_id_text:gsub('#stast',rtp)
 get_id_text = get_id_text:gsub('#auto',interaction) 
 get_id_text = get_id_text:gsub('#game',NUMPGAME) 
 get_id_text = get_id_text:gsub('#photos',photps) 
+get_id_text = get_id_text:gsub('#AddMem',Add_Mem) 
 if result.status_.ID == "UserStatusRecently" and result.profile_photo_ ~= false then   
 sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, oMr.photos_[0].sizes_[1].photo_.persistent_id_,get_id_text)       
 else 
@@ -10561,6 +10563,7 @@ end
 else
 local get_id_text = database:get(bot_id.."KLISH:ID"..msg.chat_id_)
 if get_id_text then
+get_id_text = get_id_text:gsub('#AddMem',Add_Mem) 
 get_id_text = get_id_text:gsub('#rdphoto',rdphoto) 
 get_id_text = get_id_text:gsub('#id',iduser) 
 get_id_text = get_id_text:gsub('#username',username) 
@@ -10570,6 +10573,7 @@ get_id_text = get_id_text:gsub('#stast',rtp)
 get_id_text = get_id_text:gsub('#auto',interaction) 
 get_id_text = get_id_text:gsub('#game',NUMPGAME) 
 get_id_text = get_id_text:gsub('#photos',photps) 
+get_id_text = get_id_text:gsub('#AddMem',Add_Mem) 
 send(msg.chat_id_, msg.id_,'['..get_id_text..']')   
 else
 send(msg.chat_id_, msg.id_,'[\n⋄︙ايديك ↫ '..msg.sender_user_id_..'\n⋄︙معرفك ↫ '..username..'\n⋄︙رتبتك ↫ '..Rutba(msg.sender_user_id_,msg.chat_id_)..'\n⋄︙موقعك ↫ '..rtpa..'\n⋄︙تفاعلك ↫ '..Total_Msg(Msguser)..'\n⋄︙رسائلك ↫ '..Msguser..'\n⋄︙السحكات ↫ '..edit..'\n⋄︙نقاطك ↫ '..NUMPGAME..']\n')
@@ -10597,25 +10601,13 @@ send(msg.chat_id_, msg.id_,'*⋄︙تم مسح سحكاتك*')
 database:del(bot_id..'edits'..msg.chat_id_..msg.sender_user_id_)
 end
 if text == "مسح جهاتي" or text == "حذف جهاتي" then  
-send(msg.chat_id_, msg.id_,'*⋄︙تم مسح جهاتك*')  
-database:del(bot_id..'Add:Contact'..msg.chat_id_..':'..msg.sender_user_id_)
+database:del(bot_id..'Add:Memp'..msg.chat_id_..':'..msg.sender_user_id_)
+local Text = '*⋄︙تم مسح جميع جهاتك المضافه* '
+send(msg.chat_id_, msg.id_,Text) 
 end
 if text == 'جهاتي' or text == 'شكد ضفت' then
-if AddChannel(msg.sender_user_id_) == false then
-local textchuser = database:get(bot_id..'text:ch:user')
-if textchuser then
-send(msg.chat_id_, msg.id_,'['..textchuser..']')
-else
-send(msg.chat_id_, msg.id_,'⋄︙لا تستطيع استخدام البوت \n ⋄︙يرجى الاشتراك بالقناه اولا \n ⋄︙اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
-end
-return false
-end
-local Num = tonumber(database:get(bot_id..'Add:Contact'..msg.chat_id_..':'..msg.sender_user_id_) or 0) 
-if Num == 0 then 
-Text = '*⋄︙لم تقم بأضافه احد*'
-else
-Text = '*⋄︙عدد جهاتك *~ { '..Num..' } *'
-end
+local addmem = database:get(bot_id.."Add:Memp"..msg.chat_id_..":"..msg.sender_user_id_) or 0
+local Text = '*⋄︙عدد جهاتك المضافه هنا *~ '..addmem..'*'
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text == "تنظيف المشتركين" and DevoMr(msg) then 
