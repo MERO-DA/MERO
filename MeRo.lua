@@ -691,7 +691,7 @@ local groups = JSON.decode(info_file)
 for idg,v in pairs(groups.GP_BOT) do
 database:sadd(bot_id..'Chek:Groups',idg)  
 database:set(bot_id..'lock:tagservrbot'..idg,true)   
-list ={"lock:Bot:kick","lock:user:name","lock:hashtak","lock:Cmd","lock:Link","lock:forward","lock:Keyboard","lock:geam","lock:Photo","lock:Animation","lock:Video","lock:Audio","lock:vico","lock:Sticker","lock:Document","lock:Unsupported","lock:Markdaun","lock:Contact","lock:Spam"}
+list ={"lock:Bot:kick","lock:user:name","lock:hashtak","lock:Cmd","lock:Link","lock:forward","lock:Keyboard","lock:geam","lock:Photo","lock:Animation","lock:Video","lock:Audio","lock:vico","lock:Sticker","lock:Document","lock:Unsupported","lock:Markdaun","lock:Memp","lock:Spam"}
 for i,lock in pairs(list) do 
 database:set(bot_id..lock..idg,'del')    
 end
@@ -1730,13 +1730,13 @@ return false
 end     
 --------------------------------------------------------------------------------------------------------------
 if msg.content_.ID == "MessageChatAddMembers" then 
-database:incr(bot_id.."Add:Memp"..msg.chat_id_..":"..msg.sender_user_id_) 
+database:incr(bot_id..'Add:Memp'..msg.chat_id_..':'..msg.sender_user_id_) 
 end
-if msg.content_.ID == "MessageChatAddMembers" and not Vips(msg) then   
-if database:get(bot_id.."Lock:AddMempar"..msg.chat_id_) == "kick" then
+if msg.content_.ID == "MessageChatAddMembers" and not Special(msg) then   
+if database:get(bot_id.."lock:AddMempar"..msg.chat_id_) == 'kick' then
 local mem_id = msg.content_.members_  
 for i=0,#mem_id do  
-Kick_Group(msg.chat_id_,mem_id[i].id_)
+chat_kick(msg.chat_id_,mem_id[i].id_)
 end
 end
 end
@@ -2082,16 +2082,16 @@ end
 end
 end 
 --------------------------------------------------------------------------------------------------------------
-if msg.content_.ID == 'MessageContact' and not Special(msg) then      
-if database:get(bot_id.."lock:Contact"..msg.chat_id_) == "del" then
+if msg.content_.ID == 'MessageMemp' and not Special(msg) then      
+if database:get(bot_id.."lock:Memp"..msg.chat_id_) == "del" then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_}) 
-elseif database:get(bot_id.."lock:Contact"..msg.chat_id_) == "ked" then
+elseif database:get(bot_id.."lock:Memp"..msg.chat_id_) == "ked" then
 ked(msg.chat_id_,msg.sender_user_id_)
 DeleteMessage(msg.chat_id_,{[0] = msg.id_}) 
-elseif database:get(bot_id.."lock:Contact"..msg.chat_id_) == "kick" then
+elseif database:get(bot_id.."lock:Memp"..msg.chat_id_) == "kick" then
 chat_kick(msg.chat_id_,msg.sender_user_id_)
 DeleteMessage(msg.chat_id_,{[0] = msg.id_}) 
-elseif database:get(bot_id.."lock:Contact"..msg.chat_id_) == "ktm" then
+elseif database:get(bot_id.."lock:Memp"..msg.chat_id_) == "ktm" then
 database:sadd(bot_id..'Muted:User'..msg.chat_id_,msg.sender_user_id_)
 DeleteMessage(msg.chat_id_,{[0] = msg.id_}) 
 end
@@ -2857,7 +2857,7 @@ send(msg.chat_id_, msg.id_,'*⋄︙بواسطه ↫*['..Rutba(msg.sender_user_id
 end,nil)   
 elseif text == 'قفل الكل' and msg.reply_to_message_id_ == 0 and Mod(msg) then 
 database:set(bot_id..'lock:tagservrbot'..msg.chat_id_,true)   
-list ={"lock:Bot:kick","lock:user:name","lock:hashtak","lock:Cmd","lock:Link","lock:forward","lock:Keyboard","lock:geam","lock:Photo","lock:Animation","lock:Video","lock:Audio","lock:vico","lock:Sticker","lock:Document","lock:Unsupported","lock:Markdaun","lock:Contact","lock:Spam"}
+list ={"lock:Bot:kick","lock:user:name","lock:hashtak","lock:Cmd","lock:Link","lock:forward","lock:Keyboard","lock:geam","lock:Photo","lock:Animation","lock:Video","lock:Audio","lock:vico","lock:Sticker","lock:Document","lock:Unsupported","lock:Markdaun","lock:Memp","lock:Spam"}
 for i,lock in pairs(list) do 
 database:set(bot_id..lock..msg.chat_id_,'del')    
 end
@@ -2939,7 +2939,7 @@ send(msg.chat_id_, msg.id_,'*⋄︙بواسطه ↫*['..Rutba(msg.sender_user_id
 end,nil)   
 elseif text == 'فتح الكل' and msg.reply_to_message_id_ == 0 and Mod(msg) then 
 database:del(bot_id..'lock:tagservrbot'..msg.chat_id_)   
-list ={"lock:Bot:kick","lock:user:name","lock:hashtak","lock:Cmd","lock:Link","lock:forward","lock:Keyboard","lock:geam","lock:Photo","lock:Animation","lock:Video","lock:Audio","lock:vico","lock:Sticker","lock:Document","lock:Unsupported","lock:Markdaun","lock:Contact","lock:Spam"}
+list ={"lock:Bot:kick","lock:user:name","lock:hashtak","lock:Cmd","lock:Link","lock:forward","lock:Keyboard","lock:geam","lock:Photo","lock:Animation","lock:Video","lock:Audio","lock:vico","lock:Sticker","lock:Document","lock:Unsupported","lock:Markdaun","lock:Memp","lock:Spam"}
 for i,lock in pairs(list) do 
 database:del(bot_id..lock..msg.chat_id_)    
 end
@@ -3229,27 +3229,27 @@ send(msg.chat_id_, msg.id_,'*⋄︙بواسطه ↫*['..Rutba(msg.sender_user_id
 end,nil)   
 end
 if text == 'قفل الجهات' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
-database:set(bot_id.."lock:Contact"..msg.chat_id_,'del')  
+database:set(bot_id.."lock:Memp"..msg.chat_id_,'del')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'*⋄︙بواسطه ↫*['..Rutba(msg.sender_user_id_,msg.chat_id_)..'](T.ME/'..(data.username_ or 'YYYDR')..') \n*⋄︙تم قفـل ↫ الجهات*\n*⋄︙الايدي ↫* `'..msg.sender_user_id_..'`')
 end,nil)   
 elseif text == 'قفل الجهات بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
-database:set(bot_id.."lock:Contact"..msg.chat_id_,'ked')  
+database:set(bot_id.."lock:Memp"..msg.chat_id_,'ked')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'*⋄︙بواسطه ↫*['..Rutba(msg.sender_user_id_,msg.chat_id_)..'](T.ME/'..(data.username_ or 'YYYDR')..') \n*⋄︙تم قفـل ↫ الجهات بالتقييد*\n*⋄︙الايدي ↫* `'..msg.sender_user_id_..'`')
 end,nil)
 elseif text == 'قفل الجهات بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
-database:set(bot_id.."lock:Contact"..msg.chat_id_,'ktm')  
+database:set(bot_id.."lock:Memp"..msg.chat_id_,'ktm')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'*⋄︙بواسطه ↫*['..Rutba(msg.sender_user_id_,msg.chat_id_)..'](T.ME/'..(data.username_ or 'YYYDR')..') \n*⋄︙تم قفـل ↫ الجهات بالكتم*\n*⋄︙الايدي ↫* `'..msg.sender_user_id_..'`')
 end,nil)   
 elseif text == 'قفل الجهات بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
-database:set(bot_id.."lock:Contact"..msg.chat_id_,'kick')  
+database:set(bot_id.."lock:Memp"..msg.chat_id_,'kick')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'*⋄︙بواسطه ↫*['..Rutba(msg.sender_user_id_,msg.chat_id_)..'](T.ME/'..(data.username_ or 'YYYDR')..') \n*⋄︙تم قفـل ↫ الجهات بالطرد*\n*⋄︙الايدي ↫* `'..msg.sender_user_id_..'`')
 end,nil)   
 elseif text == 'فتح الجهات' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
-database:del(bot_id.."lock:Contact"..msg.chat_id_)  
+database:del(bot_id.."lock:Memp"..msg.chat_id_)  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'*⋄︙بواسطه ↫*['..Rutba(msg.sender_user_id_,msg.chat_id_)..'](T.ME/'..(data.username_ or 'YYYDR')..') \n*⋄︙تم فتـح ↫ الجهات*\n*⋄︙الايدي ↫* `'..msg.sender_user_id_..'`')
 end,nil)   
@@ -7476,13 +7476,13 @@ lock_photo = 'بالطرد'
 else
 lock_photo = '🔐'   
 end    
-if database:get(bot_id.."lock:Contact"..msg.chat_id_) == "del" then
+if database:get(bot_id.."lock:Memp"..msg.chat_id_) == "del" then
 lock_phon = '🔓' 
-elseif database:get(bot_id.."lock:Contact"..msg.chat_id_) == "ked" then 
+elseif database:get(bot_id.."lock:Memp"..msg.chat_id_) == "ked" then 
 lock_phon = 'بالتقيد'    
-elseif database:get(bot_id.."lock:Contact"..msg.chat_id_) == "ktm" then 
+elseif database:get(bot_id.."lock:Memp"..msg.chat_id_) == "ktm" then 
 lock_phon = 'بالكتم'    
-elseif database:get(bot_id.."lock:Contact"..msg.chat_id_) == "kick" then 
+elseif database:get(bot_id.."lock:Memp"..msg.chat_id_) == "kick" then 
 lock_phon = 'بالطرد'    
 else
 lock_phon = '🔐'    
@@ -8363,7 +8363,7 @@ end
 end
 if text == 'تفعيل الحمايه' and msg.reply_to_message_id_ == 0 and Mod(msg) then 
 database:set(bot_id..'lock:tagrvrbot'..msg.chat_id_,true)   
-list ={"lock:Bot:kick","lock:user:name","lock:Link","lock:forward","lock:Sticker","lock:Animation","lock:Video","lock:Fshar","lock:Fars","Bot:Id:Photo","lock:Audio","lock:vico","lock:Document","lock:Unsupported","lock:Markdaun","lock:Contact","lock:Spam"}
+list ={"lock:Bot:kick","lock:user:name","lock:Link","lock:forward","lock:Sticker","lock:Animation","lock:Video","lock:Fshar","lock:Fars","Bot:Id:Photo","lock:Audio","lock:vico","lock:Document","lock:Unsupported","lock:Markdaun","lock:Memp","lock:Spam"}
 for i,lock in pairs(list) do 
 database:set(bot_id..lock..msg.chat_id_,'del')    
 end
@@ -8373,7 +8373,7 @@ end,nil)
 end
 if text == 'تعطيل الحمايه' and msg.reply_to_message_id_ == 0 and Mod(msg) then 
 database:del(bot_id..'lock:tagrvrbot'..msg.chat_id_)   
-list ={"lock:Bot:kick","lock:user:name","lock:Link","lock:forward","lock:Sticker","lock:Animation","lock:Video","lock:Fshar","lock:Fars","Bot:Id:Photo","lock:Audio","lock:vico","lock:Document","lock:Unsupported","lock:Markdaun","lock:Contact","lock:Spam"}
+list ={"lock:Bot:kick","lock:user:name","lock:Link","lock:forward","lock:Sticker","lock:Animation","lock:Video","lock:Fshar","lock:Fars","Bot:Id:Photo","lock:Audio","lock:vico","lock:Document","lock:Unsupported","lock:Markdaun","lock:Memp","lock:Spam"}
 for i,lock in pairs(list) do 
 database:del(bot_id..lock..msg.chat_id_)    
 end
@@ -10056,13 +10056,13 @@ if text == 'ايدي' and tonumber(msg.reply_to_message_id_) > 0 then
 function start_function(extra, result, success)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(extra,data) 
 local Msguser = tonumber(database:get(bot_id..'Msg_User'..msg.chat_id_..':'..result.sender_user_id_) or 1) 
-local Add_Mem = tonumber(database:get(bot_id..'Add:Memp'..msg.chat_id_..':'..msg.sender_user_id_) or 0)
+local Memp = tonumber(database:get(bot_id..'Add:Memp'..msg.chat_id_..':'..result.sender_user_id_) or 0) 
 local NUMPGAME = tonumber(database:get(bot_id..'NUM:GAMES'..msg.chat_id_..result.sender_user_id_) or 0)
 local edit = tonumber(database:get(bot_id..'edits'..msg.chat_id_..result.sender_user_id_) or 0)
 local rtp = Rutba(result.sender_user_id_,msg.chat_id_)
 local username = ('[@'..data.username_..']' or 'لا يوجد')
 local iduser = result.sender_user_id_
-send(msg.chat_id_, msg.id_,'*⋄︙الايدي ↫* `'..iduser..'`*\n⋄︙المعرف ↫* '..username..'*\n⋄︙الرتبه ↫* '..rtp..'*\n⋄︙التعديلات ↫* '..edit..'*\n⋄︙النقاط ↫* '..NUMPGAME..'*\n⋄︙الجهات ↫* '..Add_Memp..'*\n⋄︙الرسائل ↫* '..Msguser..'')
+send(msg.chat_id_, msg.id_,'*⋄︙الايدي ↫* `'..iduser..'`*\n⋄︙المعرف ↫* '..username..'*\n⋄︙الرتبه ↫* '..rtp..'*\n⋄︙التعديلات ↫* '..edit..'*\n⋄︙النقاط ↫* '..NUMPGAME..'*\n⋄︙الجهات ↫* '..Memp..'*\n⋄︙الرسائل ↫* '..Msguser..'')
 end,nil)
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
@@ -10082,13 +10082,13 @@ function start_function(extra, result, success)
 if result.id_ then
 tdcli_function ({ID = "GetUser",user_id_ = result.id_},function(extra,data) 
 local Msguser = tonumber(database:get(bot_id..'Msg_User'..msg.chat_id_..':'..result.id_) or 1) 
-local Add_Mem = tonumber(database:get(bot_id..'Add:Memp'..msg.chat_id_..':'..msg.sender_user_id_) or 0)
+local Memp = tonumber(database:get(bot_id..'Add:Memp'..msg.chat_id_..':'..result.id_) or 0) 
 local NUMPGAME = tonumber(database:get(bot_id..'NUM:GAMES'..msg.chat_id_..result.id_) or 0)
 local edit = tonumber(database:get(bot_id..'edits'..msg.chat_id_..result.id_) or 0)
 local rtp = Rutba(result.id_,msg.chat_id_)
 local username = ('[@'..data.username_..']' or 'لا يوجد')
 local iduser = result.id_
-send(msg.chat_id_, msg.id_,'*⋄︙الايدي ↫* `'..iduser..'`*\n⋄︙المعرف ↫* '..username..'*\n⋄︙الرتبه ↫* '..rtp..'*\n⋄︙التعديلات ↫* '..edit..'*\n⋄︙النقاط ↫* '..NUMPGAME..'*\n⋄︙الجهات ↫* '..Add_Memp..'*\n⋄︙الرسائل ↫* '..Msguser..'')
+send(msg.chat_id_, msg.id_,'*⋄︙الايدي ↫* `'..iduser..'`*\n⋄︙المعرف ↫* '..username..'*\n⋄︙الرتبه ↫* '..rtp..'*\n⋄︙التعديلات ↫* '..edit..'*\n⋄︙النقاط ↫* '..NUMPGAME..'*\n⋄︙الجهات ↫* '..Memp..'*\n⋄︙الرسائل ↫* '..Msguser..'')
 end,nil)
 else
 send(msg.chat_id_, msg.id_,'*⋄︙المعرف غير صحيح*')
@@ -10490,7 +10490,7 @@ end
 local Msguser = tonumber(database:get(bot_id..'Msg_User'..msg.chat_id_..':'..msg.sender_user_id_) or 1) 
 local nummsggp = tonumber(msg.id_/2097152/0.5)
 local nspatfa = tonumber(Msguser / nummsggp * 100)
-local Add_Mem = tonumber(database:get(bot_id.."Add:Memp"..msg.chat_id_..":"..msg.sender_user_id_) or 0)
+local Memp = tonumber(database:get(bot_id..'Add:Memp'..msg.chat_id_..':'..msg.sender_user_id_) or 0) 
 local NUMPGAME = tonumber(database:get(bot_id..'NUM:GAMES'..msg.chat_id_..msg.sender_user_id_) or 0)
 local rtp = Rutba(msg.sender_user_id_,msg.chat_id_)
 if result.username_ then
@@ -10534,7 +10534,6 @@ get_id_text = get_id_text:gsub('#stast',rtp)
 get_id_text = get_id_text:gsub('#auto',interaction) 
 get_id_text = get_id_text:gsub('#game',NUMPGAME) 
 get_id_text = get_id_text:gsub('#photos',photps) 
-get_id_text = get_id_text:gsub('#AddMem',Add_Mem) 
 if result.status_.ID == "UserStatusRecently" and result.profile_photo_ ~= false then   
 sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, oMr.photos_[0].sizes_[1].photo_.persistent_id_,get_id_text)       
 else 
@@ -10563,7 +10562,6 @@ end
 else
 local get_id_text = database:get(bot_id.."KLISH:ID"..msg.chat_id_)
 if get_id_text then
-get_id_text = get_id_text:gsub('#AddMem',Add_Mem) 
 get_id_text = get_id_text:gsub('#rdphoto',rdphoto) 
 get_id_text = get_id_text:gsub('#id',iduser) 
 get_id_text = get_id_text:gsub('#username',username) 
@@ -10573,7 +10571,6 @@ get_id_text = get_id_text:gsub('#stast',rtp)
 get_id_text = get_id_text:gsub('#auto',interaction) 
 get_id_text = get_id_text:gsub('#game',NUMPGAME) 
 get_id_text = get_id_text:gsub('#photos',photps) 
-get_id_text = get_id_text:gsub('#AddMem',Add_Mem) 
 send(msg.chat_id_, msg.id_,'['..get_id_text..']')   
 else
 send(msg.chat_id_, msg.id_,'[\n⋄︙ايديك ↫ '..msg.sender_user_id_..'\n⋄︙معرفك ↫ '..username..'\n⋄︙رتبتك ↫ '..Rutba(msg.sender_user_id_,msg.chat_id_)..'\n⋄︙موقعك ↫ '..rtpa..'\n⋄︙تفاعلك ↫ '..Total_Msg(Msguser)..'\n⋄︙رسائلك ↫ '..Msguser..'\n⋄︙السحكات ↫ '..edit..'\n⋄︙نقاطك ↫ '..NUMPGAME..']\n')
@@ -10607,7 +10604,7 @@ send(msg.chat_id_, msg.id_,Text)
 end
 if text == 'جهاتي' or text == 'شكد ضفت' then
 local addmem = database:get(bot_id.."Add:Memp"..msg.chat_id_..":"..msg.sender_user_id_) or 0
-local Text = '*⋄︙عدد جهاتك المضافه هنا *~ '..addmem..'*'
+local Text = '⋄︙عدد جهاتك المضافه هنا *~ '..addmem..'*'
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text == "تنظيف المشتركين" and DevoMr(msg) then 
