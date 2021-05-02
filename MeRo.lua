@@ -1730,13 +1730,13 @@ return false
 end     
 --------------------------------------------------------------------------------------------------------------
 if msg.content_.ID == "MessageChatAddMembers" then 
-database:incr(bot_id..'Add:Contact'..msg.chat_id_..':'..msg.sender_user_id_) 
+database:incr(bot_id.."Add:Memp"..msg.chat_id_..":"..msg.sender_user_id_) 
 end
-if msg.content_.ID == "MessageChatAddMembers" and not Special(msg) then   
-if database:get(bot_id.."lock:AddMempar"..msg.chat_id_) == 'kick' then
+if msg.content_.ID == "MessageChatAddMembers" and not Vips(msg) then   
+if database:get(bot_id.."Lock:AddMempar"..msg.chat_id_) == "kick" then
 local mem_id = msg.content_.members_  
 for i=0,#mem_id do  
-chat_kick(msg.chat_id_,mem_id[i].id_)
+Kick_Group(msg.chat_id_,mem_id[i].id_)
 end
 end
 end
@@ -10056,13 +10056,13 @@ if text == 'ايدي' and tonumber(msg.reply_to_message_id_) > 0 then
 function start_function(extra, result, success)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(extra,data) 
 local Msguser = tonumber(database:get(bot_id..'Msg_User'..msg.chat_id_..':'..result.sender_user_id_) or 1) 
-local Contact = tonumber(database:get(bot_id..'Add:Contact'..msg.chat_id_..':'..result.sender_user_id_) or 0) 
+local Add_Mem = tonumber(database:get(bot_id..'Add:Memp'..msg.chat_id_..':'..msg.sender_user_id_) or 0)
 local NUMPGAME = tonumber(database:get(bot_id..'NUM:GAMES'..msg.chat_id_..result.sender_user_id_) or 0)
 local edit = tonumber(database:get(bot_id..'edits'..msg.chat_id_..result.sender_user_id_) or 0)
 local rtp = Rutba(result.sender_user_id_,msg.chat_id_)
 local username = ('[@'..data.username_..']' or 'لا يوجد')
 local iduser = result.sender_user_id_
-send(msg.chat_id_, msg.id_,'*⋄︙الايدي ↫* `'..iduser..'`*\n⋄︙المعرف ↫* '..username..'*\n⋄︙الرتبه ↫* '..rtp..'*\n⋄︙التعديلات ↫* '..edit..'*\n⋄︙النقاط ↫* '..NUMPGAME..'*\n⋄︙الجهات ↫* '..Contact..'*\n⋄︙الرسائل ↫* '..Msguser..'')
+send(msg.chat_id_, msg.id_,'*⋄︙الايدي ↫* `'..iduser..'`*\n⋄︙المعرف ↫* '..username..'*\n⋄︙الرتبه ↫* '..rtp..'*\n⋄︙التعديلات ↫* '..edit..'*\n⋄︙النقاط ↫* '..NUMPGAME..'*\n⋄︙الجهات ↫* '..Add_Memp..'*\n⋄︙الرسائل ↫* '..Msguser..'')
 end,nil)
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
@@ -10082,13 +10082,13 @@ function start_function(extra, result, success)
 if result.id_ then
 tdcli_function ({ID = "GetUser",user_id_ = result.id_},function(extra,data) 
 local Msguser = tonumber(database:get(bot_id..'Msg_User'..msg.chat_id_..':'..result.id_) or 1) 
-local Contact = tonumber(database:get(bot_id..'Add:Contact'..msg.chat_id_..':'..result.id_) or 0) 
+local Add_Mem = tonumber(database:get(bot_id..'Add:Memp'..msg.chat_id_..':'..msg.sender_user_id_) or 0)
 local NUMPGAME = tonumber(database:get(bot_id..'NUM:GAMES'..msg.chat_id_..result.id_) or 0)
 local edit = tonumber(database:get(bot_id..'edits'..msg.chat_id_..result.id_) or 0)
 local rtp = Rutba(result.id_,msg.chat_id_)
 local username = ('[@'..data.username_..']' or 'لا يوجد')
 local iduser = result.id_
-send(msg.chat_id_, msg.id_,'*⋄︙الايدي ↫* `'..iduser..'`*\n⋄︙المعرف ↫* '..username..'*\n⋄︙الرتبه ↫* '..rtp..'*\n⋄︙التعديلات ↫* '..edit..'*\n⋄︙النقاط ↫* '..NUMPGAME..'*\n⋄︙الجهات ↫* '..Contact..'*\n⋄︙الرسائل ↫* '..Msguser..'')
+send(msg.chat_id_, msg.id_,'*⋄︙الايدي ↫* `'..iduser..'`*\n⋄︙المعرف ↫* '..username..'*\n⋄︙الرتبه ↫* '..rtp..'*\n⋄︙التعديلات ↫* '..edit..'*\n⋄︙النقاط ↫* '..NUMPGAME..'*\n⋄︙الجهات ↫* '..Add_Memp..'*\n⋄︙الرسائل ↫* '..Msguser..'')
 end,nil)
 else
 send(msg.chat_id_, msg.id_,'*⋄︙المعرف غير صحيح*')
@@ -10490,7 +10490,7 @@ end
 local Msguser = tonumber(database:get(bot_id..'Msg_User'..msg.chat_id_..':'..msg.sender_user_id_) or 1) 
 local nummsggp = tonumber(msg.id_/2097152/0.5)
 local nspatfa = tonumber(Msguser / nummsggp * 100)
-local Contact = tonumber(database:get(bot_id..'Add:Contact'..msg.chat_id_..':'..msg.sender_user_id_) or 0) 
+local Add_Mem = tonumber(database:get(bot_id.."Add:Memp"..msg.chat_id_..":"..msg.sender_user_id_) or 0)
 local NUMPGAME = tonumber(database:get(bot_id..'NUM:GAMES'..msg.chat_id_..msg.sender_user_id_) or 0)
 local rtp = Rutba(msg.sender_user_id_,msg.chat_id_)
 if result.username_ then
