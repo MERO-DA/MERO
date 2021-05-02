@@ -10604,7 +10604,7 @@ send(msg.chat_id_, msg.id_,Text)
 end
 if text == 'جهاتي' or text == 'شكد ضفت' then
 local addmem = database:get(bot_id.."Add:Memp"..msg.chat_id_..":"..msg.sender_user_id_) or 0
-local Text = '⋄︙عدد جهاتك المضافه هنا *~ '..addmem..'*'
+local Text = '*⋄︙عدد جهاتك المضافه هنا *~ '..addmem..'*'
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text == "تنظيف المشتركين" and DevoMr(msg) then 
