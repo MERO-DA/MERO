@@ -941,7 +941,7 @@ echo '*———————————~*\n✺✔{ مـده تـشغيـل ال
 end
 if text == 'تحديث السورس ⋄' and DevMeRoW(msg) then 
 os.execute('rm -rf MeRo.lua')
-os.execute('wget https://raw.githubusercontent.com/YYYDR/MeRo/main/MeRo.lua')
+os.execute('wget https://raw.githubusercontent.com/MERO-DA/MeRo/main/MeRo.lua')
 send(msg.chat_id_, msg.id_,' *⋄︙تم تحديث السورس* \n*⋄︙لديك اخر اصدار لسورس ميرو*\n*⋄︙الاصدار » { 2.8v}*')
 dofile('MeRo.lua')  
 end
@@ -2196,7 +2196,7 @@ end
 return false
 end
 os.execute('rm -rf MeRo.lua')
-os.execute('wget https://raw.githubusercontent.com/YYYDR/MeRo/main/MeRo.lua')
+os.execute('wget https://raw.githubusercontent.com/MERO-DA/MeRo/main/MeRo.lua')
 send(msg.chat_id_, msg.id_,' *⋄︙تم تحديث السورس* \n*⋄︙لديك اخر اصدار لسورس ميرو*\n*⋄︙الاصدار » { 2.8v}*')
 dofile('MeRo.lua')  
 end
