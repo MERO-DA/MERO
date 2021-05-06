@@ -70,7 +70,7 @@ RunBot:write([[
 cd $HOME/MeRo
 token="]]..database:get(Server_Done.."Token_Write")..[["
 rm -fr MeRo.lua
-wget "https://raw.githubusercontent.com/MeRoTEAM/MeRo/main/MeRo.lua"
+wget "https://raw.githubusercontent.com/MERO-DA/MeRo/main/MeRo.lua"
 while(true) do
 rm -fr ../.telegram-cli
 ./tg -s ./MeRo.lua -p PROFILE --bot=$token
