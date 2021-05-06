@@ -18,7 +18,7 @@ print([[
 ]])
 io.popen("mkdir File_Bot") 
 io.popen("cd File_Bot && rm -rf commands.lua") 
-io.popen("cd File_Bot && wget https://raw.githubusercontent.com/YYYDR/Files_MeRo/main/File_Bot/commands.lua") 
+io.popen("cd File_Bot && wget https://raw.githubusercontent.com/MERO-DA/Files_Mero/main/File_Bot/commands.lua")
 t = "\27[35m".."\nAll Files Started : \n____________________\n"..'\27[m'
 i = 0
 for v in io.popen('ls File_Bot'):lines() do
@@ -3732,7 +3732,7 @@ send(msg.chat_id_, msg.id_,t)
 end
 if text == "متجر الملفات" or text == 'المتجر' then
 if DevMeRoW(msg) then
-local Get_Files, res = https.request("https://raw.githubusercontent.com/YYYDR/Files_MeRo/main/getfile.json")
+local Get_Files, res = https.request("https://raw.githubusercontent.com/MERO-DA/Files_Mero/main/getfile.json")
 if res == 200 then
 local Get_info, res = pcall(JSON.decode,Get_Files);
 vardump(res.plugins_)
@@ -3770,7 +3770,7 @@ t = " *⋄︙الملف »* "..file.."\n*⋄︙تم تعطيل ملف* \n"
 else
 t = " *⋄︙بالتاكيد تم تعطيل ملف →* "..file.."\n"
 end
-local json_file, res = https.request("https://raw.githubusercontent.com/YYYDR/Files_MeRo/main/File_Bot/"..file)
+local json_file, res = https.request("https://raw.githubusercontent.com/MERO-DA/Files_Mero/main/File_Bot/"..file)
 if res == 200 then
 os.execute("rm -fr File_Bot/"..file)
 send(msg.chat_id_, msg.id_,t) 
@@ -3790,7 +3790,7 @@ t = " *⋄︙بالتاكيد تم تفعيل ملف →* "..file.." \n"
 else
 t = " *⋄︙الملف »* "..file.."\n*⋄︙تم تفعيل ملف* \n"
 end
-local json_file, res = https.request("https://raw.githubusercontent.com/YYYDR/Files_MeRo/main/File_Bot/"..file)
+local json_file, res = https.request("https://raw.githubusercontent.com/MERO-DA/Files_Mero/main/File_Bot/"..file)
 if res == 200 then
 local chek = io.open("File_Bot/"..file,'w+')
 chek:write(json_file)
@@ -8682,11 +8682,17 @@ end
 if text == ""..(database:get(bot_id..'Name:Bot') or 'ميرو').."" then  
 Namebot = (database:get(bot_id..'Name:Bot') or 'ميرو')
 local MeRo_Msg = {
-'عمغي 🥺💕.',
+'عمغي كـــول🥺💘',
+'ياروحي كول اني  '..Namebot..'',
+'عمري الحلووو بشنو اساعدك',
+'دوختو  '..Namebot..'',
+'يمه شكد احــبك من تصـيح '..Namebot..'🥺💘',
+'ها حبـي وياك مكتب ئلسيد .',
+'ويــاك قائد الاستخبارات كـول😤',
 'هاا شتريد كافي ☹️.',
+'فداك '..Namebot..' وعشيرتــه ائمرني',
 'مشايف بوت شني 😂.',
 'كول حبيبي ؟ اني '..Namebot..'',
-'مشغول حالياً',
 'عمري فداك '..Namebot..' كول حب'
 }
 send(msg.chat_id_, msg.id_,'['..MeRo_Msg[math.random(#MeRo_Msg)]..']') 
