@@ -518,7 +518,7 @@ end
 function Addmp3(msg,chat,kkl,ffrr)
 local eer = json:decode(https.request('https://api.telegram.org/bot'.. token..'/getfile?file_id='..kkl)) 
 download_to_file('https://api.telegram.org/file/bot'..token..'/'..eer.result.file_path,ffrr) 
-sendAudio(msg.chat_id_,msg.id_,'./'..ffrr,"@VVVZVV")  
+sendAudio(msg.chat_id_,msg.id_,'./'..ffrr,"@FEEEM")  
 os.execute('rm -rf ./'..ffrr) 
 end
 function Addsticker(msg,chat,Sd,rre)
@@ -2303,7 +2303,7 @@ send(msg.chat_id_, msg.id_, '*⋄︙تم تعطيل الاسماء المكتو�
 database:set(bot_id.."block:name:stats"..msg.chat_id_,"close")
 end
 if not Manager(msg) and database:get(bot_id.."block:name:stats"..msg.chat_id_) == "open" then
-function VVVZVV_name(t1,t2)
+function FEEEM_name(t1,t2)
 if t2.id_ then 
 name_MERO = ((t2.first_name_ or "") .. (t2.last_name_ or ""))
 if name_MERO then 
@@ -2318,7 +2318,7 @@ end
 end
 end
 end
-bnnaGet(msg.sender_user_id_, VVVZVV_name)
+bnnaGet(msg.sender_user_id_, FEEEM_name)
 end
 if database:get(bot_id.."kt:twh:stats"..msg.chat_id_) == "open" then
 if text and text:match("^وضع توحيد (.*)$") and Manager(msg) and database:get(bot_id.."kt:twh:stats"..msg.chat_id_) == "open" then
@@ -2487,21 +2487,21 @@ end
 return false
 end
 Text = [[
-*أهلاً بك في السوࢪس* [𝑇𝐸𝐿𝐴𝑁𝐷 𝑇𝐸𝐴𝑀💘](t.me/YYYDR)
+*أهلاً بك في السوࢪس* [- MeRo TeAm .](t.me/YYYDR)
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = 'قناه السوࢪس 💘',url="https://t.me/YYYDR"},
+{text = '- قناه السوࢪس .',url="https://t.me/YYYDR"},
 },
 {
-{text = 'شروحات السوࢪس 💘',url="https://t.me/YYYKU"},
+{text = '- شروحات السوࢪس .',url="https://t.me/YYYKU"},
 },
 {
-{text = 'تواصل السوࢪس 💘',url="t.me/FEEEM"},
+{text = '- تواصل السوࢪس .',url="t.me/FEEEM"},
 },
 {
-{text = 'مطوࢪ السوࢪس 💘',url="t.me/FEEEM"},
+{text = '- مطوࢪ السوࢪس .',url="t.me/FEEEM"},
 },
 }
 local msg_id = msg.id_/2097152/0.5
@@ -3692,11 +3692,11 @@ end
 send(msg.chat_id_, msg.id_, t)
 end
 if text == "تاك للمشرفين" and CoSu(msg) then
-if database:get(bot_id.."VVVZVV:admin:Time"..msg.chat_id_) then 
+if database:get(bot_id.."FEEEM:admin:Time"..msg.chat_id_) then 
 return
 send(msg.chat_id_, msg.id_,"انتظر دقيقه من فضلك")
 end
-database:setex(bot_id..'VVVZVV:admin:Time'..msg.chat_id_..':'..msg.sender_user_id_,300,true)
+database:setex(bot_id..'FEEEM:admin:Time'..msg.chat_id_..':'..msg.sender_user_id_,300,true)
 tdcli_function ({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100",""),filter_ = {ID = "ChannelMembersAdministrators"},offset_ = 0,limit_ = 100 },function(extra,result,success)
 m = 0
 tgad = 0
@@ -8600,7 +8600,7 @@ end
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text and text:match('^تنظيف (%d+)$') and Manager(msg) then
-if not database:get(bot_id..'VVVZVV:Delete:Time'..msg.chat_id_..':'..msg.sender_user_id_) then           
+if not database:get(bot_id..'FEEEM:Delete:Time'..msg.chat_id_..':'..msg.sender_user_id_) then           
 local num = tonumber(text:match('^تنظيف (%d+)$')) 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
@@ -8621,7 +8621,7 @@ DeleteMessage(msg.chat_id_, {[0] = msgm})
 msgm = msgm - 1048576
 end
 send(msg.chat_id_,msg.id_,'*⋄︙تم حذف {'..num..'}*')  
-database:setex(bot_id..'VVVZVV:Delete:Time'..msg.chat_id_..':'..msg.sender_user_id_,300,true)
+database:setex(bot_id..'FEEEM:Delete:Time'..msg.chat_id_..':'..msg.sender_user_id_,300,true)
 end
 end
 if text == "تنظيف الميديا" and BasicConstructor(msg) then
@@ -10853,7 +10853,7 @@ data,res = https.request('https://vvvzvv.ml/amirVois/Teland.php')
 if res == 200 then
 audios = json:decode(data)
 if audios.Info == true then
-local Text ='*⋄︙تم اختيار المقطع الصوتي لك*'
+local Text ='*⋄ تم اختيار المقطع الصوتي لك*'
 keyboard = {} 
 keyboard.inline_keyboard = {
 {{text = '- MeRo TeAm .',url="t.me/YYYDR"}},
