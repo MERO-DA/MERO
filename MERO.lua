@@ -8802,7 +8802,7 @@ return false
 end
 tdcli_function({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub('-100',''), offset_ = 0,limit_ = 200
 },function(ta,MERO)
-local t = "\n*ツ قائمة الاعضاء* \n*— — — — — — —— — — — — — —ٴ*\n"
+local t = "\n*ツ قائمة الاعضاء* \n*ٴ— — — — — — —— — — — — — —ٴ*\n"
 x = 0
 local list = MERO.members_
 for k, v in pairs(list) do
