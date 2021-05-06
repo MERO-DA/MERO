@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-cd $HOME/MeRo
+cd $HOME/MERO
 rm -rf $HOME/.telegram-cli
 install() {
 rm -rf $HOME/.telegram-cli
 sudo chmod +x tg
-chmod +x MeRo
+chmod +x MERO
 chmod +x Run
 ./Run
 }

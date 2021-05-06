@@ -64,27 +64,27 @@ os.execute('lua install.lua')
 end
 local function Files_Info_Get()
 Create_Info(database:get(Server_Done.."Token_Write"),database:get(Server_Done.."UserSudo_Write"),database:get(Server_Done.."User_Write"))  
-local RunBot = io.open("MeRo", 'w')
+local RunBot = io.open("MERO", 'w')
 RunBot:write([[
 #!/usr/bin/env bash
-cd $HOME/MeRo
+cd $HOME/MERO
 token="]]..database:get(Server_Done.."Token_Write")..[["
-rm -fr MeRo.lua
-wget "https://raw.githubusercontent.com/MeRoTEAM/MeRo/main/MeRo.lua"
+rm -fr MERO.lua
+wget "https://raw.githubusercontent.com/MERO-DA/MERO/main/MERO.lua"
 while(true) do
 rm -fr ../.telegram-cli
-./tg -s ./MeRo.lua -p PROFILE --bot=$token
+./tg -s ./MERO.lua -p PROFILE --bot=$token
 done
 ]])
 RunBot:close()
 local RunTs = io.open("Run", 'w')
 RunTs:write([[
 #!/usr/bin/env bash
-cd $HOME/MeRo
+cd $HOME/MERO
 while(true) do
 rm -fr ../.telegram-cli
-screen -S MeRo -X kill
-screen -S MeRo ./MeRo
+screen -S MERO -X kill
+screen -S MERO ./MERO
 done
 ]])
 RunTs:close()
