@@ -3409,7 +3409,7 @@ return false
 end
 function start_function(extra, result, success)
 if MEROSudoBot(result.sender_user_id_) then
-send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تققيد) مطور السورس او الاساسي*")
+send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تقيد) مطور السورس او الاساسي*")
 return false 
 end
 if tonumber(result.sender_user_id_) == tonumber(bot_id) then  
@@ -3446,7 +3446,7 @@ send(msg.chat_id_,msg.id_," *⋄︙عذرا عزيزي المستخدم هاذا
 return false 
 end      
 if MEROSudoBot(result.id_) then
-send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تققيد) مطور السورس او الاساسي*")
+send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تقيد) مطور السورس او الاساسي*")
 return false 
 end
 if tonumber(result.id_) == tonumber(bot_id) then  
@@ -3477,7 +3477,7 @@ end
 return false
 end
 if MEROSudoBot(userid) then
-send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تققيد) مطور السورس او الاساسي*")
+send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تقيد) مطور السورس او الاساسي*")
 return false 
 end
 if tonumber(userid) == tonumber(bot_id) then  
@@ -3509,7 +3509,7 @@ return false
 end
 function start_function(extra, result, success)
 if MEROSudoBot(result.sender_user_id_) then
-send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تققيد) مطور السورس او الاساسي*")
+send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تقيد) مطور السورس او الاساسي*")
 return false 
 end
 if tonumber(result.sender_user_id_) == tonumber(bot_id) then  
@@ -3545,7 +3545,7 @@ send(msg.chat_id_,msg.id_," *⋄︙عذرا عزيزي المستخدم هاذا
 return false 
 end      
 if MEROSudoBot(result.id_) then
-send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تققيد) مطور السورس او الاساسي*")
+send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تقيد) مطور السورس او الاساسي*")
 return false 
 end
 if tonumber(result.id_) == tonumber(bot_id) then  
@@ -3576,7 +3576,7 @@ end
 return false
 end
 if MEROSudoBot(bot_id) then
-send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تققيد) مطور السورس او الاساسي*")
+send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تقيد) مطور السورس او الاساسي*")
 return false 
 end
 if tonumber(userid) == tonumber(bot_id) then  
@@ -5104,7 +5104,7 @@ return false
 end
 function start_function(extra, result, success)
 if MEROSudoBot(result.sender_user_id_) then
-send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تققيد) مطور السورس او الاساسي*")
+send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تقيد) مطور السورس او الاساسي*")
 return false 
 end
 if tonumber(result.sender_user_id_) == tonumber(bot_id) then  
@@ -5153,7 +5153,7 @@ end
 function start_function(extra, result, success)
 if result.id_ then
 if MEROSudoBot(result.id_) then
-send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تققيد) مطور السورس او الاساسي*")
+send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تقيد) مطور السورس او الاساسي*")
 return false 
 end
 if tonumber(result.id_) == tonumber(bot_id) then  
@@ -5207,7 +5207,7 @@ send(msg.chat_id_, msg.id_,' *⋄︙تم تعطيل الطرد*')
 return false
 end
 if MEROSudoBot(userid) then
-send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تققيد) مطور السورس او الاساسي*")
+send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تقيد) مطور السورس او الاساسي*")
 return false 
 end
 if tonumber(userid) == tonumber(bot_id) then  
@@ -6231,7 +6231,7 @@ return false
 end
 function start_function(extra, result, success)
 if MEROSudoBot(result.sender_user_id_) then
-send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تققيد) مطور السورس او الاساسي*")
+send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تقيد) مطور السورس او الاساسي*")
 return false 
 end
 if tonumber(result.sender_user_id_) == tonumber(bot_id) then  
@@ -6273,7 +6273,7 @@ end
 function start_function(extra, result, success)
 if result.id_ then
 if MEROSudoBot(result.id_) then
-send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تققيد) مطور السورس او الاساسي*")
+send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تقيد) مطور السورس او الاساسي*")
 return false 
 end
 if Can_or_NotCan(result.id_, msg.chat_id_) == true then
@@ -6324,7 +6324,7 @@ send(msg.chat_id_, msg.id_,' *⋄︙تم تعطيل الحظر*')
 return false
 end
 if MEROSudoBot(userid) then
-send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تققيد) مطور السورس او الاساسي*")
+send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تقيد) مطور السورس او الاساسي*")
 return false 
 end
 if tonumber(userid) == tonumber(bot_id) then  
@@ -6484,7 +6484,7 @@ send(msg.chat_id_, msg.id_, " *⋄︙لا تسطيع كتم البوت* ")
 return false 
 end
 if MEROSudoBot(result.sender_user_id_) then
-send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تققيد) مطور السورس او الاساسي*")
+send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تقيد) مطور السورس او الاساسي*")
 return false 
 end
 if Can_or_NotCan(result.sender_user_id_, msg.chat_id_) == true then
@@ -6523,7 +6523,7 @@ end
 function start_function(extra, result, success)
 if result.id_ then
 if MEROSudoBot(result.id_) then
-send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تققيد) مطور السورس او الاساسي*")
+send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تقيد) مطور السورس او الاساسي*")
 return false 
 end
 if tonumber(result.id_) == tonumber(bot_id) then  
@@ -6569,7 +6569,7 @@ TextEnd[3] = TextEnd[3]:gsub('دقيقه',"دقايق")
 TextEnd[3] = TextEnd[3]:gsub('ساعه',"ساعات") 
 TextEnd[3] = TextEnd[3]:gsub("يوم","ايام") 
 if MEROSudoBot(result.sender_user_id_) then
-send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تققيد) مطور السورس او الاساسي*")
+send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تقيد) مطور السورس او الاساسي*")
 return false 
 end
 if Can_or_NotCan(result.sender_user_id_, msg.chat_id_) then
@@ -6612,7 +6612,7 @@ TextEnd[3] = TextEnd[3]:gsub('دقيقه',"دقايق")
 TextEnd[3] = TextEnd[3]:gsub('ساعه',"ساعات") 
 TextEnd[3] = TextEnd[3]:gsub("يوم","ايام") 
 if MEROSudoBot(result.id_) then
-send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تققيد) مطور السورس او الاساسي*")
+send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تقيد) مطور السورس او الاساسي*")
 return false 
 end
 if Can_or_NotCan(result.id_, msg.chat_id_) then
@@ -6641,7 +6641,7 @@ end
 return false
 end
 if MEROSudoBot(userid) then
-send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تققيد) مطور السورس او الاساسي*")
+send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تقيد) مطور السورس او الاساسي*")
 return false 
 end
 if tonumber(userid) == tonumber(bot_id) then  
@@ -6753,7 +6753,7 @@ return false
 end
 function start_function(extra, result, success)
 if MEROSudoBot(result.sender_user_id_) then
-send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تققيد) مطور السورس او الاساسي*")
+send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تقيد) مطور السورس او الاساسي*")
 return false 
 end
 if tonumber(result.sender_user_id_) == tonumber(bot_id) then  
@@ -6788,7 +6788,7 @@ end
 function start_function(extra, result, success)
 if result.id_ then
 if MEROSudoBot(result.id_) then
-send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تققيد) مطور السورس او الاساسي*")
+send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تقيد) مطور السورس او الاساسي*")
 return false 
 end
 if tonumber(result.id_) == tonumber(bot_id) then  
@@ -6834,7 +6834,7 @@ TextEnd[3] = TextEnd[3]:gsub('دقيقه',"دقايق")
 TextEnd[3] = TextEnd[3]:gsub('ساعه',"ساعات") 
 TextEnd[3] = TextEnd[3]:gsub("يوم","ايام") 
 if MEROSudoBot(result.sender_user_id_) then
-send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تققيد) مطور السورس او الاساسي*")
+send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تقيد) مطور السورس او الاساسي*")
 return false 
 end
 if Can_or_NotCan(result.sender_user_id_, msg.chat_id_) then
@@ -6875,7 +6875,7 @@ TextEnd[3] = TextEnd[3]:gsub('دقيقه',"دقايق")
 TextEnd[3] = TextEnd[3]:gsub('ساعه',"ساعات") 
 TextEnd[3] = TextEnd[3]:gsub("يوم","ايام") 
 if MEROSudoBot(result.id_) then
-send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تققيد) مطور السورس او الاساسي*")
+send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تقيد) مطور السورس او الاساسي*")
 return false 
 end
 if Can_or_NotCan(result.id_, msg.chat_id_) then
@@ -6905,7 +6905,7 @@ end
 return false
 end
 if MEROSudoBot(userid) then
-send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تققيد) مطور السورس او الاساسي*")
+send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع (كتم،طرد،حظر،تقيد) مطور السورس او الاساسي*")
 return false 
 end
 if tonumber(userid) == tonumber(bot_id) then  
@@ -8802,7 +8802,7 @@ return false
 end
 tdcli_function({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub('-100',''), offset_ = 0,limit_ = 200
 },function(ta,MERO)
-local t = "\n*ツ قائمة الاعضاء* \n*ٴ— — — — — — — — — — — — — —*\n"
+local t = "\n*ツ قائمة الاعضاء* \n*— — — — — — —— — — — — — —ٴ*\n"
 x = 0
 local list = MERO.members_
 for k, v in pairs(list) do
