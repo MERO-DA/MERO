@@ -2684,11 +2684,6 @@ database:set(bot_id..'lock:Fars'..msg.chat_id_,true)
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,' *⋄︙بواسطه »* ['..Rutba(msg.sender_user_id_,msg.chat_id_)..'](T.ME/'..(data.username_ or 'YYYDR')..') \n*⋄︙تـم قفـل الفارسيه* ')
 end,nil)   
-elseif text == 'قفل الانكليزيه' and msg.reply_to_message_id_ == 0 and Manager(msg) then 
-database:set(bot_id..'lock:Engilsh'..msg.chat_id_,true) 
-tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
-send(msg.chat_id_, msg.id_,' *⋄︙بواسطه »* ['..Rutba(msg.sender_user_id_,msg.chat_id_)..'](T.ME/'..(data.username_ or 'YYYDR')..') \n*⋄︙تـم قفـل النكليزيه* ')
-end,nil)
 elseif text == 'قفل الانلاين' and msg.reply_to_message_id_ == 0 and Manager(msg) then 
 database:set(bot_id.."lock:inline"..msg.chat_id_,'del')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
@@ -2776,11 +2771,6 @@ database:del(bot_id..'lock:Fars'..msg.chat_id_)
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,' *⋄︙بواسطه »* ['..Rutba(msg.sender_user_id_,msg.chat_id_)..'](T.ME/'..(data.username_ or 'YYYDR')..') \n*⋄︙تـم فـتح الفارسيه* ')
 end,nil)   
-elseif text == 'فتح الانكليزيه' and msg.reply_to_message_id_ == 0 and Manager(msg) then 
-database:del(bot_id..'lock:Engilsh'..msg.chat_id_) 
-tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
-send(msg.chat_id_, msg.id_,' *⋄︙بواسطه »* ['..Rutba(msg.sender_user_id_,msg.chat_id_)..'](T.ME/'..(data.username_ or 'YYYDR')..') \n*⋄︙تـم فـتح النكليزيه* ')
-end,nil)
 elseif text == 'فتح تعديل الميديا' and msg.reply_to_message_id_ == 0 and BasicConstructor(msg) then 
 database:del(bot_id..'lock_edit_med'..msg.chat_id_) 
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
@@ -10692,8 +10682,8 @@ return false
 end
 local help_text = database:get(bot_id..'help_text')
 Text = [[
-*⋄اهلا انتツفي اوامر البوت⋄*
-ٴ*ٴ— — — — — — — — — — — — — —*ٴ
+*⋄ اهلا انت ツ في اوامر البوت ⋄*
+*ٴ— — — — — — — — — — — — — —ٴ*
 *⋄م1 ◂ اوامر الحمايه*
 *⋄م2 ◂ اوامر تعطيل ~ تفعيل*
 *⋄م3 ◂ اوامر ضع ~ اضف*
@@ -10704,7 +10694,7 @@ Text = [[
 *⋄م8 ◂ اوامر مطور البوت*
 *⋄م9 ◂ اوامر مطور الاساسي* 
 *⋄م10 ◂ اوامر الاعضاء*
-ٴ*ٴ— — — — — — — — — — — — — —*ٴ
+*ٴ— — — — — — — — — — — — — —ٴ*
 [- MeRo TeAm .](t.me/YYYDR) 
 ]]
 send(msg.chat_id_, msg.id_,(help_text or Text)) 
