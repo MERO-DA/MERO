@@ -8642,7 +8642,7 @@ end
 end
 DeleteMessage(msg.chat_id_,msgm2)
 end,nil)  
-send(msg.chat_id_, msg.id_,"*⋄ تم تنظيف الميديا*")
+send(msg.chat_id_, msg.id_,"*تم تنظيف الميديا ⋄*")
 end
 if text == "تنظيف التعديل" and Manager(msg) then
 Msgs = {[0]=msg.id_}
@@ -8684,17 +8684,11 @@ end
 if text == ""..(database:get(bot_id..'Name:Bot') or 'ميرو').."" then  
 Namebot = (database:get(bot_id..'Name:Bot') or 'ميرو')
 local MERO_Msg = {
-'عمغي كـــول🥺💘',
-'ياروحي كول اني  '..Namebot..'',
-'عمري الحلووو بشنو اساعدك',
-'دوختو  '..Namebot..'',
-'يمه شكد احــبك من تصـيح '..Namebot..'🥺💘',
-'ها حبـي وياك مكتب ئلسيد .',
-'ويــاك قائد الاستخبارات كـول😤',
+'عمغي 🥺💕.',
 'هاا شتريد كافي ☹️.',
-'فداك '..Namebot..' وعشيرتــه ائمرني',
 'مشايف بوت شني 😂.',
 'كول حبيبي ؟ اني '..Namebot..'',
+'مشغول حالياً',
 'عمري فداك '..Namebot..' كول حب'
 }
 send(msg.chat_id_, msg.id_,'['..MERO_Msg[math.random(#MERO_Msg)]..']') 
@@ -9410,17 +9404,6 @@ database:sadd(bot_id..'Spam:Texting'..msg.sender_user_id_,text)
 end  
 end
 end
-
-if text == "الساعه" then
-local ramsesj20 = "\n الساعه الان : "..os.date("%I:%M%p")
-send(msg.chat_id_, msg.id_,ramsesj20)
-end
-
-if text == "التاريخ" then
-local ramsesj20 =  "\n التاريخ : "..os.date("%Y/%m/%d")
-send(msg.chat_id_, msg.id_,ramsesj20)
-end
---------------
 if text == ("الردود المتعدده") and CoSu(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
@@ -10459,76 +10442,6 @@ database:incrby(bot_id..'Msg_User'..msg.chat_id_..':'..msg.sender_user_id_,NUMNK
 send(msg.chat_id_,msg.id_,' *⋄︙تم خصم » { '..NUMPY..' } من نقاطك* \n*⋄︙وتم اضافة » { '..(NUMPY * 50)..' } رساله الى رسالك*')
 end 
 return false 
-end
-if text and text:match("^وضع لقب (.*)$") and msg.reply_to_message_id_ ~= 0 and CoSu(msg) then
-local timsh = text:match("^وضع لقب (.*)$")
-function start_function(extra, result, success)
-local chek = https.request('https://api.telegram.org/bot'..token..'/getChatMember?chat_id='..msg.chat_id_..'&user_id='..bot_id)
-local getInfo = JSON.decode(chek)
-if getInfo.result.can_promote_members == false then
-send(msg.chat_id_, msg.id_,'*⋄︙لا يمكنني تعديل  او وضع لقب ليس لدي صلاحيه*\n*⋄︙قم بترقيتي جميع الصلاحيات او صلاحية اضافه مشرف* ') 
-return false  
-end
-tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..') '
-status  = '\n*⋄︙الايدي ↫* '..result.sender_user_id_..'\n*⋄︙تم ضافه {'..timsh..'} كلقب له*'
-send(msg.chat_id_, msg.id_, usertext..status)
-https.request("https://api.telegram.org/bot"..token.."/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&can_change_info=false&can_delete_messages=false&can_invite_users=True&can_restrict_members=false&can_pin_messages=True&can_promote_members=false")
-https.request("https://api.telegram.org/bot"..token.."/setChatAdministratorCustomTitle?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&custom_title="..timsh)
-end,nil)
-end
-tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
-return false
-end
-
-if text == ("حذف لقب") and msg.reply_to_message_id_ ~= 0 and CoSu(msg) then
-function start_function(extra, result, success)
-if msg.can_be_deleted_ == false then 
-send(msg.chat_id_, msg.id_,'*⋄︙البوت ليس مشرف يرجى ترقيتي !*') 
-return false  
-end
-tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n*⋄︙ العضو ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
-status  = '\n*⋄︙ الايدي ↫* `'..result.sender_user_id_..'`\n*⋄︙ تم حذف لقبه من الكروب*'
-send(msg.chat_id_, msg.id_, usertext..status)
-https.request("https://api.telegram.org/bot"..token.."/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&can_change_info=false&can_delete_messages=false&can_invite_users=false&can_restrict_members=false&can_pin_messages=false&can_promote_members=false")
-end,nil)
-end
-tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
-return false
-end
-if text and text:match("^حذف لقب @(.*)$") and CoSu(msg) then
-local username = text:match("^حذف لقب @(.*)$")
-if msg.can_be_deleted_ == false then 
-send(msg.chat_id_, msg.id_,'*⋄︙البوت ليس مشرف يرجى ترقيتي !*') 
-return false  
-end
-function start_function(extra, result, success)
-if result.id_ then
-if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
-send(msg.chat_id_,msg.id_,"*⋄︙ عذرا عزيزي المستخدم هاذا معرف قناة يرجى استخدام الامر بصوره صحيحه !*")   
-return false 
-end      
-usertext = '\n*⋄︙ المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
-status  = '\n*⋄︙ تم حذف لقبه من الكروب*'
-texts = usertext..status
-send(msg.chat_id_, msg.id_, texts)
-https.request("https://api.telegram.org/bot"..token.."/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.id_.."&can_change_info=false&can_delete_messages=false&can_invite_users=false&can_restrict_members=false&can_pin_messages=false&can_promote_members=false")
-else
-send(msg.chat_id_, msg.id_, '*⋄︙لا يوجد حساب بهاذا المعرف*')
-end
-end
-tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
-return false
-end
-
-if text == 'لقبي' and tonumber(msg.reply_to_message_id_) == 0 then
-Ge = https.request("https://api.telegram.org/bot"..token.."/getChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..msg.sender_user_id_)
-GeId = JSON.decode(Ge)
-if not GeId.result.custom_title then
-send(msg.chat_id_, msg.id_,'*⋄︙وينك وين القب*') 
-else
-send(msg.chat_id_, msg.id_,'*⋄︙لقبك هو :* '..GeId.result.custom_title) 
 end
 if text == 'فحص البوت' and Manager(msg) then
 local Chek_Info = https.request('https://api.telegram.org/bot'..token..'/getChatMember?chat_id='.. msg.chat_id_ ..'&user_id='.. bot_id..'')
