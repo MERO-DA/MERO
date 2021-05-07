@@ -107,7 +107,7 @@ end
 end
 function cleaner(msg)
 local hash = database:sismember(bot_id.."FEEEM:MN:TF"..msg.chat_id_,msg.sender_user_id_)    
-if hash or SudoBot(msg) or DevoMr(msg) or Sudo(msg) or BasicConstructor(msg) or CoSu(msg) or Bot(msg)  then       
+if hash or SudoBot(msg) or DevMEROW(msg) or Sudo(msg) or BasicConstructor(msg) or CoSu(msg) or Bot(msg)  then
 return true    
 else    
 return false    
