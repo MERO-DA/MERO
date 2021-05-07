@@ -8642,7 +8642,7 @@ end
 end
 DeleteMessage(msg.chat_id_,msgm2)
 end,nil)  
-send(msg.chat_id_, msg.id_,"*تم تنظيف الميديا ⋄*")
+send(msg.chat_id_, msg.id_,"*⋄ تم تنظيف الميديا*")
 end
 if text == "تنظيف التعديل" and Manager(msg) then
 Msgs = {[0]=msg.id_}
@@ -8684,11 +8684,17 @@ end
 if text == ""..(database:get(bot_id..'Name:Bot') or 'ميرو').."" then  
 Namebot = (database:get(bot_id..'Name:Bot') or 'ميرو')
 local MERO_Msg = {
-'عمغي 🥺💕.',
+'عمغي كـــول🥺💘',
+'ياروحي كول اني  '..Namebot..'',
+'عمري الحلووو بشنو اساعدك',
+'دوختو  '..Namebot..'',
+'يمه شكد احــبك من تصـيح '..Namebot..'🥺💘',
+'ها حبـي وياك مكتب ئلسيد .',
+'ويــاك قائد الاستخبارات كـول😤',
 'هاا شتريد كافي ☹️.',
+'فداك '..Namebot..' وعشيرتــه ائمرني',
 'مشايف بوت شني 😂.',
 'كول حبيبي ؟ اني '..Namebot..'',
-'مشغول حالياً',
 'عمري فداك '..Namebot..' كول حب'
 }
 send(msg.chat_id_, msg.id_,'['..MERO_Msg[math.random(#MERO_Msg)]..']') 
@@ -9404,6 +9410,17 @@ database:sadd(bot_id..'Spam:Texting'..msg.sender_user_id_,text)
 end  
 end
 end
+
+if text == "الساعه" then
+local ramsesj20 = "\n الساعه الان : "..os.date("%I:%M%p")
+send(msg.chat_id_, msg.id_,ramsesj20)
+end
+
+if text == "التاريخ" then
+local ramsesj20 =  "\n التاريخ : "..os.date("%Y/%m/%d")
+send(msg.chat_id_, msg.id_,ramsesj20)
+end
+--------------
 if text == ("الردود المتعدده") and CoSu(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
