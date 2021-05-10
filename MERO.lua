@@ -9852,24 +9852,6 @@ Text = '\n *⋄︙بالتاكيد تم تعطيل الرفع*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text and text:match("^وضع لقب (.*)$") and msg.reply_to_message_id_ ~= 0 and Constructor(msg) then
-local timsh = text:match("^وضع لقب (.*)$")
-function start_function(extra, result, success)
-if msg.can_be_deleted_ == false then 
-send(msg.chat_id_, msg.id_,' *البوت ليس مشرف يرجى ترقيتي !*') 
-return false  
-end
-tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n*⋄︙العضو ↫ ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO')..') '
-status = '\n*⋄︙تم ضافه {'..timsh..'} كلقب له*'
-send(msg.chat_id_, msg.id_, usertext..status)
-https.request("https://api.telegram.org/bot"..token.."/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&can_change_info=false&can_delete_messages=false&can_invite_users=True&can_restrict_members=false&can_pin_messages=True&can_promote_members=false")
-https.request("https://api.telegram.org/bot"..token.."/setChatAdministratorCustomTitle?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&custom_title="..timsh)
-end,nil)
-end
-tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
-return false
-end
 if text == 'ايدي' and tonumber(msg.reply_to_message_id_) > 0 then
 function start_function(extra, result, success)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(extra,data) 
@@ -9970,29 +9952,33 @@ if text == 'كشف' and tonumber(msg.reply_to_message_id_) > 0 then
 function start_function(extra, result, success)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(extra,data) 
 local rtp = Rutba(result.sender_user_id_,msg.chat_id_)
-local username = ' ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+local username = ' ['..data.first_name_..'](t.me/'..(data.username_ or 'IIIS1')..')'
 local iduser = result.sender_user_id_
-send(msg.chat_id_, msg.id_,'*⋄︙الايدي ↫ ('..iduser..')*\n*⋄︙الاسم ↫ (*'..username..')\n*⋄︙الرتبه ↫ ('..rtp..')*\n*⋄︙نوع الكشف ↫ بالرد*')
+send(msg.chat_id_, msg.id_,'*⋄︙المستخدم ↫* '..username..'*\n⋄︙الايدي ↫* `'..iduser..'`*\n⋄︙الرتبه ↫* '..rtp..' *\n⋄︙نوع الكشف ↫ بالرد*')
 end,nil)
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 end
 if text and text:match("^كشف @(.*)$") then
-local username = text:match("^كشف @(.*)$") 
-function start_function(extra, result, success)
+local username = text:match("^كشف @(.*)$")
+function Function_v(extra, result, success)
 if result.id_ then
-tdcli_function ({ID = "GetUser",user_id_ = result.id_},function(extra,data) 
-local UserName = ("@"..data.username_ or "لا يوجد")
-local id = result.id_
-local rtp = Rutba(id,msg.chat_id_)
-texts ='*⋄︙الايدي ↫ ('..id..')*\n*⋄︙المعرف ↫ (*['..UserName..'])\n*⋄︙الرتبه ↫ ('..rtp..')*\n*⋄︙نوع الكشف ↫ بالمعرف*'
-end,nil)
+tdcli_function({ID = "GetUser",user_id_ = result.id_}, function(arg, data)
+if data.username_ then
+UserName_User = '@' .. data.username_
 else
-texts = ' *⋄︙لا يوجد حساب بهاذا المعرف*'
+UserName_User = 'لا يوجد'
 end
-send(msg.chat_id_, msg.id_, texts)
+local Id = data.id_
+local frLsn = data.first_name_..' '..(data.last_name_ or "")
+ local Status_Gps = Rutba(Id,msg.chat_id_)
+send(msg.chat_id_, msg.id_, '\n*⋄︙الاسم ↫ '..frLsn..'*\n*⋄︙الايدي ↫ '..Id..'*\n*⋄︙المعرف ↫ *['..UserName_User..']*\n*⋄︙الرتبة ↫ '..Status_Gps..'*\n*⋄︙نوع الكشف - بالمعرف*')
+end, nil)
+else
+send(msg.chat_id_, msg.id_, ' *⋄︙لا يوجد حساب بهاذا المعرف*')
 end
-tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
+end
+tdcli_function({ID = "SearchPublicChat",username_ = username}, Function_v, nil)
 return false
 end
 if text and text:match("^كشف (%d+)$") then
@@ -11293,6 +11279,8 @@ local Teext =[[
 *⋄⤂ ردود المدير*
 *⋄⤂ الردود*
 *⋄⤂ ردود البوت*
+*⋄⤂ الرسائل اليوميه*
+*⋄⤂ التحقق*
 *⋄⤂ اوامر التحشيش*
 *⋄⤂ صورتي*
 *⋄⤂ زخرفه*
@@ -11333,6 +11321,7 @@ local Teext =[[
 *⋄⤂ اوامر الوضع ~ اضف …*
 *ٴ— — — — — — — — — — — — — —*
 *⋄⤂ اضف / حذف ← رد*
+*⋄⤂ اضف / حذف ← رد متعدد*
 *⋄⤂ اضف / حذف ← صلاحيه*
  *ٴ— — — — — — — — — — — — — —*
 *⋄⤂ ضع + امر …*
@@ -11491,7 +11480,8 @@ local Teext =[[
 *⋄⤂ الصلاحيات*
 *⋄⤂ كشف ~ برد ← بمعرف ← ايدي*
 *⋄⤂ تاك للكل*
-*⋄⤂ وضع لقب + لقب*
+*⋄⤂ اضف لقب + لقب*
+*⋄⤂ حذف اللقب*
 *⋄⤂ تاك للمشرفين*
 *⋄⤂ اعدادات المجموعه*
 *⋄⤂ عدد الكروب*
@@ -11710,6 +11700,7 @@ local Teext =[[
 *⋄⤂ عرض معلوماتك ↑↓*
 *ٴ— — — — — — — — — — — — — —*
 *⋄⤂ ايديي ← اسمي* 
+*⋄⤂ تفاعلي اليوم ← تفاعله اليوم*
 *⋄⤂ رسايلي ← مسح رسايلي* 
 *⋄⤂ رتبتي ← سحكاتي* 
 *⋄⤂ مسح سحكاتي ← المنشئ* 
