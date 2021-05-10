@@ -9972,7 +9972,7 @@ end
 local Id = data.id_
 local frLsn = data.first_name_..' '..(data.last_name_ or "")
  local Status_Gps = Rutba(Id,msg.chat_id_)
-send(msg.chat_id_, msg.id_, '\n*⋄︙الاسم ↫ ('..frLsn..')\n⋄︙الايدي ↫ '..Id..'\n⋄︙المعرف ↫ *['..UserName_User..']*\n⋄︙الرتبة ↫ '..Status_Gps..'\n⋄︙نوع الكشف - بالمعرف*')
+send(msg.chat_id_, msg.id_, '\n*⋄︙الاسم ↫ '..frLsn..'\n⋄︙الايدي ↫ '..Id..'\n⋄︙المعرف ↫ *['..UserName_User..']*\n⋄︙الرتبة ↫ '..Status_Gps..'\n⋄︙نوع الكشف - بالمعرف*')
 end, nil)
 else
 send(msg.chat_id_, msg.id_, ' *⋄︙لا يوجد حساب بهاذا المعرف*')
