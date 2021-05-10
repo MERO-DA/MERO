@@ -9694,7 +9694,7 @@ return false
 end
 if text == 'بوت' then
 Namebot = (database:get(bot_id..'Name:Bot') or 'ميرو')
-local texting = {'*اسمي القمـيل '..Namebot..'* ','*لا تزعجني اسمي '..Namebot..'* ','*متكلي شتࢪيد من '..Namebot..'* ','*وياڪ قائد الاستخباࢪات اسمي '..Namebot..'* ','*وياك حامي لڪروب '..Namebot..'* '}
+send(msg.chat_id_, msg.id_,'*اسمي القمـيل '..Namebot..'* ') 
 Textes = math.random(#texting)
 send(msg.chat_id_, msg.id_,texting[Textes])
 end
