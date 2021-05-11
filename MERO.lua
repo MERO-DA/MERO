@@ -2361,35 +2361,35 @@ end
 return false  
 end
 if text == "تفعيل الاضافات" and SudoBot(msg) then
-send(msg.chat_id_, msg.id_, '⋄︙تم تفعيل الاضافات')
-database:set(bot_id.."AL:AddS0FI:stats","✔")
+send(msg.chat_id_, msg.id_, '*⋄︙ تم تفعيل الاضافات*')
+database:set(bot_id.."AL:Sre:stats","✔")
 end
 if text == "تعطيل الاضافات" and SudoBot(msg) then
-send(msg.chat_id_, msg.id_, '⋄︙تم تعطيل الاضافات')
-database:set(bot_id.."AL:AddS0FI:stats","✖")
+send(msg.chat_id_, msg.id_, '*⋄︙ تم تعطيل الاضافات*')
+database:set(bot_id.."AL:Sre:stats","❌")
 end
 
 if database:get(bot_id.."block:name:stats"..msg.chat_id_) == "open" then
 if text and text:match("^كتم اسم (.*)$") and Manager(msg) and database:get(bot_id.."block:name:stats"..msg.chat_id_) == "open" then
 local BlNe = text:match("^كتم اسم (.*)$")
-send(msg.chat_id_, msg.id_, '⋄︙تم كتم الاسم '..BlNe)
-database:sadd(bot_id.."MeRo:blocname"..msg.chat_id_, BlNe)
+send(msg.chat_id_, msg.id_, '*⋄︙تم كتم الاسم* '..BlNe)
+database:sadd(bot_id.."MERO:blocname"..msg.chat_id_, BlNe)
 end
 
 if text and text:match("^الغاء كتم اسم (.*)$") and Manager(msg) and database:get(bot_id.."block:name:stats"..msg.chat_id_) == "open" then
 local delBn = text:match("^الغاء كتم اسم (.*)$")
-send(msg.chat_id_, msg.id_, '⋄︙تم الغاء كتم الاسم '..delBn)
-database:srem(bot_id.."MeRo:blocname"..msg.chat_id_, delBn)
+send(msg.chat_id_, msg.id_, '*⋄︙تم الغاء كتم الاسم* '..delBn)
+database:srem(bot_id.."MERO:blocname"..msg.chat_id_, delBn)
 end
 
 if text == "مسح الاسماء المكتومه" and Constructor(msg) and database:get(bot_id.."block:name:stats"..msg.chat_id_) == "open" then
-database:del(bot_id.."MeRo:blocname"..msg.chat_id_)
-texts = "*⋄︙تم مسح الاسماء المكتومه *"
+database:del(bot_id.."MERO:blocname"..msg.chat_id_)
+texts = "*⋄︙تم مسح الاسماء المكتومه* "
 send(msg.chat_id_, msg.id_, texts)
 end
 if text == "الاسماء المكتومه" and Constructor(msg) and database:get(bot_id.."block:name:stats"..msg.chat_id_) == "open" then
-local All_name = database:smembers(bot_id.."MeRo:blocname"..msg.chat_id_)
-t = "\n*⋄︙قائمة الاسماء المكتومه* \n*⊶─────≺⋆≻─────⊷*\n"
+local All_name = database:smembers(bot_id.."MERO:blocname"..msg.chat_id_)
+t = "\n*⋄︙قائمة الاسماء المكتومه* \n*ٴ— — — — — — — — — — — — — —*\n"
 for k,v in pairs(All_name) do
 t = t..""..k.."- (["..v.."])\n"
 end
@@ -2399,23 +2399,23 @@ end
 send(msg.chat_id_, msg.id_, t)
 end
 end
-if text == "تفعيل كتم الاسم" and Constructor(msg) and database:get(bot_id.."AL:AddS0FI:stats") == "✔" then
+if text == "تفعيل كتم الاسم" and Constructor(msg) and database:get(bot_id.."AL:Sre:stats") == "✔" then
 send(msg.chat_id_, msg.id_, '*⋄︙تم التفعيل الاسماء المكتومه*')
 database:set(bot_id.."block:name:stats"..msg.chat_id_,"open")
 end
-if text == "تعطيل كتم الاسم" and Constructor(msg) and database:get(bot_id.."AL:AddS0FI:stats") == "✔" then
+if text == "تعطيل كتم الاسم" and Constructor(msg) and database:get(bot_id.."AL:Sre:stats") == "✔" then
 send(msg.chat_id_, msg.id_, '*⋄︙تم تعطيل الاسماء المكتومه*')
 database:set(bot_id.."block:name:stats"..msg.chat_id_,"close")
 end
 if not Manager(msg) and database:get(bot_id.."block:name:stats"..msg.chat_id_) == "open" then
-function S00F4_name(t1,t2)
+function FEEEM_name(t1,t2)
 if t2.id_ then 
-name_MRoMr = ((t2.first_name_ or "") .. (t2.last_name_ or ""))
-if name_MRoMr then 
-names_MRoMr = database:smembers(bot_id.."MeRo:blocname"..msg.chat_id_) or ""
-if names_MRoMr and names_MRoMr[1] then 
-for i=1,#names_MRoMr do 
-if name_MRoMr:match("(.*)("..names_MRoMr[i]..")(.*)") then 
+name_MERO = ((t2.first_name_ or "") .. (t2.last_name_ or ""))
+if name_MERO then 
+names_MERO = database:smembers(bot_id.."MERO:blocname"..msg.chat_id_) or ""
+if names_MERO and names_MERO[1] then 
+for i=1,#names_MERO do 
+if name_MERO:match("(.*)("..names_MERO[i]..")(.*)") then 
 DeleteMessage_(msg.chat_id_,{[0] = msg.id_}) 
 end
 end
@@ -2423,76 +2423,76 @@ end
 end
 end
 end
-bnnaGet(msg.sender_user_id_, S00F4_name)
+bnnaGet(msg.sender_user_id_, FEEEM_name)
 end
 if database:get(bot_id.."kt:twh:stats"..msg.chat_id_) == "open" then
 if text and text:match("^وضع توحيد (.*)$") and Manager(msg) and database:get(bot_id.."kt:twh:stats"..msg.chat_id_) == "open" then
 local teh = text:match("^وضع توحيد (.*)$")
-send(msg.chat_id_, msg.id_,'⋄︙تم تعيين '..teh..' كتوحيد للمجموعه')
-database:set(bot_id.."MeRo:teh"..msg.chat_id_,teh)
+send(msg.chat_id_, msg.id_,'*⋄︙تم تعيين '..teh..' كتوحيد للمجموعه*')
+database:set(bot_id.."MERO:teh"..msg.chat_id_,teh)
 end
 if text and text:match("^تعين عدد الكتم (.*)$") and Manager(msg) and database:get(bot_id.."kt:twh:stats"..msg.chat_id_) == "open" then
 local nump = text:match("^تعين عدد الكتم (.*)$")
-send(msg.chat_id_, msg.id_,'⋄︙تم تعين  '..nump..' عدد الكتم')
-database:set(bot_id.."MeRo:nump"..msg.chat_id_,nump)
+send(msg.chat_id_, msg.id_,'*⋄︙تم تعين  '..nump..' عدد الكتم*')
+database:set(bot_id.."MERO:nump"..msg.chat_id_,nump)
 end
 if text == "التوحيد" then
-local s1 = database:get(bot_id.."MeRo:teh"..msg.chat_id_) or "لا يوجد توحيد"
-local s2 = database:get(bot_id.."MeRo:nump"..msg.chat_id_) or 5
-send(msg.chat_id_, msg.id_,'⋄︙التوحيد '..s1..'\n⋄︙عدد الكتم  : '..s2)
+local s1 = database:get(bot_id.."MERO:teh"..msg.chat_id_) or "لا يوجد توحيد"
+local s2 = database:get(bot_id.."MERO:nump"..msg.chat_id_) or 5
+send(msg.chat_id_, msg.id_,'*⋄︙التوحيد '..s1..'*\n*⋄︙عدد الكتم  :* '..s2)
 end
 end
-if text == "تفعيل التوحيد" and Constructor(msg) and database:get(bot_id.."AL:AddS0FI:stats") == "✔" then
+if text == "تفعيل التوحيد" and Constructor(msg) and database:get(bot_id.."AL:Sre:stats") == "✔" then
 send(msg.chat_id_, msg.id_, '*⋄︙تم تفعيل التوحيد*')
 database:set(bot_id.."kt:twh:stats"..msg.chat_id_,"open")
 end
-if text == "تعطيل التوحيد" and Constructor(msg) and database:get(bot_id.."AL:AddS0FI:stats") == "✔" then
+if text == "تعطيل التوحيد" and Constructor(msg) and database:get(bot_id.."AL:Sre:stats") == "✔" then
 send(msg.chat_id_, msg.id_, '*⋄︙تم تعطيل التوحيد*')
 database:set(bot_id.."kt:twh:stats"..msg.chat_id_,"close")
 end
 if not Constructor(msg) then
-if database:get(bot_id.."kt:twh:stats"..msg.chat_id_) == "open"  and database:get(bot_id.."MeRo:teh"..msg.chat_id_) then 
+if database:get(bot_id.."kt:twh:stats"..msg.chat_id_) == "open"  and database:get(bot_id.."MERO:teh"..msg.chat_id_) then 
 id = msg.sender_user_id_
-function oMr_mroMr_new(mroMr1,mroMr2)
-if mroMr2 and mroMr2.first_name_ then 
-if mroMr2.first_name_:match("(.*)"..database:get(bot_id.."MeRo:teh"..msg.chat_id_).."(.*)") then 
-database:srem(bot_id.."MeRo:Muted:User"..msg.chat_id_, msg.sender_user_id_)
+function amir_MEROa_new(MERO1,MERO2)
+if MERO2 and MERO2.first_name_ then 
+if MERO2.first_name_:match("(.*)"..database:get(bot_id.."MERO:teh"..msg.chat_id_).."(.*)") then 
+database:srem(bot_id.."MERO:Muted:User"..msg.chat_id_, msg.sender_user_id_)
 else
-local mroMr_nnn = database:get(bot_id.."MeRo:nump"..msg.chat_id_) or 5
-local mroMr_nnn2 = database:get(bot_id.."MeRo:nump22"..msg.chat_id_..msg.sender_user_id_) or 0
-if (tonumber(mroMr_nnn2) == tonumber(mroMr_nnn) or tonumber(mroMr_nnn2) > tonumber(mroMr_nnn)) then 
+local MERO_nnn = database:get(bot_id.."MERO:nump"..msg.chat_id_) or 5
+local MERO_nnn2 = database:get(bot_id.."MERO:nump22"..msg.chat_id_..msg.sender_user_id_) or 0
+if (tonumber(MERO_nnn2) == tonumber(MERO_nnn) or tonumber(MERO_nnn2) > tonumber(MERO_nnn)) then 
 database:sadd(bot_id..'Muted:User'..msg.chat_id_, msg.sender_user_id_)
 else 
-database:incrby(bot_id.."MeRo:nump22"..msg.chat_id_..msg.sender_user_id_,1)
-send(msg.chat_id_, msg.id_, "⋄︙عزيزي >>["..mroMr2.username_.."](https://t.me/"..(mroMr2.username_ or "YYYDR")..")\n⋄︙عليك وضع التوحيد ⪼ {"..database:get(bot_id.."MeRo:teh"..msg.chat_id_).."} بجانب اسمك\n⋄︙عدد المحاولات المتبقيه {"..(tonumber(mroMr_nnn) - tonumber(mroMr_nnn2)).."}")
+database:incrby(bot_id.."MERO:nump22"..msg.chat_id_..msg.sender_user_id_,1)
+send(msg.chat_id_, msg.id_, "⋄︙عزيزي >>["..MERO2.username_.."](https://t.me/"..(MERO2.username_ or "YYYDR")..")\n⋄︙عليك وضع التوحيد ⪼ {"..database:get(bot_id.."MERO:teh"..msg.chat_id_).."} بجانب اسمك\n⋄︙عدد المحاولات المتبقيه {"..(tonumber(MERO_nnn) - tonumber(MERO_nnn2)).."}")
 end
 end
 end
 end
-bnnaGet(id, oMr_mroMr_new)
+bnnaGet(id, amir_MEROa_new)
 end
 end
-if text == "تفعيل تنبيه الاسماء" and Manager(msg) and database:get(bot_id.."AL:AddS0FI:stats") == "✔" then
+if text == "تفعيل تنبيه الاسماء" and Manager(msg) and database:get(bot_id.."AL:Sre:stats") == "✔" then
 send(msg.chat_id_, msg.id_, '*⋄︙تم تفعيل تنبيه الاسماء*')
-database:set(bot_id.."Ttn:DRG:stats"..msg.chat_id_,"open")
+database:set(bot_id.."Ttn:BBE:stats"..msg.chat_id_,"open")
 end
-if text == "تعطيل تنبيه الاسماء" and Manager(msg) and database:get(bot_id.."AL:AddS0FI:stats") == "✔" then
+if text == "تعطيل تنبيه الاسماء" and Manager(msg) and database:get(bot_id.."AL:Sre:stats") == "✔" then
 send(msg.chat_id_, msg.id_, '*⋄︙تم تعطيل تنبيه الاسماء*')
-database:set(bot_id.."Ttn:DRG:stats"..msg.chat_id_,"close")
+database:set(bot_id.."Ttn:BBE:stats"..msg.chat_id_,"close")
 end
-if text and database:get(bot_id.."Ttn:DRG:stats"..msg.chat_id_) == "open" then 
+if text and database:get(bot_id.."Ttn:BBE:stats"..msg.chat_id_) == "open" then 
 tdcli_function({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data)
 if data.id_ then 
 if data.id_ ~= bot_id then
-local MeRoChengName = database:get(bot_id.."MeRo:Cheng:Name"..data.id_)
+local MEROChengName = database:get(bot_id.."MERO:Cheng:Name"..data.id_)
 if not data.first_name_ then 
-if MeRoChengName then 
-send(msg.chat_id_, msg.id_, " خوش معرف جان ["..MeRoChengName..']')
-database:del(bot_id.."MeRo:Cheng:Name"..data.id_) 
+if MEROChengName then 
+send(msg.chat_id_, msg.id_, " خوش معرف جان ["..MEROChengName..']')
+database:del(bot_id.."MERO:Cheng:Name"..data.id_) 
 end
 end
 if data.first_name_ then 
-if MeRoChengName ~= data.first_name_ then 
+if MEROChengName ~= data.first_name_ then 
 local Text = {
   "جان خوش اسم يول",
 "ليش غيرته اسمك بس لا خانوك/ج",
@@ -2500,44 +2500,7 @@ local Text = {
 }
 send(msg.chat_id_, msg.id_,Text[math.random(#Text)])
 end  
-database:set(bot_id.."MeRo:Cheng:Name"..data.id_, data.first_name_) 
-end
-end
-end
-end,nil)   
-end
-if text == "تفعيل تنبيه المعرف" and Constructor(msg) and database:get(bot_id.."AL:AddS0FI:stats") == "✔" then
-send(msg.chat_id_, msg.id_, '*⋄︙تم تفعيل تنبيه المعرف*')
-database:set(bot_id.."Ttn:Userr:stats"..msg.chat_id_,"open")
-end
-if text == "تعطيل تنبيه المعرف" and Constructor(msg) and database:get(bot_id.."AL:AddS0FI:stats") == "✔" then
-send(msg.chat_id_, msg.id_, '*⋄︙تم تعطيل تنبيه المعرف*')
-database:set(bot_id.."Ttn:Userr:stats"..msg.chat_id_,"close")
-end
-if text and database:get(bot_id.."Ttn:Userr:stats"..msg.chat_id_) == "open" then  
-tdcli_function({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data)
-if data.id_ then 
-if data.id_ ~= bot_id then
-local MeRoChengUserName = database:get(bot_id.."MeRo:Cheng:UserName"..data.id_)
-if not data.username_ then 
-if MeRoChengUserName then 
-send(msg.chat_id_, msg.id_, 1, "حذف معرفه خمطو بساع بساع  \n هاذه معرفه  : [@"..MeRoChengUserName..']')
-database:del(bot_id.."MeRo:Cheng:UserName"..data.id_) 
-end
-end
-if data.username_ then 
-if MeRoChengUserName ~= data.username_ then 
-local Text = {
-'شكو غيرت معرفك شنو نشروك بقنوات فضايح😂🥺',
-"هاها شو غيرت معرفك بس لا هددتك/ج الحب",
-"شسالفه شو غيرت معرفك 😐🌝",
-"غير معرفه خمطو بساع بساع \n هاذه معرفه : @"..data.username_.."",
-'ها يول شو مغير معرفك بيش مشتري يول', 
-"منور معرف جديد :  "..data.username_.."",
-}
-send(msg.chat_id_, msg.id_,Text[math.random(#Text)])
-end  
-database:set(bot_id.."MeRo:Cheng:UserName"..data.id_, data.username_) 
+database:set(bot_id.."MERO:Cheng:Name"..data.id_, data.first_name_) 
 end
 end
 end
@@ -2571,11 +2534,49 @@ tdcli_function ({ID = "GetMessage",chat_id_=msg.chat_id_,message_id_=tonumber(ms
 end
 end
 end
-if text == "تفعيل تنبيه الصور" and Manager(msg) and database:get(bot_id.."AL:AddS0FI:stats") == "✔" then
+if text == "تفعيل تنبيه المعرف" and Constructor(msg) and database:get(bot_id.."AL:Sre:stats") == "✔" then
+send(msg.chat_id_, msg.id_, '*⋄︙تم تفعيل تنبيه المعرف*')
+database:set(bot_id.."Ttn:Userr:stats"..msg.chat_id_,"open")
+end
+if text == "تعطيل تنبيه المعرف" and Constructor(msg) and database:get(bot_id.."AL:Sre:stats") == "✔" then
+send(msg.chat_id_, msg.id_, '*⋄︙تم تعطيل تنبيه المعرف*')
+database:set(bot_id.."Ttn:Userr:stats"..msg.chat_id_,"close")
+end
+if text and database:get(bot_id.."Ttn:Userr:stats"..msg.chat_id_) == "open" then  
+tdcli_function({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data)
+if data.id_ then 
+if data.id_ ~= bot_id then
+local MEROChengUserName = database:get(bot_id.."MERO:Cheng:UserName"..data.id_)
+if not data.username_ then 
+if MEROChengUserName then 
+send(msg.chat_id_, msg.id_, 1, "حذف معرفه خمطو بساع بساع  \n هاذه معرفه  : [@"..MEROChengUserName..']')
+database:del(bot_id.."MERO:Cheng:UserName"..data.id_) 
+end
+end
+if data.username_ then 
+if MEROChengUserName ~= data.username_ then 
+local Text = {
+'شكو غيرت معرفك شنو نشروك بقنوات فضايح😂🥺',
+"هاها شو غيرت معرفك بس لا هددتك/ج الحب",
+"شسالفه شو غيرت معرفك 😐🌝",
+"غير معرفه خمطو بساع بساع \n هاذه معرفه : @"..data.username_.."",
+'ها عار مو جان معرفك \n شكو غيرته ل @'..data.username_..' ',
+'ها يول شو مغير معرفك بيش مشتري يول', 
+"منور معرف جديد :  "..data.username_.."",
+}
+send(msg.chat_id_, msg.id_,Text[math.random(#Text)])
+end  
+database:set(bot_id.."MERO:Cheng:UserName"..data.id_, data.username_) 
+end
+end
+end
+end,nil)   
+end
+if text == "تفعيل تنبيه الصور" and Manager(msg) and database:get(bot_id.."AL:Sre:stats") == "✔" then
 send(msg.chat_id_, msg.id_, '*⋄︙تم تفعيل تنبيه الصور*')
 database:set(bot_id.."Ttn:Ph:stats"..msg.chat_id_,"open")
 end
-if text == "تعطيل تنبيه الصور" and Manager(msg) and database:get(bot_id.."AL:AddS0FI:stats") == "✔" then
+if text == "تعطيل تنبيه الصور" and Manager(msg) and database:get(bot_id.."AL:Sre:stats") == "✔" then
 send(msg.chat_id_, msg.id_, '*⋄︙تم تعطيل تنبيه الصور*')
 database:set(bot_id.."Ttn:Ph:stats"..msg.chat_id_,"close")
 end
@@ -2583,15 +2584,15 @@ if text and database:get(bot_id.."Ttn:Ph:stats"..msg.chat_id_) == "open" then
 tdcli_function({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data)
 if data.id_ then 
 if data.id_ ~= bot_id then 
-local MeRoChengPhoto = database:get(bot_id.."MeRo:Cheng:Photo"..data.id_)
+local MEROChengPhoto = database:get(bot_id.."MERO:Cheng:Photo"..data.id_)
 if not data.profile_photo_ then 
-if MeRoChengPhoto then 
+if MEROChengPhoto then 
 send(msg.chat_id_, msg.id_, "حذف كل صور ابن الحلو شكد غبي لعد😂🥺")
-database:del(bot_id.."MeRo:Cheng:Photo"..data.id_) 
+database:del(bot_id.."MERO:Cheng:Photo"..data.id_) 
 end
 end
 if data.profile_photo_.big_.persistent_id_ then 
-if MeRoChengPhoto ~= data.profile_photo_.big_.persistent_id_ then 
+if MEROChengPhoto ~= data.profile_photo_.big_.persistent_id_ then 
 local Text = {
   "شكو غيرت صورتك يلصاك",
   "منور طالع حلو ع صوره جديده",
@@ -2602,11 +2603,11 @@ local Text = {
 }
 send(msg.chat_id_, msg.id_,Text[math.random(#Text)])
 end  
-database:set(bot_id.."MeRo:Cheng:Photo"..data.id_, data.profile_photo_.big_.persistent_id_) 
+database:set(bot_id.."MERO:Cheng:Photo"..data.id_, data.profile_photo_.big_.persistent_id_) 
 end
 end
 end
-end,nil)  
+end,nil)   
 end
 if text == 'السورس' or text == 'سورس' or text == 'يا سورس' then
 if AddChannel(msg.sender_user_id_) == false then
@@ -10198,7 +10199,7 @@ local List = {
 ]],
 [[
 ➼ : 𝐼𝐷 ?? #id . ♡
-➼ : 𝑈𝑆𝐸𝑅 ?? #username .♡
+➼ : 𝑈𝑆𝐸𝑅 𖠀 #username .♡
 ➼ : 𝑀𝑆𝐺𝑆 𖠀 #msgs .♡
 ➼ : 𝑆𝑇𝐴S𝑇 𖠀 #stast .♡ 
 ➼ : 𝐸𝐷𝐼𝑇  𖠀 #edit .♡
@@ -11674,7 +11675,7 @@ local Teext =[[
 *⋄⤂ تنظيف المشتركين*
 *⋄⤂ تنظيف الكروبات*
 *ٴ— — — — — — — — — — — — — —*
-[- MeRo TeMe .](t.me/YYYDR)
+[⍆ - MeRo TeMe .](t.me/YYYDR)
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
@@ -11765,196 +11766,6 @@ keyboard.inline_keyboard = {
 {{text = '- SoUrCe MeRo .', url="t.me/YYYDR"}},
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
-end
------------------------------- callback add dev mr oMr
-if Text == '/mute-name' then
-if not Constructor(data) then
-local notText = '🚫 عذرا الاوامر هذه لا تخصك'
-https.request("https://api.telegram.org/bot"..token.."/answerCallbackQuery?callback_query_id="..data.id_.."&text="..URL.escape(notText).."&show_alert=true")
-return false
-end
-local Teext =[[
-*انت الان في قائمة كتم الأسماء*
-*ٴ— — — — — — — — — — — — — —*
-*الاوامر الخاصة فـي كتم الاسماء*
-*تفعيل كتم الاسم*
-*تعطيل كتم الاسم*
-*الاسماء المكتومه*
-*كتم اسم + الاسم المراد كتمه*
-*الغاء كتم اسم + الاسم المراد الغاء كتمه*
-]]
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = 'كتم الاسماء', callback_data="/mute-name"},{text = 'التوحيد', callback_data="/oMr"},{text = 'تنبيه الأسماء', callback_data="/change-names"},
-},
-{
-{text = 'تنبيه المعرف', callback_data="/change-id"},{text = 'تنبيه الصور', callback_data="/change-photo"},
-},
-{
-{text = 'القائمة الرئيسيه', callback_data="/add"},
-},
-{
-{text = '- SoUrCe MeRo .', url="t.me/YYYDR"},
-},
-}
-return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
-end
-if Text == '/oMr' then
-if not Constructor(data) then
-local notText = '🚫 عذرا الاوامر هذه لا تخصك'
-https.request("https://api.telegram.org/bot"..token.."/answerCallbackQuery?callback_query_id="..data.id_.."&text="..URL.escape(notText).."&show_alert=true")
-return false
-end
-local Teext =[[
-*انت الان في قائمة التوحيد*
-*ٴ— — — — — — — — — — — — — —*
-*الاوامر الخاصة فـي التوحيد*
-*تفعيل التوحيد*
-*تعطيل التوحيد*
-*وضع توحيد + التوحيد*
-*تعين عدد الكتم + عدد*
-*التوحيد*
-]]
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = 'كتم الاسماء', callback_data="/mute-name"},{text = 'التوحيد', callback_data="/oMr"},{text = 'تنبيه الأسماء', callback_data="/change-names"},
-},
-{
-{text = 'تنبيه المعرف', callback_data="/change-id"},{text = 'تنبيه الصور', callback_data="/change-photo"},
-},
-{
-{text = 'القائمة الرئيسيه', callback_data="/add"},
-},
-{
-{text = '- SoUrCe MeRo .', url="t.me/YYYDR"},
-},
-}
-return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
-end
-if Text == '/change-names' then
-if not Constructor(data) then
-local notText = '🚫 عذرا الاوامر هذه لا تخصك'
-https.request("https://api.telegram.org/bot"..token.."/answerCallbackQuery?callback_query_id="..data.id_.."&text="..URL.escape(notText).."&show_alert=true")
-return false
-end
-local Teext =[[
-*انت الان في قائمة تنبيه الاسماء*
-*ٴ— — — — — — — — — — — — — —*
-*الاوامر الخاصة فـي تنبيه الاسماء* 
-*تفعيل تنبيه الاسماء*
-*تعطيل تنبيه الاسماء*
-]]
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = 'كتم الاسماء', callback_data="/mute-name"},{text = 'التوحيد', callback_data="/oMr"},{text = 'تنبيه الأسماء', callback_data="/change-names"},
-},
-{
-{text = 'تنبيه المعرف', callback_data="/change-id"},{text = 'تنبيه الصور', callback_data="/change-photo"},
-},
-{
-{text = 'القائمة الرئيسيه', callback_data="/add"},
-},
-{
-{text = '- SoUrCe MeRo .', url="t.me/YYYDR"},
-},
-}
-return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
-end
-if Text == '/change-id' then
-if not Constructor(data) then
-local notText = '🚫 عذرا الاوامر هذه لا تخصك'
-https.request("https://api.telegram.org/bot"..token.."/answerCallbackQuery?callback_query_id="..data.id_.."&text="..URL.escape(notText).."&show_alert=true")
-return false
-end
-local Teext =[[
-*انت الان في قائمة تنبيه المعرف*
-*ٴ— — — — — — — — — — — — — —*
-*الاوامر الخاصة فـي تنبيه المعرف*
-*تفعيل تنبيه المعرف*
-*تعطيل تنبيه المعرف*
-]]
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = 'كتم الاسماء', callback_data="/mute-name"},{text = 'التوحيد', callback_data="/oMr"},{text = 'تنبيه الأسماء', callback_data="/change-names"},
-},
-{
-{text = 'تنبيه المعرف', callback_data="/change-id"},{text = 'تنبيه الصور', callback_data="/change-photo"},
-},
-{
-{text = 'القائمة الرئيسيه', callback_data="/add"},
-},
-{
-{text = '- SoUrCe MeRo .', url="t.me/YYYDR"},
-},
-}
-return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
-end
-if Text == '/change-photo' then
-if not Constructor(data) then
-local notText = '🚫 عذرا الاوامر هذه لا تخصك'
-https.request("https://api.telegram.org/bot"..token.."/answerCallbackQuery?callback_query_id="..data.id_.."&text="..URL.escape(notText).."&show_alert=true")
-return false
-end
-local Teext =[[
-*انت الان في قائمة تنبيه الصور*
-*ٴ— — — — — — — — — — — — — —*
-*الاوامر الخاصة فـي تنبيه الصور*
-*تفعيل تنبيه الصور*
-*تعطيل تنبيه الصور*
-]]
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = 'كتم الاسماء', callback_data="/mute-name"},{text = 'التوحيد', callback_data="/oMr"},{text = 'تنبيه الأسماء', callback_data="/change-names"},
-},
-{
-{text = 'تنبيه المعرف', callback_data="/change-id"},{text = 'تنبيه الصور', callback_data="/change-photo"},
-},
-{
-{text = 'القائمة الرئيسيه', callback_data="/add"},
-},
-{
-{text = '- SoUrCe MeRo .', url="t.me/YYYDR"},
-},
-}
-return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
-end
---- callback added
-if Text == '/add' then
-if not Constructor(data) then
-local notText = '🚫 عذرا الاوامر هذه لا تخصك'
-https.request("https://api.telegram.org/bot"..token.."/answerCallbackQuery?callback_query_id="..data.id_.."&text="..URL.escape(notText).."&show_alert=true")
-return false
-end
-local Teext =[[
-*اهلا انتツفي اضافات البوت*
-*ٴ— — — — — — — — — — — — — —*
-* يمكنك معرفة حاله تفعيل الاضافات *
-* من خلال ارسال حاله الاضافات *
-*ٴ— — — — — — — — — — — — — —*
-*يمكنك تصفح الاضافات من خلال*
-*الكيبورد الموجود في الأسفل*
-*ٴ— — — — — — — — — — — — — —*
-[- MeRo TeAm .](t.me/YYYKU) 
-]]
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = 'كتم الاسماء', callback_data="/mute-name"},{text = 'التوحيد', callback_data="/oMr"},{text = 'تنبيه الأسماء', callback_data="/change-names"},
-},
-{
-{text = 'تنبيه المعرف', callback_data="/change-id"},{text = 'تنبيه الصور', callback_data="/change-photo"},
-},
-{
-{text = '- SoUrCe MeRo .', url="t.me/YYYDR"},
-},
-}
-return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
-end
 end
 if DAata and DAata:match("^animation(.*)$") then  
 idch = DAata:match("-100(%d+)")
