@@ -9694,8 +9694,9 @@ return false
 end
 if text == 'بوت' then
 Namebot = (database:get(bot_id..'Name:Bot') or 'ميرو')
-local texting = {'*اسمي '..Namebot..'* ','اني هنا شكو','ها عمري'}
-send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
+send(msg.chat_id_, msg.id_,'*اسمي القمـيل '..Namebot..'* ') 
+Textes = math.random(#texting)
+send(msg.chat_id_, msg.id_,texting[Textes])
 end
 if text == 'الاحصائيات' then
 if Sudo(msg) then 
@@ -10889,7 +10890,7 @@ send(msg.chat_id_, msg.id_,'⋄︙هاذا الامر خاص بالادمنيه\
 return false
 end
 if AddChannel(msg.sender_user_id_) == false then
-local MRSoOoFi = database:get(bot_id.."AL:AddFEEEM:stats") or "لم يتم التحديد"
+local MRSoOoFi = database:get(bot_id.."AL:AddS0FI:stats") or "لم يتم التحديد"
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
@@ -11363,7 +11364,7 @@ return false
 end
 local Teext =[[
 *اهلا انتツفي اضافات البوت*
-*ٴ— — — — — — — — — — — — — —*
+**ٴ— — — — — — — — — — — — — —**
 * يمكنك معرفة حاله تفعيل الاضافات *
 * من خلال ارسال حاله الاضافات *
 *ٴ— — — — — — — — — — — — — —*
