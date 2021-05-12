@@ -11207,7 +11207,7 @@ return false
 end
 local Teext =[[
 *انت الان في قائمة كتم الأسماء*
-*ٴ— — — — — — — — — — — — — —*
+ٴ≪┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉≫ٴٴ
 *الاوامر الخاصة فـي كتم الاسماء*
 *تفعيل كتم الاسم*
 *تعطيل كتم الاسم*
@@ -11224,10 +11224,10 @@ keyboard.inline_keyboard = {
 {text = 'تنبيه المعرف', callback_data="/change-id"},{text = 'تنبيه الصور', callback_data="/change-photo"},
 },
 {
-{text = 'القائمة الرئيسيه', callback_data="/add"},
+{text = '🔙 القائمة الرئيسيه 🔙', callback_data="/add"},
 },
 {
-{text = '- SoUrCe MeRo .', url="t.me/YYYDR"},
+{text = '𝑴𝑬𝑹𝑶 𝑪𝑯𝑨𝑵𝑵𝑬𝑳', url="t.me/YYYDR"},
 },
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
@@ -11240,7 +11240,7 @@ return false
 end
 local Teext =[[
 *انت الان في قائمة التوحيد*
-*ٴ— — — — — — — — — — — — — —*
+ٴ≪┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉≫ٴٴ
 *الاوامر الخاصة فـي التوحيد*
 *تفعيل التوحيد*
 *تعطيل التوحيد*
@@ -11257,10 +11257,10 @@ keyboard.inline_keyboard = {
 {text = 'تنبيه المعرف', callback_data="/change-id"},{text = 'تنبيه الصور', callback_data="/change-photo"},
 },
 {
-{text = 'القائمة الرئيسيه', callback_data="/add"},
+{text = '🔙 القائمة الرئيسيه 🔙', callback_data="/add"},
 },
 {
-{text = '- SoUrCe MeRo .', url="t.me/YYYDR"},
+{text = '𝑴𝑬𝑹𝑶 𝑪𝑯𝑨𝑵𝑵𝑬𝑳', url="t.me/YYYDR"},
 },
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
@@ -11273,7 +11273,7 @@ return false
 end
 local Teext =[[
 *انت الان في قائمة تنبيه الاسماء*
-*ٴ— — — — — — — — — — — — — —*
+ٴ≪┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉≫ٴٴ
 *الاوامر الخاصة فـي تنبيه الاسماء* 
 *تفعيل تنبيه الاسماء*
 *تعطيل تنبيه الاسماء*
@@ -11287,10 +11287,10 @@ keyboard.inline_keyboard = {
 {text = 'تنبيه المعرف', callback_data="/change-id"},{text = 'تنبيه الصور', callback_data="/change-photo"},
 },
 {
-{text = 'القائمة الرئيسيه', callback_data="/add"},
+{text = '🔙 القائمة الرئيسيه 🔙', callback_data="/add"},
 },
 {
-{text = '- SoUrCe MeRo .', url="t.me/YYYDR"},
+{text = '𝑴𝑬𝑹𝑶 𝑪𝑯𝑨𝑵𝑵𝑬𝑳', url="t.me/YYYDR"},
 },
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
@@ -11303,7 +11303,7 @@ return false
 end
 local Teext =[[
 *انت الان في قائمة تنبيه المعرف*
-*ٴ— — — — — — — — — — — — — —*
+ٴ≪┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉≫ٴٴ
 *الاوامر الخاصة فـي تنبيه المعرف*
 *تفعيل تنبيه المعرف*
 *تعطيل تنبيه المعرف*
@@ -11317,10 +11317,10 @@ keyboard.inline_keyboard = {
 {text = 'تنبيه المعرف', callback_data="/change-id"},{text = 'تنبيه الصور', callback_data="/change-photo"},
 },
 {
-{text = 'القائمة الرئيسيه', callback_data="/add"},
+{text = '🔙 القائمة الرئيسيه 🔙', callback_data="/add"},
 },
 {
-{text = '- SoUrCe MeRo .', url="t.me/YYYDR"},
+{text = '𝑴𝑬𝑹𝑶 𝑪𝑯𝑨𝑵𝑵𝑬𝑳', url="t.me/YYYDR"},
 },
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
@@ -11333,7 +11333,7 @@ return false
 end
 local Teext =[[
 *انت الان في قائمة تنبيه الصور*
-*ٴ— — — — — — — — — — — — — —*
+ٴ≪┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉≫ٴٴ
 *الاوامر الخاصة فـي تنبيه الصور*
 *تفعيل تنبيه الصور*
 *تعطيل تنبيه الصور*
@@ -11347,10 +11347,10 @@ keyboard.inline_keyboard = {
 {text = 'تنبيه المعرف', callback_data="/change-id"},{text = 'تنبيه الصور', callback_data="/change-photo"},
 },
 {
-{text = 'القائمة الرئيسيه', callback_data="/add"},
+{text = '🔙 القائمة الرئيسيه 🔙', callback_data="/add"},
 },
 {
-{text = '- SoUrCe MeRo .', url="t.me/YYYDR"},
+{text = '𝑴𝑬𝑹𝑶 𝑪𝑯𝑨𝑵𝑵𝑬𝑳', url="t.me/YYYDR"},
 },
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
@@ -11364,14 +11364,14 @@ return false
 end
 local Teext =[[
 *اهلا انتツفي اضافات البوت*
-**ٴ— — — — — — — — — — — — — —**
+*ٴ≪┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉≫ٴٴ*
 * يمكنك معرفة حاله تفعيل الاضافات *
 * من خلال ارسال حاله الاضافات *
-*ٴ— — — — — — — — — — — — — —*
+ٴ≪┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉≫ٴٴ
 *يمكنك تصفح الاضافات من خلال*
 *الكيبورد الموجود في الأسفل*
-*ٴ— — — — — — — — — — — — — —*
-[- MeRo TeAm .](t.me/YYYKU)
+ٴ≪┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉≫ٴٴ
+➫ .[🖨┇𝘴𝘰𝘳𝘶𝘤𝘦 𝘔𝘦𝘙𝘰. ](t.me/YYYDR)➤
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
@@ -11382,7 +11382,7 @@ keyboard.inline_keyboard = {
 {text = 'تنبيه المعرف', callback_data="/change-id"},{text = 'تنبيه الصور', callback_data="/change-photo"},
 },
 {
-{text = '- SoUrCe MeRo .', url="t.me/YYYDR"},
+{text = '𝑴𝑬𝑹𝑶 𝑪𝑯𝑨𝑵𝑵𝑬𝑳', url="t.me/YYYDR"},
 },
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
