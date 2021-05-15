@@ -8110,7 +8110,7 @@ database:del(bot_id.."Chek:Welcome"..msg.chat_id_)
 end
 if not database:get(bot_id..'CAPTCHA'..msg.chat_id_) then
 database:set(bot_id.."CAPTCHA"..msg.chat_id_,true) 
-Text = ' *⋄︙تم تفعيل التحقق*'
+Text = ' *⋄︙تم تفعيل التحقق عند دخول الاعضاء*'
 else
 Text = ' *⋄︙بالتاكيد تم تفعيل التحقق*'
 end
@@ -8121,7 +8121,7 @@ if not database:get(bot_id..'CAPTCHA'..msg.chat_id_) then
 Text = '\n *⋄︙بالتاكيد تم تعطيل التحقق*'
 else
 database:del(bot_id.."CAPTCHA"..msg.chat_id_) 
-Text = '\n *⋄︙تم تعطيل التحقق*'
+Text = '\n *⋄︙تم تعطيل التحقق عند دخول الاعضاء*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
