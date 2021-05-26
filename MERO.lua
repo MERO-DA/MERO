@@ -754,8 +754,8 @@ local keyboard = {
 {'اذاعه بالتوجيه ⋄','اذاعه بالتوجيه خاص ⋄'},
 {'اذاعه بالتثبيت ⋄','قائمه الكتم العام ⋄'},
 {'تغير رساله الاشتراك','حذف رساله الاشتراك ⋄','تغير الاشتراك'},
-{'تفعيل الاشتراك الاجباري ⋄','تعطيل الاشتراك الاجباري ⋄'},
 {'الاشتراك الاجباري ⋄','وضع قناة الاشتراك ⋄'},
+{'تفعيل الاشتراك الاجباري ⋄','تعطيل الاشتراك الاجباري ⋄'},
 {'تفعيل البوت الخدمي ⋄','تعطيل البوت الخدمي ⋄'},
 {'تنظيف الكروبات ⋄','تنظيف المشتركين ⋄'},
 {'تغيير المطور الاساسي ⋄'}, 
@@ -2188,7 +2188,7 @@ local Text = '*⋄︙تم تفعيل البوت في المجموعة ↫ '..cha
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '*⋄ معرفة المزيد ؟*',url="https://t.me/YYYDR"},
+{text = '- SoUrCe MeRo .',url="https://t.me/YYYDR"},
 },
 }
 local msg_id = msg.id_/2097152/0.5
@@ -2301,7 +2301,7 @@ local Text = '*⋄︙تم تفعيل البوت في المجموعة ↫ '..cha
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '*⋄ معرفة المزيد ؟*',url="https://t.me/YYYDR"},
+{text = '- SoUrCe MeRo .',url="https://t.me/YYYDR"},
 },
 }
 local msg_id = msg.id_/2097152/0.5
@@ -2730,7 +2730,7 @@ GetFile_Bot(msg)
 end
 if text == 'الاوامر المضافه' and Constructor(msg) then
 local list = database:smembers(bot_id..'List:Cmd:Group:New'..msg.chat_id_..'')
-t = " *⋄︙قائمه الاوامر المضافه*  \n*ٴ— — — — — — — — — — — — — —*\n"
+t = "⋄︙قائمه الاوامر المضافه\nٴ— — — — — — — — — — — — — —\n"
 for k,v in pairs(list) do
 Cmds = database:get(bot_id.."Set:Cmd:Group:New1"..msg.chat_id_..':'..v)
 print(Cmds)
@@ -8099,7 +8099,7 @@ local GetWelcomeGroup = database:get(bot_id..'Get:Welcome:Group'..msg.chat_id_)
 if GetWelcomeGroup then 
 GetWelcome = GetWelcomeGroup
 else 
-GetWelcome = ' *⋄︙لم يتم تعيين ترحيب للكروب*'
+GetWelcome = '⋄︙لم يتم تعيين ترحيب للكروب'
 end 
 send(msg.chat_id_, msg.id_,'['..GetWelcome..']') 
 return false  
@@ -11915,7 +11915,7 @@ local Teext =[[
 *⋄⤂ حضر عام*
 *⋄⤂ كتم عام*
 *⋄⤂ الغاء العام*
-⋄⤂ قائمه العام*
+*⋄⤂ قائمه العام*
 *⋄⤂ مسح قائمه العام*
 *⋄⤂ جلب نسخه البوت*
 *⋄⤂ رفع نسخه البوت*
@@ -11941,7 +11941,7 @@ local Teext =[[
 *⋄⤂ تغير اسم البوت*
 *⋄⤂ اضف/حذف رد للكل*
 *⋄⤂ ردود المطور*
-⋄⤂ مسح ردود المطور*
+*⋄⤂ مسح ردود المطور*
 *ٴ— — — — — — — — — — — — — —*
 *⋄⤂ الاشتراك الاجباري*
 *⋄⤂ تعطيل الاشتراك الاجباري*
