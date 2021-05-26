@@ -2237,7 +2237,7 @@ local Text = '*⋄︙تم تعطيل البوت في المجموعة ↫ '..cha
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '⋄ معرفة المزيد ؟ ',url="https://t.me/YYYDR"},
+{text = '- SoUrCe MeRo .',url="https://t.me/YYYDR"},
 },
 }
 local msg_id = msg.id_/2097152/0.5
