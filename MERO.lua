@@ -446,6 +446,7 @@ local t = '{"BOT_ID": '..bot_id..',"GP_BOT":{'
 for k,v in pairs(list) do   
 NAME = 'MERO Chat'
 link = database:get(bot_id.."Private:Group:Link"..msg.chat_id_) or ''
+CoSu = database:smembers(bot_id..'CoSu'..v)
 ASAS = database:smembers(bot_id..'Basic:Constructor'..v)
 MNSH = database:smembers(bot_id..'Constructor'..v)
 MDER = database:smembers(bot_id..'Manager'..v)
@@ -454,6 +455,17 @@ if k == 1 then
 t = t..'"'..v..'":{"MERO":"'..NAME..'",'
 else
 t = t..',"'..v..'":{"MERO":"'..NAME..'",'
+end
+if #CoSu ~= 0 then 
+t = t..'"CoSu":['
+for k,v in pairs(CoSu) do
+if k == 1 then
+t =  t..'"'..v..'"'
+else
+t =  t..',"'..v..'"'
+end
+end   
+t = t..'],'
 end
 if #ASAS ~= 0 then 
 t = t..'"ASAS":['
@@ -526,7 +538,7 @@ end
 function Addjpg(msg,chat,ID_FILE,File_Name)
 local File = json:decode(https.request('https://api.telegram.org/bot'.. token..'/getfile?file_id='..ID_FILE)) 
 download_to_file('https://api.telegram.org/file/bot'..token..'/'..File.result.file_path,File_Name) 
-sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil,'./'..File_Name,'تم تحويل الملصق الى صوره')     
+sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil,'./'..File_Name,'تم تحويل الملصق الى صوره') 
 os.execute('rm -rf ./'..File_Name) 
 end
 function Addvoi(msg,chat,vi,ty)
@@ -552,13 +564,13 @@ if File_Name:match('.json') then
 if tonumber(File_Name:match('(%d+)')) ~= tonumber(bot_id) then 
 send(chat,msg.id_,"* ⋄︙ملف نسخه ليس لهاذا البوت*")
 return false 
-end      
+end  
 local File = json:decode(https.request('https://api.telegram.org/bot'.. token..'/getfile?file_id='..ID_FILE) ) 
 download_to_file('https://api.telegram.org/file/bot'..token..'/'..File.result.file_path, ''..File_Name) 
 send(chat,msg.id_," *⋄︙جاري ...*\n*⋄︙رفع الملف الان*")
 else
 send(chat,msg.id_,"* ⋄︙عذرا الملف ليس بصيغة {JSON} يرجى رفع الملف الصحيح*")
-end      
+end  
 local info_file = io.open('./'..bot_id..'.json', "r"):read('*a')
 local groups = JSON.decode(info_file)
 for idg,v in pairs(groups.GP_BOT) do
@@ -566,7 +578,12 @@ database:sadd(bot_id..'Chek:Groups',idg)
 database:set(bot_id..'lock:tagservrbot'..idg,true)   
 list ={"lock:Bot:kick","lock:user:name","lock:hashtak","lock:Cmd","lock:Link","lock:forward","lock:Keyboard","lock:geam","lock:Photo","lock:Animation","lock:Video","lock:Audio","lock:vico","lock:Sticker","lock:Document","lock:Unsupported","lock:Markdaun","lock:Contact","lock:Spam"}
 for i,lock in pairs(list) do 
-database:set(bot_id..lock..idg,'del')    
+database:set(bot_id..lock..idg,'del')
+end
+if v.CoSu then
+for k,idmsu in pairs(v.CoSu) do
+database:sadd(bot_id..'CoSu'..idg,idmsu)
+end
 end
 if v.MNSH then
 for k,idmsh in pairs(v.MNSH) do
@@ -589,13 +606,13 @@ database:sadd(bot_id..'Basic:Constructor'..idg,idASAS)
 end
 end
 end
-send(chat,msg.id_,"\n *⋄︙تم رفع الملف بنجاح وتفعيل الكروبات*\n*⋄︙ورفع {الامنشئين الاساسين ; والمنشئين ; *والمدراء; والادمنيه} بنجاح")
+send(chat,msg.id_,"\n *⋄︙تم رفع الملف بنجاح وتفعيل الكروبات*\n*⋄︙ورفع {المالكين و الاساسين ; والمنشئين ; *والمدراء; والادمنيه} بنجاح")
 end
 local function trigger_anti_spam(msg,type)
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data)
 local Name = '['..utf8.sub(data.first_name_,0,40)..'](tg://user?id='..data.id_..')'
 if type == 'kick' then 
-Text = '\n *⋄︙العضــو ↫ '..Name..'*\n*⋄︙قام بالتكرار هنا وتم طرده* '  
+Text = '\n *⋄︙العضــو » '..Name..'*\n*⋄︙قام بالتكرار هنا وتم طرده* '  
 sendText(msg.chat_id_,Text,0,'md')
 chat_kick(msg.chat_id_,msg.sender_user_id_) 
 my_ide = msg.sender_user_id_
@@ -2124,7 +2141,24 @@ end
 end
 
 ------------------------------------------------------------------------ عـمـر الـدلـيـم
-
+if BasicConstructor(msg) then 
+if (msg.content_.ID == "MessagePhoto" or msg.content_.ID == "MessageSticker" or msg.content_.ID == "MessageVideo" or msg.content_.ID == "MessageAnimation" or msg.content_.ID == "MessageUnsupported") and database:get(bot_id.."LoMsg"..msg.chat_id_) then
+database:sadd(bot_id..":IdMsg:"..msg.chat_id_,msg.id_)
+GetTi = database:get(bot_id..':TiMsg:'..msg.chat_id_)
+if GetTi then 
+GetTi = tonumber(GetTi)
+GetTi = 60*60*GetTi
+end
+database:setex(bot_id..":STiMsg:"..msg.chat_id_..msg.id_,GetTi or 21600,true)  
+end
+local DoTi = database:smembers(bot_id..":IdMsg:"..msg.chat_id_)
+for k,v in pairs(DoTi) do
+if not database:get(bot_id..":STiMsg:"..msg.chat_id_..v) then
+DeleteMessage(msg.chat_id_, {[0] = v}) 
+database:srem(bot_id..":IdMsg:"..msg.chat_id_,v)
+end
+end
+end
 ------------------------------------------------------------------------ عـمـر الـدلـيـم
 if msg.content_.ID == 'MessagePhoto' and not Manager(msg) then 
 local filter = database:smembers(bot_id.."filterphoto"..msg.chat_id_)
@@ -2741,7 +2775,7 @@ t = t..""..k..">> ("..v..") \n"
 end
 end
 if #list == 0 then
-t = " *⋄︙لا يوجد اوامر مضافه*"
+t = "⋄︙لا يوجد اوامر مضافه"
 end
 send(msg.chat_id_, msg.id_,'['..t..']')
 end
@@ -2794,6 +2828,33 @@ end
 send(msg.chat_id_, msg.id_,' *⋄︙تم ازالة جميع الاوامر المضافه*')  
 end
 end
+if text == "ترتيب الاوامر" and Constructor(msg) then
+ database:set(bot_id.."Set:Cmd:Group:New1"..msg.chat_id_..":ا","ايدي")
+ database:sadd(bot_id.."List:Cmd:Group:New"..msg.chat_id_,"ا")
+ database:set(bot_id.."Set:Cmd:Group:New1"..msg.chat_id_..":م","رفع مميز")
+ database:sadd(bot_id.."List:Cmd:Group:New"..msg.chat_id_,"م")
+ database:set(bot_id.."Set:Cmd:Group:New1"..msg.chat_id_..":اد","رفع ادمن")
+ database:sadd(bot_id.."List:Cmd:Group:New"..msg.chat_id_,"اد")
+ database:set(bot_id.."Set:Cmd:Group:New1"..msg.chat_id_..":مد","رفع مدير")
+ database:sadd(bot_id.."List:Cmd:Group:New"..msg.chat_id_,"مد")
+ database:set(bot_id.."Set:Cmd:Group:New1"..msg.chat_id_..":من","رفع منشئ")
+ database:sadd(bot_id.."List:Cmd:Group:New"..msg.chat_id_,"من")
+ database:set(bot_id.."Set:Cmd:Group:New1"..msg.chat_id_..":اس","رفع منشئ اساسي")
+ database:sadd(bot_id.."List:Cmd:Group:New"..msg.chat_id_,"اس")
+ database:set(bot_id.."Set:Cmd:Group:New1"..msg.chat_id_..":تعط","تعطيل الايدي بالصوره")
+ database:sadd(bot_id.."List:Cmd:Group:New"..msg.chat_id_,"تعط")
+ database:set(bot_id.."Set:Cmd:Group:New1"..msg.chat_id_..":تفع","تفعيل الايدي بالصوره")
+ database:sadd(bot_id.."List:Cmd:Group:New"..msg.chat_id_,"تفع")
+ database:set(bot_id.."Set:Cmd:Group:New1"..msg.chat_id_..":تك","تنزيل الكل")
+ database:sadd(bot_id.."List:Cmd:Group:New"..msg.chat_id_,"تك")
+ database:set(bot_id.."Set:Cmd:Group:New1"..msg.chat_id_..":رد","اضف رد")
+ database:sadd(bot_id.."List:Cmd:Group:New"..msg.chat_id_,"رد")
+ database:set(bot_id.."Set:Cmd:Group:New1"..msg.chat_id_..":حذ","حذف رد")
+ database:sadd(bot_id.."List:Cmd:Group:New"..msg.chat_id_,"حذ")
+ database:set(bot_id.."Set:Cmd:Group:New1"..msg.chat_id_..":ت","تثبيت")
+ database:sadd(bot_id.."List:Cmd:Group:New"..msg.chat_id_,"ت")
+ send(msg.chat_id_, msg.id_,"*⋄︙تم ترتيب الاوامر بالشكل التالي*\n*⋄︙ايدي - ا .*\n*⋄︙مميز - م .\n⋄︙ادمن - اد .*\n*⋄︙مدير - مد . \n⋄︙منشى - من .*\n*⋄︙المنشئ الاساسي - اس .*\n*⋄︙تعطيل الايدي بالصوره - تعط .*\n*⋄︙تفعيل الايدي بالصوره - تفع .*\n*⋄︙تنزيل الكل - تك .*\n*⋄︙اضف رد - رد .*\n*⋄︙حذف رد - حذ .*\n*⋄︙تثبيت - ت .*")
+ end
 if text == 'اضف امر' and Constructor(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
@@ -2856,6 +2917,16 @@ echo '*———————————~*\n✺✔{ مـده تـشغيـل ال
 end
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
+if text == "تفعيل تنظيف التلقائي" and BasicConstructor(msg)  then
+database:set(bot_id.."LoMsg"..msg.chat_id_,true)
+send(msg.chat_id_, msg.id_, '*⋄︙تم تفعيل التنظيف التلقائي* ')
+return false
+end
+if text == "تعطيل تنظيف التلقائي" and BasicConstructor(msg) then
+database:del(bot_id.."LoMsg"..msg.chat_id_)
+send(msg.chat_id_, msg.id_, '*⋄︙تم تعطيل التنظيف التلقائي* ')
+return false
+end
 if text == 'قفل الدردشه' and msg.reply_to_message_id_ == 0 and Manager(msg) then 
 database:set(bot_id.."lock:text"..msg.chat_id_,true) 
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data)  
@@ -6874,6 +6945,11 @@ send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 end
 return false
+end
+if text and text:match("^(وضع وقت التنظيف) (%d+)$") and BasicConstructor(msg) then
+local GetDo = tonumber(text:match("(%d+)"))
+database:set(bot_id..':TiMsg:'..msg.chat_id_,GetDo) 
+return send(msg.chat_id_, msg.id_,"*⋄︙تم وضع وقت التنظيف ( "..GetDo.." ) ساعه*")
 end
 if text == ("الغاء كتم") and msg.reply_to_message_id_ and Mod(msg) then
 if AddChannel(msg.sender_user_id_) == false then
@@ -11162,6 +11238,16 @@ else
 database:set(bot_id.."AutoFile:Time",os.date("%x"))
 end
 end
+if text == "امسح" and CoSu(msg) then 
+local cun = database:smembers(bot_id..":IdMsg:"..msg.chat_id_)
+if #cun == 0 then 
+send(msg.chat_id_, msg.id_,"*⋄︙لا توجد ميديا لحذفها*") 
+end
+for k,v in pairs(cun) do 
+DeleteMessage(msg.chat_id_, {[0] = v})
+end
+send(msg.chat_id_, msg.id_,"*⋄︙تم مسح الميديا بنجاح*")
+end
 if text == "غنيلي" and not database:get(bot_id.."sing:for:me"..msg.chat_id_) then
 data,res = https.request('https://vvvzvv.ml/amirVois/Teland.php')
 if res == 200 then
@@ -11577,6 +11663,7 @@ local Teext =[[
 *⋄⤂ نسبه الرجوله* 
 *⋄⤂ نسبه الانوثه*
 *⋄⤂ نسبه الحب*
+*⋄⤂ تنظيف التلقائي*
 *⋄⤂ ءall*
  *ٴ— — — — — — — — — — — — — —*
 [- MeRo TeMe .](t.me/YYYDR)
@@ -11738,6 +11825,7 @@ local Teext =[[
 *⋄⤂ الاوامر … كالتالي*
  *ٴ— — — — — — — — — — — — — —*
 *⋄⤂ استعاده الاوامر*
+*⋄⤂ ترتيب الاوامر*
 *⋄⤂ تحويل كالاتي~⪼ صور : ملصق : صوت : بصمه*
 *⋄⤂ صيح ~ تاك ~ المميزين : الادمنيه : المدراء : المنشئين : المنشئين الاساسين : للمالك*
 *⋄⤂ كشف القيود *
@@ -11763,6 +11851,7 @@ local Teext =[[
 *⋄⤂ كشف البوتات*
 *⋄⤂ الصلاحيات*
 *⋄⤂ كشف ~ برد ← بمعرف ← ايدي*
+*⋄⤂ وضع وقت التنظيف + الوقت بالعدد*
 *⋄⤂ تاك للكل*
 *⋄⤂ اضف لقب + لقب*
 *⋄⤂ حذف اللقب*
