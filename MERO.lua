@@ -1,4 +1,3 @@
-
 redis = require('redis') 
 https = require ("ssl.https") 
 serpent = dofile("./library/serpent.lua") 
@@ -2742,7 +2741,7 @@ t = t..""..k..">> ("..v..") \n"
 end
 end
 if #list == 0 then
-t = " *⋄︙لا يوجد اوامر مضافه*"
+t = "⋄︙لا يوجد اوامر مضافه"
 end
 send(msg.chat_id_, msg.id_,'['..t..']')
 end
