@@ -1121,7 +1121,7 @@ send(msg.chat_id_, msg.id_,' *⋄︙اصدار سورس ميرو* \n*⋄︙ال�
 end
 if text == 'قناه تحديثات البوت ⋄' and DevMEROW(msg) then 
 database:del(bot_id..'Srt:Bot') 
-send(msg.chat_id_, msg.id_,' ⋄︙[تحديثات البوت](t.me/YYYKU) \n⋄︙[قناه السورس](t.me/YYYDR)')
+send(msg.chat_id_, msg.id_,' ⋄︙[تحديثات البوت](t.me/YYYDR) \n⋄︙[قناه السورس](t.me/YYYDR)')
 end
 if text == "ضع اسم للبوت ⋄" and DevMEROW(msg) then  
 database:setex(bot_id..'Set:Name:Bot'..msg.sender_user_id_,300,true) 
@@ -2622,7 +2622,7 @@ if text == 'السورس' or text == 'سورس' or text == 'ياسورس' or tex
 Text = "ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ sᴏᴜʀᴄʀ ᴍᴇʀᴏ\n\n[⋄  ᴍᴇʀᴏ ᴄʜᴀɴɴᴇʟ](http://t.me/YYYKU)\n\n[⋄  ɪɴғᴏ sᴏᴜʀᴄᴇ](http://t.me/YYYDR)\n\n[⋄  ᴍᴇʀᴏ ᴅᴇᴠᴇʟᴏᴘᴇʀ](http://t.me/FEEEM)\n\n[⋄  ʙᴏᴛ ᴍᴇʀᴏ](http://t.me/FEEEM)"
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = '⋄ sᴏᴜʀᴄʀ ᴍᴇʀᴏ',url="t.me/YYYKU"}},
+{{text = '⋄ sᴏᴜʀᴄʀ ᴍᴇʀᴏ',url="t.me/YYYDR"}},
 }
 local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/YYYDR&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
@@ -8577,7 +8577,7 @@ send(msg.chat_id_, msg.id_,'*⋄︙لا يمكن وضع او تعديل لقب �
 return false  
 end
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n*⋄︙العضو »* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYKU')..') '
+usertext = '\n*⋄︙العضو »* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..') '
 status  = '\n*⋄︙الايدي »* '..result.sender_user_id_..'\n*⋄︙تم ضافه {'..timsh..'} كلقب له*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -9658,7 +9658,7 @@ keyboard.inline_keyboard = {
 {{text = '⓸', callback_data="/help4"},{text = '⓹', callback_data="/help5"}},
 {{text = '⓺', callback_data="/help6"},{text = '⓻', callback_data="/help7"},{text = '⓼', callback_data="/help8"}},
 {{text = '⓽', callback_data="/help9"},{text = '⓵⓪', callback_data="/help10"}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
@@ -9926,7 +9926,7 @@ if audios.Info == true then
 local Text ='*⋄︙تم اختيار المقطع الصوتي لك*'
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = '- MeRo TeMe ..',url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe ..',url="t.me/YYYDR"}},
 }
 local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..token..'/sendVoice?chat_id=' .. msg.chat_id_ .. '&voice='..URL.escape(audios.info)..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
@@ -10060,7 +10060,7 @@ end
 database:srem(bot_id..'Ban:User'..Chat_id, OnID)
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = Chat_id, user_id_ = OnID, status_ = { ID = "ChatMemberStatusLeft" },},function(arg,ban) end,nil)   
 keyboard = {} 
-keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},}
+keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},}
 https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape('\n*⋄︙تم الغاء حظره بنجاح*')..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 return false
 end
@@ -10074,43 +10074,43 @@ return false
 end
 if database:get(bot_id..'Lock:kick'..Chat_id) and not Constructor(data) then
 keyboard = {} 
-keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},}
+keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},}
 https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(" *⋄︙تم تعطيل الحظر*")..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 return false
 end
 if MEROSudoBot(OnID) then
 keyboard = {} 
-keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},}
+keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},}
 https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape("*⋄︙لا تستطيع (كتم،طرد،حظر،تققيد) مطور السورس او الاساسي*")..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 return false
 end
 if tonumber(OnID) == tonumber(bot_id) then  
 keyboard = {} 
-keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},}
+keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},}
 https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(" *⋄︙لا تسطيع حظر البوت* ")..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 return false
 end
 if Can_or_NotCan(OnID, Chat_id) == true then
 keyboard = {} 
-keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},}
+keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},}
 https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape('\n *⋄︙عذرا لا تستطيع حظر* ( '..Rutba(OnID,Chat_id)..' )')..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 else
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = Chat_id, user_id_ = OnID, status_ = { ID = "ChatMemberStatusKicked" },},function(arg,da) 
 if (da and da.code_ and da.code_ == 400 and da.message_ == "CHAT_ADMIN_REQUIRED") then 
 keyboard = {} 
-keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},}
+keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},}
 https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(' *⋄︙ليس لدي صلاحية حظر المستخدمين يرجى تفعيلها !*')..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 return false  
 end
 if data.can_be_deleted_ == false then 
 keyboard = {} 
-keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},}
+keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},}
 https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(' *⋄︙البوت ليس ادمن يرجى ترقيتي !*')..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 return false  
 end
 database:sadd(bot_id..'Ban:User'..Chat_id, OnID)
 keyboard = {} 
-keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},}
+keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},}
 https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape('\n*⋄︙تم حظره بنجاح*')..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 chat_kick(Chat_id, OnID)
 end,nil)   
@@ -10127,13 +10127,13 @@ return false
 end
 if not database:sismember(bot_id..'Muted:User'..Chat_id,OnID) then
 keyboard = {} 
-keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},}
+keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},}
 https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape('\n*⋄︙الشخص غير مكتوم*')..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 return false
 end
 database:srem(bot_id..'Muted:User'..Chat_id, OnID)
 keyboard = {} 
-keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},}
+keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},}
 https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape('\n*⋄︙تم الغاء كتمه بنجاح*')..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 return false
 end
@@ -10147,30 +10147,30 @@ return false
 end
 if tonumber(OnID) == tonumber(bot_id) then  
 keyboard = {} 
-keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},}
+keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},}
 https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape( " *⋄︙لا تسطيع كتم البوت* ")..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 return false 
 end
 if MEROSudoBot(OnID) then
 keyboard = {} 
-keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},}
+keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},}
 https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape("*⋄︙لا تستطيع (كتم،طرد،حظر،تققيد) مطور السورس او الاساسي*")..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 return false 
 end
 if Can_or_NotCan(OnID, Chat_id) == true then
 keyboard = {} 
-keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},}
+keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},}
 https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape('\n *⋄︙عذرا لا تستطيع كتم* ( '..Rutba(OnID,Chat_id)..' )')..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 else
 if data.can_be_deleted_ == false then 
 keyboard = {} 
-keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},}
+keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},}
 https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(' *⋄︙البوت ليس ادمن يرجى ترقيتي !*')..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 return false  
 end
 database:sadd(bot_id..'Muted:User'..Chat_id, OnID)
 keyboard = {} 
-keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},}
+keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},}
 https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape('\n*⋄︙تم كتمه بنجاح*')..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 end
 return false
@@ -10185,7 +10185,7 @@ return false
 end
 https.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. Chat_id .. "&user_id=" .. OnID .. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")
 keyboard = {} 
-keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},}
+keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},}
 https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape('\n*⋄︙تم الغاء تقيبده بنجاح*')..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 return false
 end
@@ -10199,30 +10199,30 @@ return false
 end
 if tonumber(OnID) == tonumber(bot_id) then  
 keyboard = {} 
-keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},}
+keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},}
 https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape( " *⋄︙لا تسطيع تقييد البوت* ")..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 return false 
 end
 if MEROSudoBot(OnID) then
 keyboard = {} 
-keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},}
+keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},}
 https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape("*⋄︙لا تستطيع (كتم،طرد،حظر،تققيد) مطور السورس او الاساسي*")..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 return false 
 end
 if Can_or_NotCan(OnID, Chat_id) == true then
 keyboard = {} 
-keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},}
+keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},}
 https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape('\n *⋄︙عذرا لا تستطيع تقييد* ( '..Rutba(OnID,Chat_id)..' )')..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 else
 if data.can_be_deleted_ == false then 
 keyboard = {} 
-keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},}
+keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},}
 https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(' *⋄︙البوت ليس ادمن يرجى ترقيتي !*')..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 return false  
 end
 https.request("https://api.telegram.org/bot"..token.."/restrictChatMember?chat_id="..Chat_id.."&user_id="..OnID)
 keyboard = {} 
-keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},}
+keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},}
 https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape('\n*⋄︙تم تقييده بنجاح*')..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 end
 return false
@@ -10240,14 +10240,14 @@ if database:sismember(bot_id..'Basic:Constructor'..Chat_id,OnID) then
 datainlineText = "لديه رتبه منشئ اساسي"
 datainline = {
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif database:sismember(bot_id..'Constructor'..Chat_id,OnID) then
 datainlineText = "لديه رتبه منشئ"
 datainline = {
 {{text = '⋄ منشئ اساسي',callback_data=data.sender_user_id_.."Basic"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif database:sismember(bot_id..'Manager'..Chat_id,OnID) then
 datainlineText = "لديه رتبه مدير"
@@ -10255,7 +10255,7 @@ datainline = {
 {{text = '⋄ منشئ',callback_data=data.sender_user_id_.."Constructor"..OnID}},
 {{text = '⋄ منشئ اساسي',callback_data=data.sender_user_id_.."Basic"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif database:sismember(bot_id..'Mod:User'..Chat_id,OnID) then
 datainlineText = "لديه رتبه ادمن"
@@ -10264,7 +10264,7 @@ datainline = {
 {{text = '⋄ منشئ',callback_data=data.sender_user_id_.."Constructor"..OnID}},
 {{text = '⋄ منشئ اساسي',callback_data=data.sender_user_id_.."Basic"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif database:sismember(bot_id..'Special:User'..Chat_id,OnID) then
 datainlineText = "لديه رتبه مميز"
@@ -10274,7 +10274,7 @@ datainline = {
 {{text = '⋄ منشئ',callback_data=data.sender_user_id_.."Constructor"..OnID}},
 {{text = '⋄ منشئ اساسي',callback_data=data.sender_user_id_.."Basic"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 else
 datainlineText = "لا يمتلك رتبه"
@@ -10285,7 +10285,7 @@ datainline = {
 {{text = '⋄ منشئ',callback_data=data.sender_user_id_.."Constructor"..OnID}},
 {{text = '⋄ منشئ اساسي',callback_data=data.sender_user_id_.."Basic"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 end
 elseif BasicConstructor(data) then
@@ -10293,14 +10293,14 @@ if database:sismember(bot_id..'Constructor'..Chat_id,OnID) then
 datainlineText = "عذرا الشخص يمتلك اعلى رتبه تستطيع  رفعه لها"
 datainline = {	
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif database:sismember(bot_id..'Manager'..Chat_id,OnID) then
 datainlineText = "لديه رتبه مدير"
 datainline = {
 {{text = '⋄ منشئ',callback_data=data.sender_user_id_.."Constructor"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif database:sismember(bot_id..'Mod:User'..Chat_id,OnID) then
 datainlineText = "لديه رتبه ادمن"
@@ -10308,7 +10308,7 @@ datainline = {
 {{text = '⋄ مدير',callback_data=data.sender_user_id_.."Manager"..OnID}},
 {{text = '⋄ منشئ',callback_data=data.sender_user_id_.."Constructor"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif database:sismember(bot_id..'Special:User'..Chat_id,OnID) then
 datainlineText = "لديه رتبه مميز"
@@ -10317,7 +10317,7 @@ datainline = {
 {{text = '⋄ مدير',callback_data=data.sender_user_id_.."Manager"..OnID}},
 {{text = '⋄ منشئ',callback_data=data.sender_user_id_.."Constructor"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 else
 datainlineText = "لا يمتلك رتبه"
@@ -10327,7 +10327,7 @@ datainline = {
 {{text = '⋄ مدير',callback_data=data.sender_user_id_.."Manager"..OnID}},
 {{text = '⋄ منشئ',callback_data=data.sender_user_id_.."Constructor"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 end
 elseif Constructor(data) then
@@ -10335,26 +10335,26 @@ if database:sismember(bot_id..'Basic:Constructor'..Chat_id,OnID) then
 datainlineText = "عذرا الشخص يمتلك رتبه اعلى من رتبتك"
 datainline = {
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif database:sismember(bot_id..'Constructor'..Chat_id,OnID) then
 datainlineText = "عذرا الشخص يمتلك رتبه مشابهه ل رتبتك"
 datainline = {
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif database:sismember(bot_id..'Manager'..Chat_id,OnID) then
 datainlineText = "عذرا الشخص يمتلك اعلى رتبه تستطيع  رفعه لها"
 datainline = {
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif database:sismember(bot_id..'Mod:User'..Chat_id,OnID) then
 datainlineText = "لديه رتبه ادمن"
 datainline = {
 {{text = '⋄ مدير',callback_data=data.sender_user_id_.."Manager"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif database:sismember(bot_id..'Special:User'..Chat_id,OnID) then
 datainlineText = "لديه رتبه مميز"
@@ -10362,7 +10362,7 @@ datainline = {
 {{text = '⋄ ادمن',callback_data=data.sender_user_id_.."mod"..OnID}},
 {{text = '⋄ مدير',callback_data=data.sender_user_id_.."Manager"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 else
 datainlineText = "لا يمتلك رتبه"
@@ -10371,7 +10371,7 @@ datainline = {
 {{text = '⋄ ادمن',callback_data=data.sender_user_id_.."mod"..OnID}},
 {{text = '⋄ مدير',callback_data=data.sender_user_id_.."Manager"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 end
 elseif Manager(data) then
@@ -10379,32 +10379,32 @@ if database:sismember(bot_id..'Basic:Constructor'..Chat_id,OnID) then
 datainlineText = "عذرا الشخص يمتلك رتبه اعلى من رتبتك"
 datainline = {
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif database:sismember(bot_id..'Constructor'..Chat_id,OnID) then
 datainlineText = "عذرا الشخص يمتلك رتبه مشابهه ل رتبتك"
 datainline = {
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif database:sismember(bot_id..'Manager'..Chat_id,OnID) then
 datainlineText = "عذرا الشخص يمتلك رتبه مشابهه ل رتبتك"
 datainline = {
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif database:sismember(bot_id..'Mod:User'..Chat_id,OnID) then
 datainlineText = "عذرا الشخص يمتلك اعلى رتبه تستطيع  رفعه لها"
 datainline = {
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif database:sismember(bot_id..'Special:User'..Chat_id,OnID) then
 datainlineText = "لديه رتبه مميز"
 datainline = {
 {{text = '⋄ ادمن',callback_data=data.sender_user_id_.."mod"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 else
 datainlineText = "لا يمتلك رتبه"
@@ -10412,7 +10412,7 @@ datainline = {
 {{text = '⋄ مميز',callback_data=data.sender_user_id_.."Special"..OnID}},
 {{text = '⋄ ادمن',callback_data=data.sender_user_id_.."mod"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 end
 elseif Mod(data) then
@@ -10420,38 +10420,38 @@ if database:sismember(bot_id..'Basic:Constructor'..Chat_id,OnID) then
 datainlineText = "عذرا الشخص يمتلك رتبه اعلى من رتبتك"
 datainline = {
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif database:sismember(bot_id..'Constructor'..Chat_id,OnID) then
 datainlineText = "عذرا الشخص يمتلك رتبه اعلى من رتبتك"
 datainline = {
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif database:sismember(bot_id..'Manager'..Chat_id,OnID) then
 datainlineText = "عذرا الشخص يمتلك رتبه اعلى من رتبتك"
 datainline = {
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif database:sismember(bot_id..'Mod:User'..Chat_id,OnID) then
 datainlineText = "عذرا الشخص يمتلك رتبه مشابهه ل رتبتك"
 datainline = {
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif database:sismember(bot_id..'Special:User'..Chat_id,OnID) then
 datainlineText = "عذرا الشخص يمتلك اعلى رتبه تستطيع  رفعه لها"
 datainline = {
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 else
 datainlineText = "لا يمتلك رتبه"
 datainline = {
 {{text = '⋄ مميز',callback_data=data.sender_user_id_.."Special"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 end
 end
@@ -10581,7 +10581,7 @@ datainline = {
 {{text =Mo,callback_data=data.sender_user_id_.."unmod"..OnID},{text = 'ادمن ',callback_data=data.sender_user_id_.."unmod"..OnID}},
 {{text =Sp,callback_data=data.sender_user_id_.."unSpecial"..OnID},{text = 'مميز ',callback_data=data.sender_user_id_.."unSpecial"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif BasicConstructor(data) then
 datainline = {
@@ -10590,7 +10590,7 @@ datainline = {
 {{text =Mo,callback_data=data.sender_user_id_.."unmod"..OnID},{text = 'ادمن ',callback_data=data.sender_user_id_.."unmod"..OnID}},
 {{text =Sp,callback_data=data.sender_user_id_.."unSpecial"..OnID},{text = 'مميز ',callback_data=data.sender_user_id_.."unSpecial"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif Constructor(data) then
 datainline = {
@@ -10598,20 +10598,20 @@ datainline = {
 {{text =Mo,callback_data=data.sender_user_id_.."unmod"..OnID},{text = 'ادمن ',callback_data=data.sender_user_id_.."unmod"..OnID}},
 {{text =Sp,callback_data=data.sender_user_id_.."unSpecial"..OnID},{text = 'مميز ',callback_data=data.sender_user_id_.."unSpecial"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif Manager(data) then
 datainline = {
 {{text =Mo,callback_data=data.sender_user_id_.."unmod"..OnID},{text = 'ادمن ',callback_data=data.sender_user_id_.."unmod"..OnID}},
 {{text =Sp,callback_data=data.sender_user_id_.."unSpecial"..OnID},{text = 'مميز ',callback_data=data.sender_user_id_.."unSpecial"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif Mod(data) then
 datainline = {
 {{text =Sp,callback_data=data.sender_user_id_.."unSpecial"..OnID},{text = 'مميز ',callback_data=data.sender_user_id_.."unSpecial"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 end
 bb = {} 
@@ -10663,7 +10663,7 @@ bb.inline_keyboard = {
 {{text =Mo,callback_data=data.sender_user_id_.."unmod"..OnID},{text = 'ادمن ',callback_data=data.sender_user_id_.."unmod"..OnID}},
 {{text =Sp,callback_data=data.sender_user_id_.."unSpecial"..OnID},{text = 'مميز ',callback_data=data.sender_user_id_.."unSpecial"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape('⋄︙ علامه ✅ تعني ان الشخص يمتلك رتبه ويمكنك تنزيلها')..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(bb)) 
 return false
@@ -10712,7 +10712,7 @@ datainline = {
 {{text =Mo,callback_data=data.sender_user_id_.."unmod"..OnID},{text = 'ادمن ',callback_data=data.sender_user_id_.."unmod"..OnID}},
 {{text =Sp,callback_data=data.sender_user_id_.."unSpecial"..OnID},{text = 'مميز ',callback_data=data.sender_user_id_.."unSpecial"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif BasicConstructor(data) then
 datainline = {
@@ -10721,7 +10721,7 @@ datainline = {
 {{text =Mo,callback_data=data.sender_user_id_.."unmod"..OnID},{text = 'ادمن ',callback_data=data.sender_user_id_.."unmod"..OnID}},
 {{text =Sp,callback_data=data.sender_user_id_.."unSpecial"..OnID},{text = 'مميز ',callback_data=data.sender_user_id_.."unSpecial"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif Constructor(data) then
 datainline = {
@@ -10729,20 +10729,20 @@ datainline = {
 {{text =Mo,callback_data=data.sender_user_id_.."unmod"..OnID},{text = 'ادمن ',callback_data=data.sender_user_id_.."unmod"..OnID}},
 {{text =Sp,callback_data=data.sender_user_id_.."unSpecial"..OnID},{text = 'مميز ',callback_data=data.sender_user_id_.."unSpecial"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif Manager(data) then
 datainline = {
 {{text =Mo,callback_data=data.sender_user_id_.."unmod"..OnID},{text = 'ادمن ',callback_data=data.sender_user_id_.."unmod"..OnID}},
 {{text =Sp,callback_data=data.sender_user_id_.."unSpecial"..OnID},{text = 'مميز ',callback_data=data.sender_user_id_.."unSpecial"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif Mod(data) then
 datainline = {
 {{text =Sp,callback_data=data.sender_user_id_.."unSpecial"..OnID},{text = 'مميز ',callback_data=data.sender_user_id_.."unSpecial"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 end
 bb = {} 
@@ -10794,7 +10794,7 @@ datainline = {
 {{text =Mo,callback_data=data.sender_user_id_.."unmod"..OnID},{text = 'ادمن ',callback_data=data.sender_user_id_.."unmod"..OnID}},
 {{text =Sp,callback_data=data.sender_user_id_.."unSpecial"..OnID},{text = 'مميز ',callback_data=data.sender_user_id_.."unSpecial"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif BasicConstructor(data) then
 datainline = {
@@ -10803,7 +10803,7 @@ datainline = {
 {{text =Mo,callback_data=data.sender_user_id_.."unmod"..OnID},{text = 'ادمن ',callback_data=data.sender_user_id_.."unmod"..OnID}},
 {{text =Sp,callback_data=data.sender_user_id_.."unSpecial"..OnID},{text = 'مميز ',callback_data=data.sender_user_id_.."unSpecial"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif Constructor(data) then
 datainline = {
@@ -10811,20 +10811,20 @@ datainline = {
 {{text =Mo,callback_data=data.sender_user_id_.."unmod"..OnID},{text = 'ادمن ',callback_data=data.sender_user_id_.."unmod"..OnID}},
 {{text =Sp,callback_data=data.sender_user_id_.."unSpecial"..OnID},{text = 'مميز ',callback_data=data.sender_user_id_.."unSpecial"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif Manager(data) then
 datainline = {
 {{text =Mo,callback_data=data.sender_user_id_.."unmod"..OnID},{text = 'ادمن ',callback_data=data.sender_user_id_.."unmod"..OnID}},
 {{text =Sp,callback_data=data.sender_user_id_.."unSpecial"..OnID},{text = 'مميز ',callback_data=data.sender_user_id_.."unSpecial"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif Mod(data) then
 datainline = {
 {{text =Sp,callback_data=data.sender_user_id_.."unSpecial"..OnID},{text = 'مميز ',callback_data=data.sender_user_id_.."unSpecial"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 end
 bb = {} 
@@ -10876,7 +10876,7 @@ datainline = {
 {{text =Mo,callback_data=data.sender_user_id_.."unmod"..OnID},{text = 'ادمن ',callback_data=data.sender_user_id_.."unmod"..OnID}},
 {{text =Sp,callback_data=data.sender_user_id_.."unSpecial"..OnID},{text = 'مميز ',callback_data=data.sender_user_id_.."unSpecial"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif BasicConstructor(data) then
 datainline = {
@@ -10885,7 +10885,7 @@ datainline = {
 {{text =Mo,callback_data=data.sender_user_id_.."unmod"..OnID},{text = 'ادمن ',callback_data=data.sender_user_id_.."unmod"..OnID}},
 {{text =Sp,callback_data=data.sender_user_id_.."unSpecial"..OnID},{text = 'مميز ',callback_data=data.sender_user_id_.."unSpecial"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif Constructor(data) then
 datainline = {
@@ -10893,20 +10893,20 @@ datainline = {
 {{text =Mo,callback_data=data.sender_user_id_.."unmod"..OnID},{text = 'ادمن ',callback_data=data.sender_user_id_.."unmod"..OnID}},
 {{text =Sp,callback_data=data.sender_user_id_.."unSpecial"..OnID},{text = 'مميز ',callback_data=data.sender_user_id_.."unSpecial"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif Manager(data) then
 datainline = {
 {{text =Mo,callback_data=data.sender_user_id_.."unmod"..OnID},{text = 'ادمن ',callback_data=data.sender_user_id_.."unmod"..OnID}},
 {{text =Sp,callback_data=data.sender_user_id_.."unSpecial"..OnID},{text = 'مميز ',callback_data=data.sender_user_id_.."unSpecial"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif Mod(data) then
 datainline = {
 {{text =Sp,callback_data=data.sender_user_id_.."unSpecial"..OnID},{text = 'مميز ',callback_data=data.sender_user_id_.."unSpecial"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 end
 bb = {} 
@@ -10959,7 +10959,7 @@ datainline = {
 {{text =Mo,callback_data=data.sender_user_id_.."unmod"..OnID},{text = 'ادمن ',callback_data=data.sender_user_id_.."unmod"..OnID}},
 {{text =Sp,callback_data=data.sender_user_id_.."unSpecial"..OnID},{text = 'مميز ',callback_data=data.sender_user_id_.."unSpecial"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif BasicConstructor(data) then
 datainline = {
@@ -10968,7 +10968,7 @@ datainline = {
 {{text =Mo,callback_data=data.sender_user_id_.."unmod"..OnID},{text = 'ادمن ',callback_data=data.sender_user_id_.."unmod"..OnID}},
 {{text =Sp,callback_data=data.sender_user_id_.."unSpecial"..OnID},{text = 'مميز ',callback_data=data.sender_user_id_.."unSpecial"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif Constructor(data) then
 datainline = {
@@ -10976,20 +10976,20 @@ datainline = {
 {{text =Mo,callback_data=data.sender_user_id_.."unmod"..OnID},{text = 'ادمن ',callback_data=data.sender_user_id_.."unmod"..OnID}},
 {{text =Sp,callback_data=data.sender_user_id_.."unSpecial"..OnID},{text = 'مميز ',callback_data=data.sender_user_id_.."unSpecial"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif Manager(data) then
 datainline = {
 {{text =Mo,callback_data=data.sender_user_id_.."unmod"..OnID},{text = 'ادمن ',callback_data=data.sender_user_id_.."unmod"..OnID}},
 {{text =Sp,callback_data=data.sender_user_id_.."unSpecial"..OnID},{text = 'مميز ',callback_data=data.sender_user_id_.."unSpecial"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 elseif Mod(data) then
 datainline = {
 {{text =Sp,callback_data=data.sender_user_id_.."unSpecial"..OnID},{text = 'مميز ',callback_data=data.sender_user_id_.."unSpecial"..OnID}},
 {{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 end
 bb = {} 
@@ -11047,7 +11047,7 @@ database:del(bot_id..'Special:User'..msg.chat_id_)
 end
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Vs)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 return false
@@ -11068,7 +11068,7 @@ infovid = "⋄︙ اختر صيغه التنزيل الان.\n"
 keyboard = {} 
 keyboard.inline_keyboard = {
 {{text = 'Mp4', callback_data=id_from_user..":DownloadVid:"..msgidrp..":"..id_from_vid..":Mp4"},{text = 'mp3', callback_data=id_from_user..":DownloadVid:"..msgidrp..":"..id_from_vid..":mp3"},{text = 'ogg', callback_data=id_from_user..":DownloadVid:"..msgidrp..":"..id_from_vid..":ogg"}},
-{{text = 'sᴏᴜʀᴄʀ ᴍᴇʀᴏ',url='http://t.me/YYYKU'}},
+{{text = 'sᴏᴜʀᴄʀ ᴍᴇʀᴏ',url='http://t.me/YYYDR'}},
 }
 https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(infovid)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 InfoVid = https.request('https://black-source.tk/Api/BotYoutube.php?Id='..URL.escape(id_from_vid))
@@ -11132,7 +11132,7 @@ local Teext =[[
 *⋄~⪼ الجهات*
 *⋄~⪼ الاشعارات*
 *ٴ— — — — — — — — — — — — — —*
-[- MeRo TeMe .](t.me/YYYKU)
+[- MeRo TeMe .](t.me/YYYDR)
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
@@ -11141,7 +11141,7 @@ keyboard.inline_keyboard = {
 {{text = '⓺', callback_data="/help6"},{text = '⓻', callback_data="/help7"},{text = '⓼', callback_data="/help8"}},
 {{text = '⓽', callback_data="/help9"},{text = '⓵⓪', callback_data="/help10"}},
 {{text = 'الاوامر الرئيسيه', callback_data="/help"}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 end
@@ -11190,7 +11190,7 @@ local Teext =[[
 *⋄~⪼ نسبه الحب*
 *⋄~⪼ ءall*
  *ٴ— — — — — — — — — — — — — —*
-[- MeRo TeMe .](t.me/YYYKU)
+[- MeRo TeMe .](t.me/YYYDR)
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
@@ -11199,7 +11199,7 @@ keyboard.inline_keyboard = {
 {{text = '⓺', callback_data="/help6"},{text = '⓻', callback_data="/help7"},{text = '⓼', callback_data="/help8"}},
 {{text = '⓽', callback_data="/help9"},{text = '⓵⓪', callback_data="/help10"}},
 {{text = 'الاوامر الرئيسيه', callback_data="/help"}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 end
@@ -11227,7 +11227,7 @@ local Teext =[[
 *⋄~⪼ وصف*
 *⋄~⪼ تكرار + عدد*
  *ٴ— — — — — — — — — — — — — —*
-[- MeRo TeMe .](t.me/YYYKU)
+[- MeRo TeMe .](t.me/YYYDR)
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
@@ -11236,7 +11236,7 @@ keyboard.inline_keyboard = {
 {{text = '⓺', callback_data="/help6"},{text = '⓻', callback_data="/help7"},{text = '⓼', callback_data="/help8"}},
 {{text = '⓽', callback_data="/help9"},{text = '⓵⓪', callback_data="/help10"}},
 {{text = 'الاوامر الرئيسيه', callback_data="/help"}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 end
@@ -11274,7 +11274,7 @@ local Teext =[[
 *⋄~⪼ امر *
 *⋄~⪼ الاوامر المضافه*
 *ٴ— — — — — — — — — — — — — —*
-[- MeRo TeMe .](t.me/YYYKU)
+[- MeRo TeMe .](t.me/YYYDR)
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
@@ -11283,7 +11283,7 @@ keyboard.inline_keyboard = {
 {{text = '⓺', callback_data="/help6"},{text = '⓻', callback_data="/help7"},{text = '⓼', callback_data="/help8"}},
 {{text = '⓽', callback_data="/help9"},{text = '⓵⓪', callback_data="/help10"}},
 {{text = 'الاوامر الرئيسيه', callback_data="/help"}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 end
@@ -11323,7 +11323,7 @@ local Teext =[[
 *⋄~⪼ تغير امر الاوامر*
 *⋄~⪼ تغير امر م1 ~ الئ م10*
 *ٴ— — — — — — — — — — — — — —*
-[- MeRo TeMe .](t.me/YYYKU)
+[- MeRo TeMe .](t.me/YYYDR)
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
@@ -11332,7 +11332,7 @@ keyboard.inline_keyboard = {
 {{text = '⓺', callback_data="/help6"},{text = '⓻', callback_data="/help7"},{text = '⓼', callback_data="/help8"}},
 {{text = '⓽', callback_data="/help9"},{text = '⓵⓪', callback_data="/help10"}},
 {{text = 'الاوامر الرئيسيه', callback_data="/help"}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 end
@@ -11391,7 +11391,7 @@ local Teext =[[
 *⋄~⪼ نسبه الكره*
 *⋄~⪼ نسبه الانوثه*
 *ٴ— — — — — — — — — — — — — —*
-[- MeRo TeMe .](t.me/YYYKU)
+[- MeRo TeMe .](t.me/YYYDR)
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
@@ -11400,7 +11400,7 @@ keyboard.inline_keyboard = {
 {{text = '⓺', callback_data="/help6"},{text = '⓻', callback_data="/help7"},{text = '⓼', callback_data="/help8"}},
 {{text = '⓽', callback_data="/help9"},{text = '⓵⓪', callback_data="/help10"}},
 {{text = 'الاوامر الرئيسيه', callback_data="/help"}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 end
@@ -11448,7 +11448,7 @@ local Teext =[[
 *⋄~⪼ رفع + تنزيل ← الحاته*
 *⋄~⪼ تاك للحاتات*
 *ٴ— — — — — — — — — — — — — —*
-[- MeRo TeMe .](t.me/YYYKU)
+[- MeRo TeMe .](t.me/YYYDR)
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
@@ -11457,7 +11457,7 @@ keyboard.inline_keyboard = {
 {{text = '⓺', callback_data="/help6"},{text = '⓻', callback_data="/help7"},{text = '⓼', callback_data="/help8"}},
 {{text = '⓽', callback_data="/help9"},{text = '⓵⓪', callback_data="/help10"}},
 {{text = 'الاوامر الرئيسيه', callback_data="/help"}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 end
@@ -11481,7 +11481,7 @@ local Teext =[[
 *⋄~⪼ اذاعه* 
 *⋄~⪼ ردود المطور *
  *ٴ— — — — — — — — — — — — — —*
-[- MeRo TeMe .](t.me/YYYKU)
+[- MeRo TeMe .](t.me/YYYDR)
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
@@ -11490,7 +11490,7 @@ keyboard.inline_keyboard = {
 {{text = '⓺', callback_data="/help6"},{text = '⓻', callback_data="/help7"},{text = '⓼', callback_data="/help8"}},
 {{text = '⓽', callback_data="/help9"},{text = '⓵⓪', callback_data="/help10"}},
 {{text = 'الاوامر الرئيسيه', callback_data="/help"}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 end
@@ -11567,7 +11567,7 @@ local Teext =[[
 *⋄~⪼ تنظيف المشتركين*
 *⋄~⪼ تنظيف الكروبات*
 *ٴ— — — — — — — — — — — — — —*
-[- MeRo TeMe .](t.me/YYYKU)
+[- MeRo TeMe .](t.me/YYYDR)
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
@@ -11576,7 +11576,7 @@ keyboard.inline_keyboard = {
 {{text = '⓺', callback_data="/help6"},{text = '⓻', callback_data="/help7"},{text = '⓼', callback_data="/help8"}},
 {{text = '⓽', callback_data="/help9"},{text = '⓵⓪', callback_data="/help10"}},
 {{text = 'الاوامر الرئيسيه', callback_data="/help"}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 end
@@ -11614,7 +11614,7 @@ local Teext =[[
 *⋄~⪼ شنو رئيك بهاي بالرد*
 *⋄~⪼ تحب هذا*
 *ٴ— — — — — — — — — — — — — —*
-[- MeRo TeMe .](t.me/YYYKU)
+[- MeRo TeMe .](t.me/YYYDR)
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
@@ -11623,7 +11623,7 @@ keyboard.inline_keyboard = {
 {{text = '⓺', callback_data="/help6"},{text = '⓻', callback_data="/help7"},{text = '⓼', callback_data="/help8"}},
 {{text = '⓽', callback_data="/help9"},{text = '⓵⓪', callback_data="/help10"}},
 {{text = 'الاوامر الرئيسيه', callback_data="/help"}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 end
@@ -11647,7 +11647,7 @@ local Teext =[[
 *⋄م9 ◂ اوامر مطور الاساسي* 
 *⋄م10 ◂ اوامر الاعضاء*
 *ٴ— — — — — — — — — — — — — —*
-[- MeRo TeMe .](t.me/YYYKU) 
+[- MeRo TeMe .](t.me/YYYDR) 
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
@@ -11655,7 +11655,7 @@ keyboard.inline_keyboard = {
 {{text = '⓸', callback_data="/help4"},{text = '⓹', callback_data="/help5"}},
 {{text = '⓺', callback_data="/help6"},{text = '⓻', callback_data="/help7"},{text = '⓼', callback_data="/help8"}},
 {{text = '⓽', callback_data="/help9"},{text = '⓵⓪', callback_data="/help10"}},
-{{text = '- MeRo TeMe .', url="t.me/YYYKU"}},
+{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 end
@@ -11665,7 +11665,7 @@ local idchci = "-100"..idch
 local animation = DAata:match("^animation(.*)$"):gsub('chatid',''):gsub('chatid',''):gsub(idch,''):gsub('-100','')
 local Text ="*⋄ تم الغاء منعها بنجاح*"
 inline = {
-{{text = 'sᴏᴜʀᴄʀ ᴍᴇʀᴏ',url='http://t.me/YYYKU'}},
+{{text = 'sᴏᴜʀᴄʀ ᴍᴇʀᴏ',url='http://t.me/YYYDR'}},
 }
 https.request("https://api.telegram.org/bot"..token.."/deleteMessage?chat_id="..Chat_id.."&message_id="..msg_idd)
 send_inlin_key(Chat_id,Text,inline)
@@ -11676,7 +11676,7 @@ local idchci = database:get(bot_id.."Filter:msg")
 local photo = DAata:match("^pito(.*)$")
 local Text ="*⋄ تم الغاء منعها بنجاح*"
 inline = {
-{{text = 'sᴏᴜʀᴄʀ ᴍᴇʀᴏ',url='http://t.me/YYYKU'}},
+{{text = 'sᴏᴜʀᴄʀ ᴍᴇʀᴏ',url='http://t.me/YYYDR'}},
 }
 https.request("https://api.telegram.org/bot"..token.."/deleteMessage?chat_id="..Chat_id.."&message_id="..msg_idd)
 send_inlin_key(Chat_id,Text,inline)
@@ -11688,7 +11688,7 @@ local idchci = "-100"..idch
 local Sticker = DAata:match("^Sticker(.*)$"):gsub('chatid',''):gsub('chatid',''):gsub(idch,''):gsub('-100','')
 local Text ="*⋄ تم الغاء منعه بنجاح*"
 inline = {
-{{text = 'sᴏᴜʀᴄʀ ᴍᴇʀᴏ',url='http://t.me/YYYKU'}},
+{{text = 'sᴏᴜʀᴄʀ ᴍᴇʀᴏ',url='http://t.me/YYYDR'}},
 }
 https.request("https://api.telegram.org/bot"..token.."/deleteMessage?chat_id="..Chat_id.."&message_id="..msg_idd)
 send_inlin_key(Chat_id,Text,inline)
@@ -11698,7 +11698,7 @@ if DAata and DAata:match("^delallSticker(.*)$") then
 local delallSticker = DAata:match("^delallSticker(.*)$")
 local Text ="*⋄ تم الغاء منع كل المتحركات*"
 inline = {
-{{text = 'sᴏᴜʀᴄʀ ᴍᴇʀᴏ',url='http://t.me/YYYKU'}},
+{{text = 'sᴏᴜʀᴄʀ ᴍᴇʀᴏ',url='http://t.me/YYYDR'}},
 }
 https.request("https://api.telegram.org/bot"..token.."/deleteMessage?chat_id="..Chat_id.."&message_id="..msg_idd)
 send_inlin_key(Chat_id,Text,inline)
@@ -11711,7 +11711,7 @@ if DAata and DAata:match("^delallanimation(.*)$") then
 local delallmation = DAata:match("^delallanimation(.*)$")
 local Text ="*⋄ تم الغاء منع كل المتحركات*"
 inline = {
-{{text = 'sᴏᴜʀᴄʀ ᴍᴇʀᴏ',url='http://t.me/YYYKU'}},
+{{text = 'sᴏᴜʀᴄʀ ᴍᴇʀᴏ',url='http://t.me/YYYDR'}},
 }
 https.request("https://api.telegram.org/bot"..token.."/deleteMessage?chat_id="..Chat_id.."&message_id="..msg_idd)
 send_inlin_key(Chat_id,Text,inline)
@@ -11724,7 +11724,7 @@ if DAata and DAata:match("^delallph(.*)$") then
 local delallph = DAata:match("^delallph(.*)$")
 local Text ="*⋄ تم الغاء منع كل الصور*"
 inline = {
-{{text = 'sᴏᴜʀᴄʀ ᴍᴇʀᴏ',url='http://t.me/YYYKU'}},
+{{text = 'sᴏᴜʀᴄʀ ᴍᴇʀᴏ',url='http://t.me/YYYDR'}},
 }
 https.request("https://api.telegram.org/bot"..token.."/deleteMessage?chat_id="..Chat_id.."&message_id="..msg_idd)
 send_inlin_key(Chat_id,Text,inline)
@@ -11738,13 +11738,13 @@ if database:get(bot_id..'Set:array'..data.sender_user_id_..':'..Chat_id) == 'tru
 database:del(bot_id..'Set:array'..data.sender_user_id_..':'..Chat_id)
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = 'sᴏᴜʀᴄʀ ᴍᴇʀᴏ',url='http://t.me/YYYKU'}},
+{{text = 'sᴏᴜʀᴄʀ ᴍᴇʀᴏ',url='http://t.me/YYYDR'}},
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(" *⋄︙تم حفظ الردود بنجاح*")..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 else
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = 'sᴏᴜʀᴄʀ ᴍᴇʀᴏ',url='http://t.me/YYYKU'}},
+{{text = 'sᴏᴜʀᴄʀ ᴍᴇʀᴏ',url='http://t.me/YYYDR'}},
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(" *⋄︙تم تنفيذ الامر سابقا*")..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 end
@@ -11754,28 +11754,28 @@ tdcli_function({ID="ChangeChatMemberStatus",chat_id_=Chat_id,user_id_=data.sende
 if (data and data.code_ and data.code_ == 400 and data.message_ == "CHAT_ADMIN_REQUIRED") then 
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = 'sᴏᴜʀᴄʀ ᴍᴇʀᴏ',url='http://t.me/YYYKU'}},
+{{text = 'sᴏᴜʀᴄʀ ᴍᴇʀᴏ',url='http://t.me/YYYDR'}},
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(" *⋄︙ليس لدي صلاحية حظر المستخدمين يرجى تفعيلها !*")..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 end
 if (data and data.code_ and data.code_ == 3) then 
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = 'sᴏᴜʀᴄʀ ᴍᴇʀᴏ',url='http://t.me/YYYKU'}},
+{{text = 'sᴏᴜʀᴄʀ ᴍᴇʀᴏ',url='http://t.me/YYYDR'}},
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(" *⋄︙البوت ليس ادمن يرجى ترقيتي !*")..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 end
 if data and data.code_ and data.code_ == 400 and data.message_ == "USER_ADMIN_INVALID" then 
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = 'sᴏᴜʀᴄʀ ᴍᴇʀᴏ',url='http://t.me/YYYKU'}},
+{{text = 'sᴏᴜʀᴄʀ ᴍᴇʀᴏ',url='http://t.me/YYYDR'}},
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(" *⋄︙عذرا لا استطيع طرد ادمنية الكروب*")..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 end
 if data and data.ID and data.ID == 'Ok' then
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = 'sᴏᴜʀᴄʀ ᴍᴇʀᴏ',url='http://t.me/YYYKU'}},
+{{text = 'sᴏᴜʀᴄʀ ᴍᴇʀᴏ',url='http://t.me/YYYDR'}},
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(" *⋄︙تم الطرد بنجاح*")..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 end
@@ -11785,7 +11785,7 @@ if DAata == 'noKikedMe'..data.sender_user_id_ then
 local Text ="*⋄ تم الغاء الطرد بنجاح .*"
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = 'sᴏᴜʀᴄʀ ᴍᴇʀᴏ',url='http://t.me/YYYKU'}},
+{{text = 'sᴏᴜʀᴄʀ ᴍᴇʀᴏ',url='http://t.me/YYYDR'}},
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Text)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 end
