@@ -2164,32 +2164,40 @@ end
 end
 end
 
-if text == 'تفعيل' and Sudo(msg) and GetChannelMember(msg) then
+if text == 'تفعيل' and Sudo(msg) then
+if AddChannel(msg.sender_user_id_) == false then
+local textchuser = database:get(bot_id..'text:ch:user')
+if textchuser then
+send(msg.chat_id_, msg.id_,'['..textchuser..']')
+else
+send(msg.chat_id_, msg.id_,'*⋄︙عذࢪا عليڪ الاشتࢪاڪ في قناه البوت* \n*⋄︙اشتࢪڪ هنا عمࢪي* ['..database:get(bot_id..'add:ch:username')..']')
+end
+return false
+end
 if msg.can_be_deleted_ == false then 
-send(msg.chat_id_, msg.id_,' ⋄︙عذرا يرجى ترقيه البوت مشرف !')
+send(msg.chat_id_, msg.id_,'*⋄︙عذرا يرجى ترقيه البوت مشرف !*')
 return false  
 end
 tdcli_function ({ ID = "GetChannelFull", channel_id_ = getChatId(msg.chat_id_).ID }, function(arg,data)  
-if tonumber(data.member_count_) < tonumber(database:get(bot_id..'Num:Add:Bot') or 0) and not DevMEROW(msg) then
-send(msg.chat_id_, msg.id_,' *⋄︙عدد اعضاء الكروب قليله يرجى جمع >> {'..(database:get(bot_id..'Num:Add:Bot') or 0)..'} عضو*')
+if tonumber(data.member_count_) < tonumber(database:get(bot_id..'Num:Add:Bot') or 0) and not DevHaDr(msg) then
+send(msg.chat_id_, msg.id_,'*⋄︙عذراً عدد اعضاء المجموعة قليله العدد المطلوب لتفعيل البوت هـو -› {'..(database:get(bot_id..'Num:Add:Bot') or 0)..'} عضو*')
 return false
 end
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)
 tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,chat)  
 if database:sismember(bot_id..'Chek:Groups',msg.chat_id_) then
-send(msg.chat_id_, msg.id_,' *⋄︙بالتأكيد تم تفعيل الكروب*')
+send(msg.chat_id_, msg.id_,'*⋄︙بالتأكيد تم تفعيل البوت في المجموعة*')
 else
-sendText(msg.chat_id_,'\n *⋄︙بواسطه »* ['..string.sub(result.first_name_,0, 70)..'](tg://user?id='..result.id_..')\n*⋄︙تم تفعيل الكروب *{'..chat.title_..'}',msg.id_/2097152/0.5,'md')
-tdcli_function ({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100",""),filter_ = {ID = "ChannelMembersAdministrators"},offset_ = 0,limit_ = 100},function(arg,data) 
-local admins = data.members_
-for i=0 , #admins do
-if data.members_[i].status_.ID == "ChatMemberStatusCreator" then
-database:sadd(bot_id.."CoSu"..msg.chat_id_,admins[i].user_id_)
-end 
-end  
-end,nil)
-database:sadd(bot_id..'Chek:Groups',msg.chat_id_)  
-database:sadd(bot_id..'Basic:Constructor'..msg.chat_id_, msg.sender_user_id_)
+local Text = '*⋄︙تم تفعيل البوت في المجموعة ↫ '..chat.title_..'*'
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = '- SoUrCe MeRo .',url="https://t.me/YYYDR"},
+},
+}
+local msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+database:sadd(bot_id..'Chek:Groups',msg.chat_id_)
 local Name = '['..result.first_name_..'](tg://user?id='..result.id_..')'
 local NameChat = chat.title_
 local IdChat = msg.chat_id_
@@ -2214,13 +2222,30 @@ end,nil)
 end,nil) 
 end,nil)
 end
-if text == 'تعطيل' and Sudo(msg) and GetChannelMember(msg) then
+if text == 'تعطيل' and Sudo(msg) then
+if AddChannel(msg.sender_user_id_) == false then
+local textchuser = database:get(bot_id..'text:ch:user')
+if textchuser then
+send(msg.chat_id_, msg.id_,'['..textchuser..']')
+else
+send(msg.chat_id_, msg.id_,'  *⋄︙عذࢪا عليڪ الاشتࢪاڪ في قناه البوت* \n*⋄︙اشتࢪڪ هنا عمࢪي* ['..database:get(bot_id..'add:ch:username')..']')
+end
+return false
+end
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)
 tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,chat)  
 if not database:sismember(bot_id..'Chek:Groups',msg.chat_id_) then
-send(msg.chat_id_, msg.id_,' *⋄︙بالتأكيد تم تعطيل الكروب*')
+send(msg.chat_id_, msg.id_,'*⋄︙بالتأكيد تم تعطيل البوت في المجموعة*')
 else
-sendText(msg.chat_id_,'\n *⋄︙بواسطه »* ['..string.sub(result.first_name_,0, 70)..'](tg://user?id='..result.id_..')\n*⋄︙تم تعطيل الكروب *{'..chat.title_..'}',msg.id_/2097152/0.5,'md')
+local Text = '*⋄︙تم تعطيل البوت في المجموعة ↫ '..chat.title_..'*'
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = '- SoUrCe MeRo .',url="https://t.me/YYYDR"},
+},
+}
+local msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 database:srem(bot_id..'Chek:Groups',msg.chat_id_)  
 local Name = '['..result.first_name_..'](tg://user?id='..result.id_..')'
 local NameChat = chat.title_
@@ -2232,22 +2257,35 @@ LinkGp = linkgpp.result
 else
 LinkGp = 'لا يوجد'
 end
-Text = '\nتم تعطيل الكروب  ⋄︙'..
-'\n ⋄︙بواسطة {'..Name..'}'..
-'\n ⋄︙ايدي الكروب {'..IdChat..'}'..
-'\n ⋄︙اسم الكروب {['..NameChat..']}'..
-'\n ⋄︙الرابط {['..LinkGp..']}'
-if not DevMEROW(msg) then
+Text = '\nتم تعطيل المجموعه⋄︙'..
+'\n⋄︙بواسطة {'..Name..'}'..
+'\n⋄︙ايدي المجموعه {`'..IdChat..'`}'..
+'\n⋄︙اسم المجموعه {['..NameChat..']}'..
+'\n⋄︙الرابط {['..LinkGp..']}'
+if not SudoBot(msg) then
 sendText(SUDO,Text,0,'md')
 end
 end
 end,nil) 
 end,nil) 
 end
-if text == 'تفعيل' and not Sudo(msg) and not database:get(bot_id..'Free:Bots') and GetChannelMember(msg) then
+if text == 'تفعيل' and not Sudo(msg) and not database:get(bot_id..'Free:Bots') then
+if AddChannel(msg.sender_user_id_) == false then
+local textchuser = database:get(bot_id..'text:ch:user')
+if textchuser then
+send(msg.chat_id_, msg.id_,'['..textchuser..']')
+else
+send(msg.chat_id_, msg.id_,'  *⋄︙عذࢪا عليڪ الاشتࢪاڪ في قناه البوت* \n*⋄︙اشتࢪڪ هنا عمࢪي* ['..database:get(bot_id..'add:ch:username')..']')
+end
+return false
+end
+if msg.can_be_deleted_ == false then 
+send(msg.chat_id_, msg.id_,'*⋄︙عذرا يرجى ترقيه البوت مشرف !*')
+return false  
+end
 tdcli_function ({ ID = "GetChannelFull", channel_id_ = getChatId(msg.chat_id_).ID }, function(arg,data)  
-if tonumber(data.member_count_) < tonumber(database:get(bot_id..'Num:Add:Bot') or 0) and not DevMEROW(msg) then
-send(msg.chat_id_, msg.id_,' *⋄︙عدد اعضاء الكروب قليله يرجى جمع >>* {'..(database:get(bot_id..'Num:Add:Bot') or 0)..'} عضو')
+if tonumber(data.member_count_) < tonumber(database:get(bot_id..'Num:Add:Bot') or 0) and not DevHaDr(msg) then
+send(msg.chat_id_, msg.id_,'*⋄︙عذراً عدد اعضاء المجموعة قليله العدد المطلوب لتفعيل البوت هـو -› {'..(database:get(bot_id..'Num:Add:Bot') or 0)..'} عضو*')
 return false
 end
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)
@@ -2261,19 +2299,19 @@ elseif da.status_.ID == "ChatMemberStatusEditor" then
 var = 'مشرف'
 end
 if database:sismember(bot_id..'Chek:Groups',msg.chat_id_) then
-send(msg.chat_id_, msg.id_,' *⋄︙تم تفعيل الكروب*')
+send(msg.chat_id_, msg.id_,'*⋄︙بالتأكيد تم تفعيل البوت في المجموعة*')
 else
-sendText(msg.chat_id_,'\n *⋄︙بواسطه »* ['..string.sub(result.first_name_,0, 70)..'](tg://user?id='..result.id_..')\n*⋄︙تم تفعيل الكروب *{'..chat.title_..'}',msg.id_/2097152/0.5,'md')
-tdcli_function ({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100",""),filter_ = {ID = "ChannelMembersAdministrators"},offset_ = 0,limit_ = 100},function(arg,data) 
-local admins = data.members_
-for i=0 , #admins do
-if data.members_[i].status_.ID == "ChatMemberStatusCreator" then
-database:sadd(bot_id.."CoSu"..msg.chat_id_,admins[i].user_id_)
-end 
-end  
-end,nil)
+local Text = '*⋄︙تم تفعيل البوت في المجموعة ↫ '..chat.title_..'*'
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = '- SoUrCe MeRo .',url="https://t.me/YYYDR"},
+},
+}
+local msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 database:sadd(bot_id..'Chek:Groups',msg.chat_id_)  
-database:sadd(bot_id..'Basic:Constructor'..msg.chat_id_, msg.sender_user_id_)
+database:sadd(bot_id..'CoSu'..msg.chat_id_, msg.sender_user_id_)
 local Name = '['..result.first_name_..'](tg://user?id='..result.id_..')'
 local NumMember = data.member_count_
 local NameChat = chat.title_
@@ -2366,16 +2404,6 @@ end
 if text == "تعطيل الاضافات" and SudoBot(msg) then
 send(msg.chat_id_, msg.id_, '*⋄︙ تم تعطيل الاضافات*')
 database:set(bot_id.."AL:Sre:stats","❌")
-end
-if text == "الاضافات" and Constructor(msg) then
-local AMIRDEV = database:get(bot_id.."AL:Sre:stats") or "لم يتم التحديد"
-send(msg.chat_id_, msg.id_,"*حاله الاضافات هي : {"..AMIRDEV.."}*\n*اذا كانت {✔} الاضافات مفعله*\n*اذا كانت {❌} الاضافات معطله*")
-end
-function bnnaGet(user_id, cb)
-tdcli_function ({
-ID = "GetUser",
-user_id_ = user_id
-}, cb, nil)
 end
 
 if database:get(bot_id.."block:name:stats"..msg.chat_id_) == "open" then
@@ -9664,6 +9692,39 @@ local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 return false
 end
+----------------------------------------------------------------------------
+if text == 'الاضافات' then
+if not Constructor(msg) then
+send(msg.chat_id_, msg.id_,'⋄︙هاذا الامر خاص بالادمنيه\n⋄︙ارسل {م10} لعرض اوامر الاعضاء')
+return false
+end
+local Text =[[
+*اهلا انتツفي اضافات البوت*
+*ٴ— — — — — — — — — — — — — —*
+* يمكنك معرفة حاله تفعيل الاضافات *
+* من خلال ارسال حاله الاضافات *
+*ٴ— — — — — — — — — — — — — —*
+*يمكنك تصفح الاضافات من خلال*
+*الكيبورد الموجود في الأسفل*
+*ٴ— — — — — — — — — — — — — —*
+[- MeRo TeAm .](t.me/YYYKU)
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'كتم الاسماء', callback_data="/mute-name"},{text = 'التوحيد', callback_data="/oMr"},{text = 'تنبيه الأسماء', callback_data="/change-names"},
+},
+{
+{text = 'تنبيه المعرف', callback_data="/change-id"},{text = 'تنبيه الصور', callback_data="/change-photo"},
+},
+{
+{text = '- SoUrCe MeRo .', url="t.me/YYYDR"},
+},
+}
+local msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+return false
+end
 if text == 'تعطيل الالعاب الاحترافيه' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id..'lockGeamVip'..msg.chat_id_,true)  
 send(msg.chat_id_, msg.id_,'*⋄︙تم تعطيل الالعاب الاحترافيه*')
@@ -10049,28 +10110,198 @@ local From_id = data.id_
 local Msg_id = data.message_id_
 local msg_idd = Msg_id/2097152/0.5
 local DAata = data.payload_.data_
-if DAata and DAata:match("^(%d+)unbeen(.*)$") then
-local notId  = DAata:match("(%d+)")  
-local OnID = DAata:gsub('unbeen',''):gsub(notId,'')
-if tonumber(data.sender_user_id_) ~= tonumber(notId) then  
-local notText = '⋄︙ عذرا الاوامر هذه لا تخصك'
+Ok_id  = DAata:match("(%d+)")  
+if DAata == 'okCaptcha'..data.sender_user_id_ then  
+DeleteMessage(Chat_id, {[0] = Msg_id}) 
+return https.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. Chat_id .. "&user_id="..Ok_id .. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")
+end
+if DAata == '/mute-name' then
+if not Constructor(data) then
+local notText = '🚫 عذرا الاوامر هذه لا تخصك'
 https.request("https://api.telegram.org/bot"..token.."/answerCallbackQuery?callback_query_id="..data.id_.."&text="..URL.escape(notText).."&show_alert=true")
 return false
 end
-database:srem(bot_id..'Ban:User'..Chat_id, OnID)
-tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = Chat_id, user_id_ = OnID, status_ = { ID = "ChatMemberStatusLeft" },},function(arg,ban) end,nil)   
+local Teext =[[
+*انت الان في قائمة كتم الأسماء*
+*ٴ— — — — — — — — — — — — — —*
+*الاوامر الخاصة فـي كتم الاسماء*
+*تفعيل كتم الاسم*
+*تعطيل كتم الاسم*
+*الاسماء المكتومه*
+*كتم اسم + الاسم المراد كتمه*
+*الغاء كتم اسم + الاسم المراد الغاء كتمه*
+]]
 keyboard = {} 
-keyboard.inline_keyboard = {{{text = 'رجوع',callback_data=data.sender_user_id_.."Bbk"..OnID}},{{text = '- MeRo TeMe .', url="t.me/YYYDR"}},}
-https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape('\n*⋄︙تم الغاء حظره بنجاح*')..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
-return false
+keyboard.inline_keyboard = {
+{
+{text = 'كتم الاسماء', callback_data="/mute-name"},{text = 'التوحيد', callback_data="/oMr"},{text = 'تنبيه الأسماء', callback_data="/change-names"},
+},
+{
+{text = 'تنبيه المعرف', callback_data="/change-id"},{text = 'تنبيه الصور', callback_data="/change-photo"},
+},
+{
+{text = 'القائمة الرئيسيه', callback_data="/add"},
+},
+{
+{text = '- SoUrCe MeRo .', url="t.me/YYYDR"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 end
-if DAata and DAata:match("^(%d+)been(.*)$") then
-local notId  = DAata:match("(%d+)")  
-local OnID = DAata:gsub('been',''):gsub(notId,'')
-if tonumber(data.sender_user_id_) ~= tonumber(notId) then  
-local notText = '⋄︙ عذرا الاوامر هذه لا تخصك'
+if DAata == '/oMr' then
+if not Constructor(data) then
+local notText = '🚫 عذرا الاوامر هذه لا تخصك'
 https.request("https://api.telegram.org/bot"..token.."/answerCallbackQuery?callback_query_id="..data.id_.."&text="..URL.escape(notText).."&show_alert=true")
 return false
+end
+local Teext =[[
+*انت الان في قائمة التوحيد*
+*ٴ— — — — — — — — — — — — — —*
+*الاوامر الخاصة فـي التوحيد*
+*تفعيل التوحيد*
+*تعطيل التوحيد*
+*وضع توحيد + التوحيد*
+*تعين عدد الكتم + عدد*
+*التوحيد*
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'كتم الاسماء', callback_data="/mute-name"},{text = 'التوحيد', callback_data="/oMr"},{text = 'تنبيه الأسماء', callback_data="/change-names"},
+},
+{
+{text = 'تنبيه المعرف', callback_data="/change-id"},{text = 'تنبيه الصور', callback_data="/change-photo"},
+},
+{
+{text = 'القائمة الرئيسيه', callback_data="/add"},
+},
+{
+{text = '- SoUrCe MeRo .', url="t.me/YYYDR"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
+end
+if DAata == '/change-names' then
+if not Constructor(data) then
+local notText = '🚫 عذرا الاوامر هذه لا تخصك'
+https.request("https://api.telegram.org/bot"..token.."/answerCallbackQuery?callback_query_id="..data.id_.."&text="..URL.escape(notText).."&show_alert=true")
+return false
+end
+local Teext =[[
+*انت الان في قائمة تنبيه الاسماء*
+*ٴ— — — — — — — — — — — — — —*
+*الاوامر الخاصة فـي تنبيه الاسماء* 
+*تفعيل تنبيه الاسماء*
+*تعطيل تنبيه الاسماء*
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'كتم الاسماء', callback_data="/mute-name"},{text = 'التوحيد', callback_data="/oMr"},{text = 'تنبيه الأسماء', callback_data="/change-names"},
+},
+{
+{text = 'تنبيه المعرف', callback_data="/change-id"},{text = 'تنبيه الصور', callback_data="/change-photo"},
+},
+{
+{text = 'القائمة الرئيسيه', callback_data="/add"},
+},
+{
+{text = '- SoUrCe MeRo .', url="t.me/YYYDR"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
+end
+if DAata == '/change-id' then
+if not Constructor(data) then
+local notText = '🚫 عذرا الاوامر هذه لا تخصك'
+https.request("https://api.telegram.org/bot"..token.."/answerCallbackQuery?callback_query_id="..data.id_.."&text="..URL.escape(notText).."&show_alert=true")
+return false
+end
+local Teext =[[
+*انت الان في قائمة تنبيه المعرف*
+*ٴ— — — — — — — — — — — — — —*
+*الاوامر الخاصة فـي تنبيه المعرف*
+*تفعيل تنبيه المعرف*
+*تعطيل تنبيه المعرف*
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'كتم الاسماء', callback_data="/mute-name"},{text = 'التوحيد', callback_data="/oMr"},{text = 'تنبيه الأسماء', callback_data="/change-names"},
+},
+{
+{text = 'تنبيه المعرف', callback_data="/change-id"},{text = 'تنبيه الصور', callback_data="/change-photo"},
+},
+{
+{text = 'القائمة الرئيسيه', callback_data="/add"},
+},
+{
+{text = '- SoUrCe MeRo .', url="t.me/YYYDR"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
+end
+if DAata == '/change-photo' then
+if not Constructor(data) then
+local notText = '🚫 عذرا الاوامر هذه لا تخصك'
+https.request("https://api.telegram.org/bot"..token.."/answerCallbackQuery?callback_query_id="..data.id_.."&text="..URL.escape(notText).."&show_alert=true")
+return false
+end
+local Teext =[[
+*انت الان في قائمة تنبيه الصور*
+*ٴ— — — — — — — — — — — — — —*
+*الاوامر الخاصة فـي تنبيه الصور*
+*تفعيل تنبيه الصور*
+*تعطيل تنبيه الصور*
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'كتم الاسماء', callback_data="/mute-name"},{text = 'التوحيد', callback_data="/oMr"},{text = 'تنبيه الأسماء', callback_data="/change-names"},
+},
+{
+{text = 'تنبيه المعرف', callback_data="/change-id"},{text = 'تنبيه الصور', callback_data="/change-photo"},
+},
+{
+{text = 'القائمة الرئيسيه', callback_data="/add"},
+},
+{
+{text = '- SoUrCe MeRo .', url="t.me/YYYDR"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
+end
+--- callback added
+if DAata == '/add' then
+if not Constructor(data) then
+local notText = '🚫 عذرا الاوامر هذه لا تخصك'
+https.request("https://api.telegram.org/bot"..token.."/answerCallbackQuery?callback_query_id="..data.id_.."&text="..URL.escape(notText).."&show_alert=true")
+return false
+end
+local Teext =[[
+*اهلا انتツفي اضافات البوت*
+*ٴ— — — — — — — — — — — — — —*
+* يمكنك معرفة حاله تفعيل الاضافات *
+* من خلال ارسال حاله الاضافات *
+*ٴ— — — — — — — — — — — — — —*
+*يمكنك تصفح الاضافات من خلال*
+*الكيبورد الموجود في الأسفل*
+*ٴ— — — — — — — — — — — — — —*
+[- MeRo TeMe .](t.me/YYYDR)
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'كتم الاسماء', callback_data="/mute-name"},{text = 'التوحيد', callback_data="/oMr"},{text = 'تنبيه الأسماء', callback_data="/change-names"},
+},
+{
+{text = 'تنبيه المعرف', callback_data="/change-id"},{text = 'تنبيه الصور', callback_data="/change-photo"},
+},
+{
+{text = '- SoUrCe MeRo .', url="t.me/YYYDR"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 end
 if database:get(bot_id..'Lock:kick'..Chat_id) and not Constructor(data) then
 keyboard = {} 
