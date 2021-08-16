@@ -10104,7 +10104,7 @@ database:srem(bot_id..'Chek:Groups','-100'..data.channel_.id_)
 end,nil)
 end
 end
-iif data.ID == "UpdateNewCallbackQuery" then
+if data.ID == "UpdateNewCallbackQuery" then
 local Chat_id = data.chat_id_
 local From_id = data.id_
 local Msg_id = data.message_id_
