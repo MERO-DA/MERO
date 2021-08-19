@@ -2164,10 +2164,12 @@ end
 end
 end
 
-if text == 'تفعيل' and Sudo(msg) then
+if text == 'تفعيل' and Sudo(msg) and GetChannelMember(msg) then
 tdcli_function ({ ID = "GetChannelFull", channel_id_ = getChatId(msg.chat_id_).ID }, function(arg,data)  
 if tonumber(data.member_count_) < tonumber(database:get(bot_id..'Num:Add:Bot') or 0) and not DevHaDr(msg) then
 send(msg.chat_id_, msg.id_,'*⋄︙عذراً عدد اعضاء المجموعة قليله العدد المطلوب لتفعيل البوت هـو -› {'..(database:get(bot_id..'Num:Add:Bot') or 0)..'} عضو*')
+and
+GetChannelMember(msg) then
 return false
 end
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)
@@ -2209,12 +2211,14 @@ end,nil)
 end,nil) 
 end,nil)
 end
-if text == 'تعطيل' and Sudo(msg) then
+if text == 'تعطيل' and Sudo(msg) and GetChannelMember(msg) then
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)
 tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,chat)  
 if not database:sismember(bot_id..'Chek:Groups',msg.chat_id_) then
 send(msg.chat_id_, msg.id_,'*⋄︙بالتأكيد تم تعطيل البوت في المجموعة*')
 else
+and
+GetChannelMember(msg) then
 local Text = '*⋄︙تم تعطيل البوت في المجموعة ↫ '..chat.title_..'*'
 keyboard = {} 
 keyboard.inline_keyboard = {
@@ -2247,7 +2251,7 @@ end
 end,nil) 
 end,nil) 
 end
-if text == 'تفعيل' and not Sudo(msg) and not database:get(bot_id..'Free:Bots') then
+if text == 'تفعيل' and not Sudo(msg) and not database:get(bot_id..'Free:Bots') and GetChannelMember(msg) then
 if msg.can_be_deleted_ == false then 
 send(msg.chat_id_, msg.id_,'*⋄︙عذرا يرجى ترقيه البوت مشرف !*')
 return false  
@@ -2255,6 +2259,8 @@ end
 tdcli_function ({ ID = "GetChannelFull", channel_id_ = getChatId(msg.chat_id_).ID }, function(arg,data)  
 if tonumber(data.member_count_) < tonumber(database:get(bot_id..'Num:Add:Bot') or 0) and not DevHaDr(msg) then
 send(msg.chat_id_, msg.id_,'*⋄︙عذراً عدد اعضاء المجموعة قليله العدد المطلوب لتفعيل البوت هـو -› {'..(database:get(bot_id..'Num:Add:Bot') or 0)..'} عضو*')
+and
+GetChannelMember(msg) then
 return false
 end
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)
@@ -10945,7 +10951,6 @@ local Teext =[[
 *⋄~⪼ الابراج*
 *⋄~⪼ نسبه الرجوله* 
 *⋄~⪼ نسبه الانوثه*
-*⋄~⪼ نسبه الكره*
 *⋄~⪼ نسبه الحب*
 *⋄~⪼ ءall*
  *ٴ— — — — — — — — — — — — — —*
@@ -11142,7 +11147,6 @@ local Teext =[[
 *⋄~⪼ قائمه المنع*
 *⋄~⪼ نسبه الحب* 
 *⋄~⪼ نسبه رجوله*
-*⋄~⪼ نسبه الكره*
 *⋄~⪼ نسبه الانوثه*
 *ٴ— — — — — — — — — — — — — —*
 [- MeRo TeMe .](t.me/YYYDR)
