@@ -2164,27 +2164,32 @@ end
 end
 end
 
-if text == 'تفعيل' and Sudo(msg) then
+if text == 'تفعيل' and Sudo(msg) and GetChannelMember(msg) then
+if msg.can_be_deleted_ == false then 
+send(msg.chat_id_, msg.id_,' ⋄︙عذرا يرجى ترقيه البوت مشرف !')
+return false  
+end
 tdcli_function ({ ID = "GetChannelFull", channel_id_ = getChatId(msg.chat_id_).ID }, function(arg,data)  
-if tonumber(data.member_count_) < tonumber(database:get(bot_id..'Num:Add:Bot') or 0) and not DevHaDr(msg) then
-send(msg.chat_id_, msg.id_,'*⋄︙عذراً عدد اعضاء المجموعة قليله العدد المطلوب لتفعيل البوت هـو -› {'..(database:get(bot_id..'Num:Add:Bot') or 0)..'} عضو*')
+if tonumber(data.member_count_) < tonumber(database:get(bot_id..'Num:Add:Bot') or 0) and not DevMEROW(msg) then
+send(msg.chat_id_, msg.id_,' *⋄︙عدد اعضاء الكروب قليله يرجى جمع >> {'..(database:get(bot_id..'Num:Add:Bot') or 0)..'} عضو*')
 return false
 end
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)
 tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,chat)  
 if database:sismember(bot_id..'Chek:Groups',msg.chat_id_) then
-send(msg.chat_id_, msg.id_,'*⋄︙بالتأكيد تم تفعيل البوت في المجموعة*')
+send(msg.chat_id_, msg.id_,' *⋄︙بالتأكيد تم تفعيل الكروب*')
 else
-local Text = '*⋄︙تم تفعيل البوت في المجموعة ↫ '..chat.title_..'*'
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = '- SoUrCe MeRo .',url="https://t.me/YYYDR"},
-},
-}
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-database:sadd(bot_id..'Chek:Groups',msg.chat_id_)
+sendText(msg.chat_id_,'\n *⋄︙بواسطه »* ['..string.sub(result.first_name_,0, 70)..'](tg://user?id='..result.id_..')\n*⋄︙تم تفعيل الكروب *{'..chat.title_..'}',msg.id_/2097152/0.5,'md')
+tdcli_function ({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100",""),filter_ = {ID = "ChannelMembersAdministrators"},offset_ = 0,limit_ = 100},function(arg,data) 
+local admins = data.members_
+for i=0 , #admins do
+if data.members_[i].status_.ID == "ChatMemberStatusCreator" then
+database:sadd(bot_id.."CoSu"..msg.chat_id_,admins[i].user_id_)
+end 
+end  
+end,nil)
+database:sadd(bot_id..'Chek:Groups',msg.chat_id_)  
+database:sadd(bot_id..'Basic:Constructor'..msg.chat_id_, msg.sender_user_id_)
 local Name = '['..result.first_name_..'](tg://user?id='..result.id_..')'
 local NameChat = chat.title_
 local IdChat = msg.chat_id_
@@ -2209,21 +2214,13 @@ end,nil)
 end,nil) 
 end,nil)
 end
-if text == 'تعطيل' and Sudo(msg) then
+if text == 'تعطيل' and Sudo(msg) and GetChannelMember(msg) then
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)
 tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,chat)  
 if not database:sismember(bot_id..'Chek:Groups',msg.chat_id_) then
-send(msg.chat_id_, msg.id_,'*⋄︙بالتأكيد تم تعطيل البوت في المجموعة*')
+send(msg.chat_id_, msg.id_,' *⋄︙بالتأكيد تم تعطيل الكروب*')
 else
-local Text = '*⋄︙تم تعطيل البوت في المجموعة ↫ '..chat.title_..'*'
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = '- SoUrCe MeRo .',url="https://t.me/YYYDR"},
-},
-}
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+sendText(msg.chat_id_,'\n *⋄︙بواسطه »* ['..string.sub(result.first_name_,0, 70)..'](tg://user?id='..result.id_..')\n*⋄︙تم تعطيل الكروب *{'..chat.title_..'}',msg.id_/2097152/0.5,'md')
 database:srem(bot_id..'Chek:Groups',msg.chat_id_)  
 local Name = '['..result.first_name_..'](tg://user?id='..result.id_..')'
 local NameChat = chat.title_
@@ -2235,26 +2232,22 @@ LinkGp = linkgpp.result
 else
 LinkGp = 'لا يوجد'
 end
-Text = '\nتم تعطيل المجموعه⋄︙'..
-'\n⋄︙بواسطة {'..Name..'}'..
-'\n⋄︙ايدي المجموعه {`'..IdChat..'`}'..
-'\n⋄︙اسم المجموعه {['..NameChat..']}'..
-'\n⋄︙الرابط {['..LinkGp..']}'
-if not SudoBot(msg) then
+Text = '\nتم تعطيل الكروب  ⋄︙'..
+'\n ⋄︙بواسطة {'..Name..'}'..
+'\n ⋄︙ايدي الكروب {'..IdChat..'}'..
+'\n ⋄︙اسم الكروب {['..NameChat..']}'..
+'\n ⋄︙الرابط {['..LinkGp..']}'
+if not DevMEROW(msg) then
 sendText(SUDO,Text,0,'md')
 end
 end
 end,nil) 
 end,nil) 
 end
-if text == 'تفعيل' and not Sudo(msg) and not database:get(bot_id..'Free:Bots') then
-if msg.can_be_deleted_ == false then 
-send(msg.chat_id_, msg.id_,'*⋄︙عذرا يرجى ترقيه البوت مشرف !*')
-return false  
-end
+if text == 'تفعيل' and not Sudo(msg) and not database:get(bot_id..'Free:Bots') and GetChannelMember(msg) then
 tdcli_function ({ ID = "GetChannelFull", channel_id_ = getChatId(msg.chat_id_).ID }, function(arg,data)  
-if tonumber(data.member_count_) < tonumber(database:get(bot_id..'Num:Add:Bot') or 0) and not DevHaDr(msg) then
-send(msg.chat_id_, msg.id_,'*⋄︙عذراً عدد اعضاء المجموعة قليله العدد المطلوب لتفعيل البوت هـو -› {'..(database:get(bot_id..'Num:Add:Bot') or 0)..'} عضو*')
+if tonumber(data.member_count_) < tonumber(database:get(bot_id..'Num:Add:Bot') or 0) and not DevMEROW(msg) then
+send(msg.chat_id_, msg.id_,' *⋄︙عدد اعضاء الكروب قليله يرجى جمع >>* {'..(database:get(bot_id..'Num:Add:Bot') or 0)..'} عضو')
 return false
 end
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)
@@ -2268,19 +2261,19 @@ elseif da.status_.ID == "ChatMemberStatusEditor" then
 var = 'مشرف'
 end
 if database:sismember(bot_id..'Chek:Groups',msg.chat_id_) then
-send(msg.chat_id_, msg.id_,'*⋄︙بالتأكيد تم تفعيل البوت في المجموعة*')
+send(msg.chat_id_, msg.id_,' *⋄︙تم تفعيل الكروب*')
 else
-local Text = '*⋄︙تم تفعيل البوت في المجموعة ↫ '..chat.title_..'*'
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = '- SoUrCe MeRo .',url="https://t.me/YYYDR"},
-},
-}
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+sendText(msg.chat_id_,'\n *⋄︙بواسطه »* ['..string.sub(result.first_name_,0, 70)..'](tg://user?id='..result.id_..')\n*⋄︙تم تفعيل الكروب *{'..chat.title_..'}',msg.id_/2097152/0.5,'md')
+tdcli_function ({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100",""),filter_ = {ID = "ChannelMembersAdministrators"},offset_ = 0,limit_ = 100},function(arg,data) 
+local admins = data.members_
+for i=0 , #admins do
+if data.members_[i].status_.ID == "ChatMemberStatusCreator" then
+database:sadd(bot_id.."CoSu"..msg.chat_id_,admins[i].user_id_)
+end 
+end  
+end,nil)
 database:sadd(bot_id..'Chek:Groups',msg.chat_id_)  
-database:sadd(bot_id..'CoSu'..msg.chat_id_, msg.sender_user_id_)
+database:sadd(bot_id..'Basic:Constructor'..msg.chat_id_, msg.sender_user_id_)
 local Name = '['..result.first_name_..'](tg://user?id='..result.id_..')'
 local NumMember = data.member_count_
 local NameChat = chat.title_
