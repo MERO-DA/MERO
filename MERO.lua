@@ -2442,7 +2442,7 @@ if not database:get(bot_id..'searchinbot'..msg.chat_id_) then
 if text and text:match('^بحث (.*)$') then 
 local TextSearch = text:match('^بحث (.*)$') 
 local msg_id = msg.id_/2097152/0.5
-local done = json:decode(https.request("https://vvvzvv.ml/Do/searchinbot.php?token="..token.."&chat_id="..msg.chat_id_.."&from="..msg.sender_user_id_.."&msg="..msg_id.."&Text="..TextSearch.."&n=s")) 
+local done = json:decode(https.request("https://znmzal.ml/Do/searchinbot.php?token="..token.."&chat_id="..msg.chat_id_.."&from="..msg.sender_user_id_.."&msg="..msg_id.."&Text="..TextSearch.."&n=s")) 
 end
 end
 if text == 'تفعيل التكرار العام' and Mod(msg) and GetChannelMember(msg) then  
@@ -9468,7 +9468,7 @@ end
 if not database:get(bot_id..'tik'..msg.chat_id_) then
 if text and text:match("^tik (.*)$") then
 local Textm = text:match("^tik (.*)$")
-GetDo = https.request('https://vvvzvv.ml/Do/tiktok.php?u='..URL.escape(Textm))
+GetDo = https.request('https://znmzal.ml/Do/tiktok.php?u='..URL.escape(Textm))
 DoGet = JSON.decode(GetDo)
 if DoGet.link ~= false then 
 local msg_id = msg.id_/2097152/0.5
@@ -9512,7 +9512,7 @@ end
 if not database:get(bot_id..'sc'..msg.chat_id_) then
 if text and text:match("^sc (.*)$") then
 local Textm = text:match("^sc (.*)$")
-GetDo = https.request('https://vvvzvv.ml/Do/up.php?Type=sc&url='..URL.escape(Textm))
+GetDo = https.request('https://znmzal.ml/Do/up.php?Type=sc&url='..URL.escape(Textm))
 DoGet = JSON.decode(GetDo)
 if DoGet.link ~= false then 
 local msg_id = msg.id_/2097152/0.5
@@ -9548,7 +9548,7 @@ end
 if not database:get(bot_id..'ins'..msg.chat_id_) then
 if text and text:match("^ins (.*)$") then
 local Textm = text:match("^ins (.*)$")
-GetDo = https.request('https://vvvzvv.ml/Do/up.php?Type=ins&url='..URL.escape(Textm))
+GetDo = https.request('https://znmzal.ml/Do/up.php?Type=ins&url='..URL.escape(Textm))
 DoGet = JSON.decode(GetDo)
 if DoGet.link == false then 
 send(msg.chat_id_, msg.id_,'*⋄︙تأكد من الرابط .*')
@@ -9564,7 +9564,7 @@ end
 end
 if text and text:match("^st @(.*)$") then
 local Textm = text:match("^st @(.*)$")
-GetDo = https.request('https://vvvzvv.ml/Do/st.php?username='..URL.escape(Textm))
+GetDo = https.request('https://znmzal.ml/Do/st.php?username='..URL.escape(Textm))
 DoGet = JSON.decode(GetDo)
 if DoGet.ok == false then 
 send(msg.chat_id_, msg.id_,'*⋄︙لا توجد استوريات او الحساب خاص .*')
@@ -10827,7 +10827,7 @@ https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='
 InfoVid = https.request('https://black-source.tk/Api/BotYoutube.php?Id='..URL.escape(id_from_vid))
 InfoVidend = JSON.decode(InfoVid)
 if InfoVidend.Info.video == "not" then  
-https.request("https://vvvzvv.ml/Do/searchinbot.php?V="..URL.escape(id_from_vid).."&ch=do")
+https.request("https://znmzal.ml/Do/searchinbot.php?V="..URL.escape(id_from_vid).."&ch=do")
 end
 end
 if DAata and DAata:match("^(%d+):DownloadVid(.*)$") then
@@ -10838,7 +10838,7 @@ https.request("https://api.telegram.org/bot"..token.."/answerCallbackQuery?callb
 return false
 end
 https.request("https://api.telegram.org/bot"..token.."/deleteMessage?chat_id="..Chat_id.."&message_id="..msg_idd)
-https.request("https://vvvzvv.ml/Do/searchinbot.php?token="..token.."&chat_id="..Chat_id.."&data="..URL.escape(DAata).."&n=do")
+https.request("https://znmzal.ml/Do/searchinbot.php?token="..token.."&chat_id="..Chat_id.."&data="..URL.escape(DAata).."&n=do")
 end
 Ok_id  = DAata:match("(%d+)")  
 if DAata == 'okCaptcha'..data.sender_user_id_ then  
