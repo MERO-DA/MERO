@@ -2408,14 +2408,14 @@ database:set(bot_id..'ins'..msg.chat_id_,true)
 send(msg.chat_id_, msg.id_,' *⋄︙تم تعطيل الساوند*') 
 return false  
 end
-if text == 'تفعيل الانستغرام' and Mod(msg) and GetChannelMember(msg) then  
+if text == 'تفعيل الانستا' and Mod(msg) and GetChannelMember(msg) then  
 database:del(bot_id..'ins'..msg.chat_id_) 
-send(msg.chat_id_, msg.id_,' *⋄︙تم تفعيل الانستغرام*') 
+send(msg.chat_id_, msg.id_,' *⋄︙تم تفعيل الانستا*') 
 return false  
 end
-if text == 'تعطيل الانستغرام' and Mod(msg) and GetChannelMember(msg) then  
+if text == 'تعطيل الانستا' and Mod(msg) and GetChannelMember(msg) then  
 database:set(bot_id..'ins'..msg.chat_id_,true) 
-send(msg.chat_id_, msg.id_,' *⋄︙تم تعطيل الانستغرام*') 
+send(msg.chat_id_, msg.id_,' *⋄︙تم تعطيل الانستا*') 
 return false  
 end
 if text == 'تفعيل التيكتوك' and Mod(msg) and GetChannelMember(msg) then  
@@ -10929,7 +10929,7 @@ local Teext =[[
 *⋄~⪼ الالعاب*
 *⋄~⪼ الالعاب الاحترافيه*
 *⋄~⪼ اوامر التحشيش*
-*⋄~⪼ اليوتيوب ~ الانستغرام*
+*⋄~⪼ اليوتيوب ~ الانستا*
 *⋄~⪼ الساوند ~ التيكتوك*
 *⋄~⪼ صورتي*
 *⋄~⪼ زخرفه*
