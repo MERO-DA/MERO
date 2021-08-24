@@ -8411,9 +8411,10 @@ local Contact = tonumber(database:get(bot_id..'Add:Contact'..msg.chat_id_..':'..
 local NUMPGAME = tonumber(database:get(bot_id..'NUM:GAMES'..msg.chat_id_..result.sender_user_id_) or 0)
 local edit = tonumber(database:get(bot_id..'edits'..msg.chat_id_..result.sender_user_id_) or 0)
 local rtp = Rutba(result.sender_user_id_,msg.chat_id_)
+TextCll = database:get(bot_id..'TextCll'..msg.chat_id_..':'..result.sender_user_id_) or 'لا يوجد'
 local username = ('[@'..data.username_..']' or 'لا يوجد')
 local iduser = result.sender_user_id_
-send(msg.chat_id_, msg.id_,' *⋄︙ايديه ↫ '..iduser..'*\n*⋄︙معرفه ↫* '..username..'\n*⋄︙رتبته ↫ '..rtp..'*\n*⋄︙تعديلاته ↫ '..edit..'*\n*⋄︙نقاطه ↫ '..NUMPGAME..'*\n*⋄︙جهاته ↫ '..Contact..'*\n*⋄︙رسائله ↫ '..Msguser..'*')
+send(msg.chat_id_, msg.id_,' *⋄︙ايديه ↫ '..iduser..'*\n*⋄︙معرفه ↫* '..username..'\n*⋄︙رتبته ↫ '..rtp..'*\n*⋄︙تعديلاته ↫ '..edit..'*\n*⋄︙نقاطه ↫ '..NUMPGAME..'*\n*⋄︙جهاته ↫ '..Contact..'*\n*⋄︙رسائله ↫ '..Msguser..'*\n*⋄︙لقبه ↫ '..TextCll..'*')
 end,nil)
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
@@ -8429,8 +8430,9 @@ local NUMPGAME = tonumber(database:get(bot_id..'NUM:GAMES'..msg.chat_id_..result
 local edit = tonumber(database:get(bot_id..'edits'..msg.chat_id_..result.id_) or 0)
 local rtp = Rutba(result.id_,msg.chat_id_)
 local username = ('[@'..data.username_..']' or 'لا يوجد')
+TextCll = database:get(bot_id..'TextCll'..msg.chat_id_..':'..result.id_) or 'لا يوجد'
 local iduser = result.id_
-send(msg.chat_id_, msg.id_,' *⋄︙ايديه ↫ '..iduser..'*\n*⋄︙معرفه ↫* '..username..'\n*⋄︙رتبته ↫ '..rtp..'*\n*⋄︙تعديلاته ↫ '..edit..'*\n*⋄︙نقاطه ↫ '..NUMPGAME..'*\n*⋄︙جهاته ↫ '..Contact..'*\n*⋄︙رسائله ↫ '..Msguser..'*')
+send(msg.chat_id_, msg.id_,' *⋄︙ايديه ↫ '..iduser..'*\n*⋄︙معرفه ↫* '..username..'\n*⋄︙رتبته ↫ '..rtp..'*\n*⋄︙تعديلاته ↫ '..edit..'*\n*⋄︙نقاطه ↫ '..NUMPGAME..'*\n*⋄︙جهاته ↫ '..Contact..'*\n*⋄︙رسائله ↫ '..Msguser..'*\n*⋄︙لقبه ↫ '..TextCll..'*')
 end,nil)
 else
 send(msg.chat_id_, msg.id_,' *⋄︙المعرف غير صحيح* ')
@@ -8912,6 +8914,7 @@ local nspatfa = tonumber(Msguser / nummsggp * 100)
 local Contact = tonumber(database:get(bot_id..'Add:Contact'..msg.chat_id_..':'..msg.sender_user_id_) or 0) 
 local NUMPGAME = tonumber(database:get(bot_id..'NUM:GAMES'..msg.chat_id_..msg.sender_user_id_) or 0)
 local rtp = Rutba(msg.sender_user_id_,msg.chat_id_)
+TextCll = database:get(bot_id..'TextCll'..msg.chat_id_..':'..msg.sender_user_id_) or 'لا يوجد'
 if result.username_ then
 username = '@'..result.username_ 
 else
@@ -8967,12 +8970,12 @@ else
 username = 'لا يوجد '
 end
 if result.status_.ID == "UserStatusRecently" and result.profile_photo_ ~= false then
-sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, amir.photos_[0].sizes_[1].photo_.persistent_id_,''..rdphoto..'\n⋄︙ايديك ↫ '..msg.sender_user_id_..'\n⋄︙معرفك ↫ '..username..'\n⋄︙رتبتك ↫ '..Rutba(msg.sender_user_id_,msg.chat_id_)..'\n⋄︙موقعك ↫ '..rtpa..'\n⋄︙تفاعلك ↫ '..Total_Msg(Msguser)..'\n⋄︙رسائلك ↫ '..Msguser..'\n⋄︙السحكات ↫ '..edit..'\n⋄︙نقاطك ↫ '..NUMPGAME..'\n')
+sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, amir.photos_[0].sizes_[1].photo_.persistent_id_,''..rdphoto..'\n⋄︙ايديك ↫ '..msg.sender_user_id_..'\n⋄︙معرفك ↫ '..username..'\n⋄︙رتبتك ↫ '..Rutba(msg.sender_user_id_,msg.chat_id_)..'\n⋄︙موقعك ↫ '..rtpa..'\n⋄︙تفاعلك ↫ '..Total_Msg(Msguser)..'\n⋄︙رسائلك ↫ '..Msguser..'\n⋄︙السحكات ↫ '..edit..'\n⋄︙نقاطك ↫ '..NUMPGAME..'\n⋄︙لقبك '..TextCll')
 else 
 if result.status_.ID == "UserStatusEmpty" and result.profile_photo_ == false then
-send(msg.chat_id_, msg.id_,'[\n⋄︙ايديك ↫ '..msg.sender_user_id_..'\n⋄︙معرفك ↫ '..username..'\n⋄︙رتبتك ↫ '..Rutba(msg.sender_user_id_,msg.chat_id_)..'\n⋄︙موقعك ↫ '..rtpa..'\n⋄︙تفاعلك ↫ '..Total_Msg(Msguser)..'\n⋄︙رسائلك ↫ '..Msguser..'\n⋄︙السحكات ↫ '..edit..'\n⋄︙نقاطك ↫ '..NUMPGAME..']\n')
+send(msg.chat_id_, msg.id_,'[\n⋄︙ايديك ↫ '..msg.sender_user_id_..'\n⋄︙معرفك ↫ '..username..'\n⋄︙رتبتك ↫ '..Rutba(msg.sender_user_id_,msg.chat_id_)..'\n⋄︙موقعك ↫ '..rtpa..'\n⋄︙تفاعلك ↫ '..Total_Msg(Msguser)..'\n⋄︙رسائلك ↫ '..Msguser..'\n⋄︙السحكات ↫ '..edit..'\n⋄︙نقاطك ↫ '..NUMPGAME..']\n⋄︙لقبك '..TextCll..']')
 else
-send(msg.chat_id_, msg.id_, '\n⋄︙الصوره ↫ ليس لديك صور في حسابك'..'[\n⋄︙ايديك ↫ '..msg.sender_user_id_..'\n⋄︙معرفك ↫ '..username..'\n⋄︙رتبتك ↫ '..Rutba(msg.sender_user_id_,msg.chat_id_)..'\n⋄︙موقعك ↫ '..rtpa..'\n⋄︙تفاعلك ↫ '..Total_Msg(Msguser)..'\n⋄︙رسائلك ↫ '..Msguser..'\n⋄︙السحكات ↫ '..edit..'\n⋄︙نقاطك ↫ '..NUMPGAME..']\n')
+send(msg.chat_id_, msg.id_, '\n⋄︙الصوره ↫ ليس لديك صور في حسابك'..'[\n⋄︙ايديك ↫ '..msg.sender_user_id_..'\n⋄︙معرفك ↫ '..username..'\n⋄︙رتبتك ↫ '..Rutba(msg.sender_user_id_,msg.chat_id_)..'\n⋄︙موقعك ↫ '..rtpa..'\n⋄︙تفاعلك ↫ '..Total_Msg(Msguser)..'\n⋄︙رسائلك ↫ '..Msguser..'\n⋄︙السحكات ↫ '..edit..'\n⋄︙نقاطك ↫ '..NUMPGAME..']\n⋄︙لقبك '..TextCll..']')
 end 
 end
 end
@@ -8991,7 +8994,7 @@ get_id_text = get_id_text:gsub('#game',NUMPGAME)
 get_id_text = get_id_text:gsub('#photos',photps) 
 send(msg.chat_id_, msg.id_,'['..get_id_text..']')   
 else
-send(msg.chat_id_, msg.id_,'[\n ⋄︙ايديك ↫ '..msg.sender_user_id_..'\n ⋄︙معرفك ↫ '..username..'\n ⋄︙رتبتك ↫ '..Rutba(msg.sender_user_id_,msg.chat_id_)..'\n ⋄︙موقعك ↫ '..rtpa..'\n ⋄︙تفاعلك ↫ '..Total_Msg(Msguser)..'\n ⋄︙رسائلك ↫ '..Msguser..'\n ⋄︙السحكات ↫ '..edit..'\n ⋄︙نقاطك ↫ '..NUMPGAME..']\n')
+send(msg.chat_id_, msg.id_,'[\n ⋄︙ايديك ↫ '..msg.sender_user_id_..'\n ⋄︙معرفك ↫ '..username..'\n ⋄︙رتبتك ↫ '..Rutba(msg.sender_user_id_,msg.chat_id_)..'\n ⋄︙موقعك ↫ '..rtpa..'\n ⋄︙تفاعلك ↫ '..Total_Msg(Msguser)..'\n ⋄︙رسائلك ↫ '..Msguser..'\n ⋄︙السحكات ↫ '..edit..'\n ⋄︙نقاطك ↫ '..NUMPGAME..']\n⋄︙لقبك '..TextCll..']')
 end
 end
 
