@@ -8411,15 +8411,25 @@ local Contact = tonumber(database:get(bot_id..'Add:Contact'..msg.chat_id_..':'..
 local NUMPGAME = tonumber(database:get(bot_id..'NUM:GAMES'..msg.chat_id_..result.sender_user_id_) or 0)
 local edit = tonumber(database:get(bot_id..'edits'..msg.chat_id_..result.sender_user_id_) or 0)
 local rtp = Rutba(result.sender_user_id_,msg.chat_id_)
+TextCll = database:get(bot_id..'TextCll'..msg.chat_id_..':'..result.sender_user_id_) or 'لا يوجد'
 local username = ('[@'..data.username_..']' or 'لا يوجد')
 local iduser = result.sender_user_id_
-send(msg.chat_id_, msg.id_,' *⋄︙ايديه ↫ '..iduser..'*\n*⋄︙معرفه ↫* '..username..'\n*⋄︙رتبته ↫ '..rtp..'*\n*⋄︙تعديلاته ↫ '..edit..'*\n*⋄︙نقاطه ↫ '..NUMPGAME..'*\n*⋄︙جهاته ↫ '..Contact..'*\n*⋄︙رسائله ↫ '..Msguser..'*')
+send(msg.chat_id_, msg.id_,' *⋄︙ايديه ↫ '..iduser..'*\n*⋄︙معرفه ↫* '..username..'\n*⋄︙رتبته ↫ '..rtp..'*\n*⋄︙تعديلاته ↫ '..edit..'*\n*⋄︙نقاطه ↫ '..NUMPGAME..'*\n*⋄︙جهاته ↫ '..Contact..'*\n*⋄︙رسائله ↫ '..Msguser..'\n⋄︙لقبه '..TextCll..'*')
 end,nil)
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 end
-if text and text:match("^ايدي @(.*)$") and GetChannelMember(msg) then   
+if text and text:match("^ايدي @(.*)$") then
 local username = text:match("^ايدي @(.*)$")
+if AddChannel(msg.sender_user_id_) == false then
+local textchuser = database:get(bot_id..'text:ch:user')
+if textchuser then
+send(msg.chat_id_, msg.id_,'['..textchuser..']')
+else
+send(msg.chat_id_, msg.id_,'  *⋄︙عذࢪا عليڪ الاشتࢪاڪ في قناه البوت* \n*⋄︙اشتࢪڪ هنا عمࢪي* ['..database:get(bot_id..'add:ch:username')..']')
+end
+return false
+end
 function start_function(extra, result, success)
 if result.id_ then
 tdcli_function ({ID = "GetUser",user_id_ = result.id_},function(extra,data) 
@@ -8429,8 +8439,9 @@ local NUMPGAME = tonumber(database:get(bot_id..'NUM:GAMES'..msg.chat_id_..result
 local edit = tonumber(database:get(bot_id..'edits'..msg.chat_id_..result.id_) or 0)
 local rtp = Rutba(result.id_,msg.chat_id_)
 local username = ('[@'..data.username_..']' or 'لا يوجد')
+TextCll = database:get(bot_id..'TextCll'..msg.chat_id_..':'..result.id_) or 'لا يوجد'
 local iduser = result.id_
-send(msg.chat_id_, msg.id_,' *⋄︙ايديه ↫ '..iduser..'*\n*⋄︙معرفه ↫* '..username..'\n*⋄︙رتبته ↫ '..rtp..'*\n*⋄︙تعديلاته ↫ '..edit..'*\n*⋄︙نقاطه ↫ '..NUMPGAME..'*\n*⋄︙جهاته ↫ '..Contact..'*\n*⋄︙رسائله ↫ '..Msguser..'*')
+send(msg.chat_id_, msg.id_,' *⋄︙ايديه ↫ '..iduser..'*\n*⋄︙معرفه ↫ '..username..'*\n*⋄︙رتبته ↫ '..rtp..'*\n*⋄︙تعديلاته ↫ '..edit..'*\n*⋄︙نقاطه ↫ '..NUMPGAME..'*\n*⋄︙جهاته ↫ '..Contact..'*\n*⋄︙رسائله ↫ '..Msguser..'\n⋄︙لقبه '..TextCll..'*')
 end,nil)
 else
 send(msg.chat_id_, msg.id_,' *⋄︙المعرف غير صحيح* ')
